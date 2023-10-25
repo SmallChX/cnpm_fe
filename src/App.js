@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Login from './pages/Login'
+import UserInfo from "./pages/UserInfo";
+import ActivityListPage from "./pages/Activites";
+import ActivityDetailPage from "./pages/ActivityDetail";
+import NewActivity from "./pages/NewActivity";
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <div>
+          <nav>
+            <ul>
+              <li><Link to="/login">Login</Link></li>
+              <li><Link to="/user-info">Thông tin người dùng</Link></li>
+              <li><Link to="/activities">Hoạt động</Link></li>
+            </ul>
+          </nav>
+        </div>
+        
+        <Routes>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/user-info" element={<UserInfo/>}/>
+          <Route path="/activities" element={<ActivityListPage/>}/>
+          <Route path="/activity/:id" element={<ActivityDetailPage/>} />
+          <Route path="/create-activity" element={<NewActivity/>}/>
+        </Routes>
+      </Router>
   );
 }
 
