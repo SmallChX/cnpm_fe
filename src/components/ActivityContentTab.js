@@ -13,7 +13,7 @@ function ActivityContentTab() {
 
     return (
         <div>
-            <h2>{activityName}</h2>
+            <h2 class="hehee">{activityName}</h2>
             <div>
                 <b>- Quyền lợi: </b>
                 {activityValue}
