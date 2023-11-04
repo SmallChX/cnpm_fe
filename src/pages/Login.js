@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import '../bootstrap.min.css'
+import '../style/login.css';
 import ForgotPassword from '../components/ForgotPassword';
+
+import gmail from '../image/gmail-logo.jpg';
 
 function Login() {
     const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -9,18 +13,32 @@ function Login() {
     };
 
     return (
-        <div>
-            <div className="account">
-                <label>Tài khoản:</label>
-                <input type="text" placeholder="Username" required />
-                <label>Mật khẩu:</label>
-                <input type="password" placeholder="Password" required />
+        <div class="body-container">
+            <div class="welcome-quote">
+                Chào mừng đến với HUHU!
+            </div>
+
+            <div class="login-title">
+                ĐĂNG NHẬP
+            </div>
+
+            <div>
+                <input class="form-control-lg" type="text" placeholder="Tên đăng nhập" required />
+                <input class="form-control-lg" type="password" placeholder="Mật khẩu" required />
+                <button type="button" class="btn btn-dark">Đăng nhập</button>
+            </div>
+
+            <div class="forgot-password">
                 <a href="#" onClick={handleForgotPassword}>
-                    Quên mật khẩu
+                    Quên mật khẩu?
                 </a>
             </div>
+
             <div className="google">
-                <button>Đăng nhập với Google</button>
+                <div>Hoặc đăng nhập với</div>
+                <button class="gmail">
+                    <img class="gmail-image" src={gmail}/>
+                </button>
             </div>
             {showForgotPassword && (
                 <div className="modal">
