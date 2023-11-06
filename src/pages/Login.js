@@ -13,7 +13,8 @@ function Login() {
     };
 
     return (
-        <div class="body-container">
+        <div class="login-container">
+            <div class="body-container">
             <div class="welcome-quote">
                 Chào mừng đến với HUHU!
             </div>
@@ -50,7 +51,9 @@ function Login() {
                     </div>
                 </div>
             )}
+            </div>
         </div>
+        
     );
 }
 

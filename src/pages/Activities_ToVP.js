@@ -20,7 +20,7 @@ import vector from '../image/vector.png';
 
 import ConfirmationWindow from '../components/ConfirmationWindow';
 
-function ActivityListPage() {
+function ActivityToVPListPage() {
     const activities = [
         { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
         { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
@@ -93,7 +93,7 @@ function ActivityListPage() {
 
                             <div class="user-infor">
                                 <div class="user-name">Cinamon</div>
-                                <div class="user-role">Sinh viên</div>
+                                <div class="user-role">Tổ VP</div>
                             </div>
 
                             <button class="btn btn-secondary vector-container">
@@ -106,10 +106,55 @@ function ActivityListPage() {
                         
                     </div>
 
-                    <div class ="row justify-content-end">
-                        <Link to="/create-activity">
-                            <button class="btn btn-dark btn-sm create-activity-button ">Tạo hoạt động</button>
+
+                    <div class ="row activity-state-title">
+                        <div>Chờ duyệt</div>
+                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
                         </Link>
+                    </div>
+
+                    <div class="row activity-row">
+                        {activities.map(activity => (
+                            <div class="col-xxl-3 shadow-sm activity-cell">
+                                <div class="activity-cell-title">
+                                    <div class="activity-name">{activity.name}</div>
+                                    <div class="current-quantity">{activity.currentQuantity}/{activity.quantity}</div>
+                                </div>
+                                
+                                <div>
+                                    <img class="activity-detail-icon" src={star} alt="Star icon" />
+                                    <p> {activity.value} ngày CTXH </p>
+                                </div>
+                                
+                                <div>
+                                    <img class="activity-detail-icon" src={location} alt="Location icon" />
+                                    <p> {activity.place} </p>
+                                </div>
+
+                                <div>
+                                    <img class="activity-detail-icon" src={time} alt="Clock icon" />
+                                    <p> {activity.time}</p>
+                                </div>
+
+                                <div>
+                                    <img class="activity-detail-icon" src={profile} alt="Profile icon" />
+                                    <p> {activity.quantity} Sinh viên </p>
+                                </div>
+
+                                <button class="btn btn-primary btn-sm detail-button">Duyệt</button>
+                            </div>
+                        ))}
+
+                        {/* Hiển thị cửa sổ xác nhận nếu showConfirmation là true */}
+                        {showConfirmation && (
+                            <ConfirmationWindow
+                                onConfirm={() => {
+                                    // Xử lý khi người dùng xác nhận xóa
+                                    setShowConfirmation(false); // Ẩn cửa sổ xác nhận
+                                }}
+                                onDeny={() => setShowConfirmation(false)} // Xử lý khi người dùng từ chối
+                            />
+                        )}
                     </div>
 
                     <div class ="row activity-state-title">
@@ -146,7 +191,7 @@ function ActivityListPage() {
                                     <p> {activity.quantity} Sinh viên </p>
                                 </div>
 
-                                <button class="btn btn-primary btn-sm detail-button">Tham gia</button>
+                                <button class="btn btn-primary btn-sm detail-button">Xem chi tiết</button>
                             </div>
                         ))}
 
@@ -198,7 +243,7 @@ function ActivityListPage() {
                                     <p> {activity.quantity} Sinh viên </p>
                                 </div>
 
-                                <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
+                                <button class="btn btn-primary btn-sm detail-button">Xem chi tiết</button>
                             </div>
                         ))}
                     </div>
@@ -207,4 +252,4 @@ function ActivityListPage() {
     );
 }
 
-export default ActivityListPage;
+export default ActivityToVPListPage;
