@@ -67,7 +67,6 @@ footer {
 .content-column {
     height: 100vh;
     padding: 20px 3% 10px 4%;
-    overflow: scroll;
 }
 
 .arrow-button-container {

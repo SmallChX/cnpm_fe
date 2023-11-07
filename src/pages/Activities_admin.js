@@ -146,7 +146,7 @@ function ActivityAdminListPage() {
                                     <p> {activity.quantity} Sinh viên </p>
                                 </div>
 
-                                <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
+                                <Link to={`/activity/${activity.id}`} class="btn btn-primary btn-sm detail-button">Chi tiết</Link>
                             </div>
                         ))}
 
