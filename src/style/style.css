@@ -64,10 +64,17 @@ footer {
     padding-left: 22px;
 }
 
+.nav {
+    position: fixed;
+}
 .content-column {
+    position: absolute;
+    /* float: right; */
+    right: 0;
     height: 100vh;
     padding: 20px 3% 10px 4%;
-    overflow: scroll;
+    display: flex;
+    flex-direction: column;
 }
 
 .arrow-button-container {
