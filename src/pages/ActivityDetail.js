@@ -27,7 +27,7 @@ import vector from '../image/vector.png';
 function ActivityDetailPage() {
     let { id } = useParams();
 
-    const [role, setRole] = useState('sinh viên');
+    const [role, setRole] = useState('sinhvien');
 
     const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -39,9 +39,8 @@ function ActivityDetailPage() {
     };
 
     const renderButton = () => {
-        if (role === 'sinh viên') {
-            return (
-                
+        if (role === 'sinhvien') {
+            return (          
                 <div>
                     <div class="container-md row">  
                         <div class="col-2 title-column">
@@ -111,7 +110,8 @@ function ActivityDetailPage() {
                                 <div class="r2c1 col">Hoạt động</div>
                                 <div class="r2c2">
                                     <div class="actnumber">4/8</div>
-                                    <button type="button" class="actresig btn">Cập nhật</button>
+                                    <button type="button" class="actresig btn" onClick={() => setShowConfirmation(true)}>Đăng ký</button>
+                                    {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />}
                                 </div>
                             </div>
                             <div class="row actbutton">
@@ -142,8 +142,8 @@ function ActivityDetailPage() {
                             </div>
                         </div>
                     </div> 
-                    <button onClick={() => setShowConfirmation(true)}>Đăng ký</button>
-                    {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />}
+                    {/* <button onClick={() => setShowConfirmation(true)}>Đăng ký</button>
+                    {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />} */}
                 </div>
             );
         } else if (role === 'admin') {
@@ -182,10 +182,14 @@ const TabComponent = () => {
 
     return (
         <div>
-            <button onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động</button>
-            <button onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên</button>
-            <button onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động</button>
-            <button onClick={() => setCurrentTab('attendance')}>Điểm danh</button>
+            <div>
+                <button onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động</button>
+                <button onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên</button>
+                <button onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động</button>
+                <button onClick={() => setCurrentTab('attendance')}>Điểm danh</button>
+
+            </div>
+        
             {renderTabContent(currentTab)}
         </div>
     );
