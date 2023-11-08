@@ -107,7 +107,9 @@ function ActivityDetailPage() {
                                 </div>     
                             </div>
                             <div class="row acttitle">
-                                <div class="r2c1 col">Hoạt động</div>
+                                <div class="r2c1 col">
+                                    <h1>Tên hoạt động ở đây nè!!!</h1>
+                                </div>
                                 <div class="r2c2">
                                     <div class="actnumber">4/8</div>
                                     <button type="button" class="actresig btn" onClick={() => setShowConfirmation(true)}>Đăng ký</button>
@@ -123,20 +125,33 @@ function ActivityDetailPage() {
                                 <div class="col-6">
                                     <div class="contentleft ">
                                         <div class="actdetail-title">Thông tin cơ bản </div>
-                                        <div class="actdetail-subcontent row">
-                                            <img class="subcontain-icon" src={star} />
-                                            <div class="subcontain-infor">
-                                                <div class="subcontent-title">Cinamon</div>
+                                        
+                                        <div class="actdetail-subcontent ">
+                                            <div class="subcontain-image col-1">
+                                                <img class="subcontain-icon" src={star} />
+                                            </div>
+                                            <div class="subcontain-infor col-11">
+                                                <div class="subcontent-title"><h3>Cinamon</h3></div>
                                                 <div class="subcontent-detail">Admin</div>
                                             </div>
                                         </div>
+                                    
+
+
+
                                     </div>
                                 </div>
 
                                 <div class ="col-6">
-                                    <div class="contentright">Part 1</div>
-                                    <div class="contentright">Part 2</div>
-                                    <div class="contentright">Part 3</div>
+                                    <div class="contentright">
+                                        <div class="actdetail-title">Mô tả hoạt động </div>
+                                    </div>
+                                    <div class="contentright">
+                                        <div class="actdetail-title">Tiêu chí hợp lệ </div>
+                                    </div>
+                                    <div class="contentright">
+                                        <div class="actdetail-title">Thông tin liên hệ</div>
+                                    </div>
                                 </div>
 
                             </div>
