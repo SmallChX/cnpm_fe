@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 import '../style/act_detail.css'
 import '../style/style.css'
 import '../bootstrap.min.css'
@@ -9,15 +9,7 @@ import ActivityContentTab from '../components/ActivityContentTab';
 import StudentListTab from '../components/StudentListTab';
 import ActivityForumTab from '../components/ActivityForumTab';
 import AttendanceTab from '../components/AttendanceTab';
-import logo from '../image/logoBK.png';
-import house from '../image/house.png';
-import person from '../image/person.png';
-import gear from '../image/gearshape.png';
-import clock from '../image/clock.arrow.png';
 import star from '../image/magic-star.png';
-import location from '../image/location.png';
-import time from '../image/clock.png';
-import profile from '../image/profile-2user.png';
 import leftArrow from '../image/left-arrow.png';
 import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';
@@ -43,41 +35,7 @@ function ActivityDetailPage() {
             return (          
                 <div>
                     <div class="container-md row">  
-                        <div class="col-2 title-column">
-                            <div class="logo-line">
-                                <img class="logo-BK" src={logo} alt="logoBK" />
-                                <div class="web-name">HUHU</div>
-                            </div>
-
-                            <div class="item-line">
-                                <img class="item-logo" src={house} alt="House-icon" />
-                                <Link to="" class="item-title">Trang chủ</Link>
-                            </div>
-
-                            <div class="item-line">
-                                <img class="item-logo" src={person} alt="House-icon" />
-                                <Link to="" class="item-title">Hoạt động</Link>
-                            </div>
-
-                            <div class="item-line">
-                                <img class="item-logo" src={gear} alt="House-icon" />
-                                <Link to="" class="item-title">Hệ thống</Link>
-                            </div>
-
-                            <div class="item-line">
-                                <img class="item-logo" src={clock} alt="House-icon" />
-                                <Link to="" class="item-title">Lịch sử</Link>
-                            </div>
-
-                            <footer class="item-line">
-                                <img class="item-logo" src={clock} />
-                                <Link class="item-title">
-                                    Đăng xuất
-                                </Link>
-                            </footer>
-                            
-                        </div>
-
+                        
                         <div class="col-10 content-column">
                             <div class ="toprow row">
                                 <div class ="col">
@@ -169,9 +127,9 @@ function ActivityDetailPage() {
 
     return (
         <div>
-            <h1>Chi tiết hoạt động {id}</h1>
+            {/* <h1>Chi tiết hoạt động {id}</h1> */}
             {renderButton()}
-            <TabComponent />
+            {/* <TabComponent /> */}
         </div>
     );
 }

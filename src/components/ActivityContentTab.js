@@ -12,31 +12,32 @@ function ActivityContentTab() {
     const [activityDetail, setActivityDetail] = useState('Dọn dẹp vệ sinh phòng kho');
 
     return (
-        <div>
-            <h2 class="hehee">{activityName}</h2>
-            <div>
-                <b>- Quyền lợi: </b>
-                {activityValue}
-            </div>
-            <div>
-                <b>- Thời gian: </b>
-                {activityTime}
-            </div>
-            <div>
-                <b>- Địa điểm: </b>
-                {activityPlace}
-            </div>
-            <div>
-                <b>- Nội dung công việc: </b>
-                {activityDetail}
-            </div>
-            <div>
-                <b>- Yêu cầu: </b>Sinh viên nghiêm túc, có mặt đúng giờ
-            </div>
-            <div>
-                <b>- Lưu ý: </b> Nếu sinh viên đăng ký không thể tham gia, phải tìm người thay thế. Nếu không sẽ vào danh sách đen của khoa.
-            </div>
-        </div>
+        <></>
+        // <div>
+        //     <h2 class="hehee">{activityName}</h2>
+        //     <div>
+        //         <b>- Quyền lợi: </b>
+        //         {activityValue}
+        //     </div>
+        //     <div>
+        //         <b>- Thời gian: </b>
+        //         {activityTime}
+        //     </div>
+        //     <div>
+        //         <b>- Địa điểm: </b>
+        //         {activityPlace}
+        //     </div>
+        //     <div>
+        //         <b>- Nội dung công việc: </b>
+        //         {activityDetail}
+        //     </div>
+        //     <div>
+        //         <b>- Yêu cầu: </b>Sinh viên nghiêm túc, có mặt đúng giờ
+        //     </div>
+        //     <div>
+        //         <b>- Lưu ý: </b> Nếu sinh viên đăng ký không thể tham gia, phải tìm người thay thế. Nếu không sẽ vào danh sách đen của khoa.
+        //     </div>
+        // </div>
     );
 }
 

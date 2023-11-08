@@ -35,44 +35,7 @@ function ActivityListPage() {
     };
 
     return (
-        // <div class="body-container">
-            <div class="container-md row">  
-                <div class="col-2 title-column">
-                    <div class="logo-line">
-                        <img class="logo-BK" src={logo} alt="logoBK" />
-                        <div class="web-name">HUHU</div>
-                    </div>
-
-                    <div class="item-line">
-                        <img class="item-logo" src={house} alt="House-icon" />
-                        <Link to="" class="item-title">Trang chủ</Link>
-                    </div>
-
-                    <div class="item-line">
-                        <img class="item-logo" src={person} alt="House-icon" />
-                        <Link to="" class="item-title">Hoạt động</Link>
-                    </div>
-
-                    <div class="item-line">
-                        <img class="item-logo" src={gear} alt="House-icon" />
-                        <Link to="" class="item-title">Hệ thống</Link>
-                    </div>
-
-                    <div class="item-line">
-                        <img class="item-logo" src={clock} alt="House-icon" />
-                        <Link to="" class="item-title">Lịch sử</Link>
-                    </div>
-
-                    <footer class="item-line">
-                        <img class="item-logo" src={clock} />
-                        <Link class="item-title">
-                            Đăng xuất
-                        </Link>
-                    </footer>
-                    
-                </div>
-
-                <div class="col content-column">
+                <div>
                     <div class ="row">
                         <div class ="col">
                             <button class="btn btn-primary arrow-button-container">
@@ -203,7 +166,6 @@ function ActivityListPage() {
                         ))}
                     </div>
                 </div>
-            </div> 
     );
 }
 
