@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
+import star from '../image/magic-star.png';
 
 
 function ActivityContentTab() {
@@ -12,7 +13,36 @@ function ActivityContentTab() {
     const [activityDetail, setActivityDetail] = useState('Dọn dẹp vệ sinh phòng kho');
 
     return (
-        <></>
+        <div class="row actcontent">
+            <div class="col-6">
+                <div class="contentleft ">
+                    <div class="actdetail-title">Thông tin cơ bản </div>
+                    
+                    <div class="actdetail-subcontent ">
+                        <div class="subcontain-image col-1">
+                            <img class="subcontain-icon" src={star} />
+                        </div>
+                        <div class="subcontain-infor col-11">
+                            <div class="subcontent-title"><h3>Cinamon</h3></div>
+                            <div class="subcontent-detail">Admin</div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+
+            <div class ="col-6">
+                <div class="contentright">
+                    <div class="actdetail-title">Mô tả hoạt động </div>
+                </div>
+                <div class="contentright">
+                    <div class="actdetail-title">Tiêu chí hợp lệ </div>
+                </div>
+                <div class="contentright">
+                    <div class="actdetail-title">Thông tin liên hệ</div>
+                </div>
+            </div>
+        </div>
         // <div>
         //     <h2 class="hehee">{activityName}</h2>
         //     <div>

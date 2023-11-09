@@ -17,11 +17,12 @@
 }
 
 .actcontent {
-    border-radius: 0px 16px 0px 0px;
+    border-radius: 0px 16px 16px 16px;
     background: #3A65F6;
     /* overflow: scroll; */
     padding: 10px;
-    height: 100%;
+    height: 87%;
+    margin-bottom: 2%;
 }
 
 .contentleft{
@@ -113,4 +114,8 @@ h1{
     color: #000;
     font-size: 36px;
     font-weight: 500;
+}
+
+.actlayout{
+    flex:1;
 }
