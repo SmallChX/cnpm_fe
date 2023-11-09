@@ -109,7 +109,7 @@ function ActivityListPage() {
                                     <p> {activity.quantity} Sinh viên </p>
                                 </div>
 
-                                <button class="btn btn-primary btn-sm detail-button">Tham gia</button>
+                                <Link to={`/activity/${activity.id}`} class="btn btn-primary btn-sm detail-button">Tham gia</Link>
                             </div>
                         ))}
 
