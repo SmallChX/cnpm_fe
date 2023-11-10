@@ -17,6 +17,9 @@ import bell from '../image/Bell_fill.png';
 import user from '../image/user.png';
 import vector from '../image/vector.png';
 
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import ConfirmationWindow from '../components/ConfirmationWindow';
 
