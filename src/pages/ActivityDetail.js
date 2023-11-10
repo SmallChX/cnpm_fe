@@ -74,12 +74,11 @@ function ActivityDetailPage() {
                                     {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />}
                                 </div>
                             </div>
-                            <div class="row actbutton">
-                                <button type="button" class="detailbutton btn btn-outline-primary">Chi tiết hoạt động</button>
-                                <button type="button" class="detailbutton btn btn-outline-primary">Thành viên</button>
-                                <button type="button" class="detailbutton btn btn-outline-primary">Thảo luận</button>
-                            </div>
-                            <div class="row actcontent">
+                            <TabComponent />
+                            {/* <div class="row actbutton">
+                                <TabComponent />
+                            </div> */}
+                            {/* <div class="row actcontent">
                                 <div class="col-6">
                                     <div class="contentleft ">
                                         <div class="actdetail-title">Thông tin cơ bản </div>
@@ -93,10 +92,7 @@ function ActivityDetailPage() {
                                                 <div class="subcontent-detail">Admin</div>
                                             </div>
                                         </div>
-                                    
-
-
-
+                            
                                     </div>
                                 </div>
 
@@ -111,8 +107,7 @@ function ActivityDetailPage() {
                                         <div class="actdetail-title">Thông tin liên hệ</div>
                                     </div>
                                 </div>
-
-                            </div>
+                            </div> */}
                         </div>
                     </div> 
                     {/* <button onClick={() => setShowConfirmation(true)}>Đăng ký</button>
@@ -136,7 +131,7 @@ function ActivityDetailPage() {
 
 // Tab component
 const TabComponent = () => {
-    const [currentTab, setCurrentTab] = useState('activityContent');
+    const [currentTab, setCurrentTab] = useState('studentList');
 
     const renderTabContent = (tab) => {
         switch (tab) {
@@ -154,16 +149,17 @@ const TabComponent = () => {
     };
 
     return (
-        <div>
-            <div>
-                <button onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động</button>
-                <button onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên</button>
-                <button onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động</button>
-                <button onClick={() => setCurrentTab('attendance')}>Điểm danh</button>
-
+        <div class="actlayout">
+            <div class="row actbutton">
+                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động</button>
+                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên</button>
+                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động</button>
+                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('attendance')}>Điểm danh</button>
             </div>
-        
+            
             {renderTabContent(currentTab)}
+            
+            
         </div>
     );
 };
