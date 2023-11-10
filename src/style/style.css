@@ -74,6 +74,7 @@ footer {
     padding: 20px 4% 10px 3%;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 .arrow-button-container {

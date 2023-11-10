@@ -33,10 +33,8 @@ function ActivityDetailPage() {
     const renderButton = () => {
         if (role === 'sinhvien') {
             return (          
-                <div>
-                    <div class="container-md row">  
-                        
-                        <div class="col-10 content-column">
+                
+                    <div class="container-md">      
                             <div class ="toprow row">
                                 <div class ="col">
                                     <button class="btn btn-primary arrow-button-container">
@@ -75,44 +73,9 @@ function ActivityDetailPage() {
                                 </div>
                             </div>
                             <TabComponent />
-                            {/* <div class="row actbutton">
-                                <TabComponent />
-                            </div> */}
-                            {/* <div class="row actcontent">
-                                <div class="col-6">
-                                    <div class="contentleft ">
-                                        <div class="actdetail-title">Thông tin cơ bản </div>
-                                        
-                                        <div class="actdetail-subcontent ">
-                                            <div class="subcontain-image col-1">
-                                                <img class="subcontain-icon" src={star} />
-                                            </div>
-                                            <div class="subcontain-infor col-11">
-                                                <div class="subcontent-title"><h3>Cinamon</h3></div>
-                                                <div class="subcontent-detail">Admin</div>
-                                            </div>
-                                        </div>
-                            
-                                    </div>
-                                </div>
-
-                                <div class ="col-6">
-                                    <div class="contentright">
-                                        <div class="actdetail-title">Mô tả hoạt động </div>
-                                    </div>
-                                    <div class="contentright">
-                                        <div class="actdetail-title">Tiêu chí hợp lệ </div>
-                                    </div>
-                                    <div class="contentright">
-                                        <div class="actdetail-title">Thông tin liên hệ</div>
-                                    </div>
-                                </div>
-                            </div> */}
-                        </div>
                     </div> 
-                    {/* <button onClick={() => setShowConfirmation(true)}>Đăng ký</button>
-                    {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />} */}
-                </div>
+                   
+               
             );
         } else if (role === 'admin') {
             return <button>Chỉnh sửa</button>;
@@ -131,7 +94,7 @@ function ActivityDetailPage() {
 
 // Tab component
 const TabComponent = () => {
-    const [currentTab, setCurrentTab] = useState('studentList');
+    const [currentTab, setCurrentTab] = useState('activityContent');
 
     const renderTabContent = (tab) => {
         switch (tab) {

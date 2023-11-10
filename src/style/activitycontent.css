@@ -1,14 +1,22 @@
+.actcontent {
+    border-radius: 0px 16px 16px 16px;
+    background: #3A65F6;
+    padding: 10px;
+    max-height: 85%;
+}
+
 .contentleft{
     border-radius: 16px;
     background: #FFF;
-    margin: 10px;
-    height: 95%;
+    margin: 2% 2% 0 2%;
+    height: 98%;
+   
 }
 
 .contentright{
     border-radius: 16px;
     background: #FFF;
-    margin: 10px;
+    margin: 2% 4%;
     height: 30%;
 }
 
@@ -20,8 +28,9 @@
     border: 0.5px solid rgba(58, 101, 246, 0.30);
     background: #FFF;
     align-items: center;
-    margin-inline: 10px ;
+    margin: 2% 2%;
 }
+
 
 .subcontain-image{
     border-radius: 10px 0px 0px 10px;
@@ -39,7 +48,7 @@
 .actdetail-title{
     color: #3A65F6;
     font-weight: 600;
-    padding: 10px;
+    padding: 2% 2% 0 2%;
 }
 .subcontain-infor{
     display: flex;
@@ -57,4 +66,16 @@ h1{
     color: #000;
     font-size: 36px;
     font-weight: 500;
+}
+
+.columcontent {
+    padding-inline: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.contentright p{
+    padding-inline: 10px;
 }
