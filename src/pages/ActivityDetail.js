@@ -9,7 +9,6 @@ import ActivityContentTab from '../components/ActivityContentTab';
 import StudentListTab from '../components/StudentListTab';
 import ActivityForumTab from '../components/ActivityForumTab';
 import AttendanceTab from '../components/AttendanceTab';
-import star from '../image/magic-star.png';
 import leftArrow from '../image/left-arrow.png';
 import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';
