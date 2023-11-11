@@ -26,7 +26,7 @@ function Navbar() {
 
                             <div class="item-line">
                                 <img class="item-logo" src={gear} alt="House-icon" />
-                                <Link to="" class="item-title">Hệ thống</Link>
+                                <Link to="/system-page" class="item-title">Hệ thống</Link>
                             </div>
 
                             <div class="item-line">

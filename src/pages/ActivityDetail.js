@@ -35,7 +35,6 @@ function ActivityDetailPage() {
             return (          
                 <div>
                     <div class="container-md row">  
-                        
                         <div class="col-10 content-column">
                             <div class ="toprow row">
                                 <div class ="col">

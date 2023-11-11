@@ -12,7 +12,11 @@ import ActivityAdminListPage from "./pages/Activities_admin";
 import ActivityToVPListPage from "./pages/Activities_ToVP";
 import ActivityDetailPage from "./pages/ActivityDetail";
 import NewActivity from "./pages/NewActivity";
+import SystemPage from "./pages/SystemPage";
 import Navbar from "./Navbar";
+import ActivityStatistics from "./pages/ActivityStatistics";
+import TrendStatistics from './pages/TrendStatistics';
+import AccountDecentralise from "./pages/AccountDecentralise";
 function DefaultContainer() {
   return (
     <div class="container-md row">
@@ -40,6 +44,10 @@ function App() {
           <Route path="/activitiesToVP" element={<ActivityToVPListPage/>}/>
           <Route path="/activity/:id" element={<ActivityDetailPage/>} />
           <Route path="/create-activity" element={<NewActivity/>}/>
+          <Route path="/system-page" element={<SystemPage/>}/>
+          <Route path="/activity-statistics" element={<ActivityStatistics/>}/>
+          <Route path="/trend-statistics" element={<TrendStatistics/>}/>
+          <Route path="/account-decentralise" element={<AccountDecentralise/>}/>
         </Route>
       </Routes>
     </Router>
