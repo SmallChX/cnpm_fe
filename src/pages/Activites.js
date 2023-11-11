@@ -17,6 +17,9 @@ import bell from '../image/Bell_fill.png';
 import user from '../image/user.png';
 import vector from '../image/vector.png';
 
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import ConfirmationWindow from '../components/ConfirmationWindow';
 
@@ -47,22 +50,25 @@ function ActivityListPage() {
                         </div>
 
                         {/* <div class="col-3 notification-container"> */}
-                            <button class="btn btn-secondary arrow-button-container account-icon-container">
-                                <img class="bell-icon" src={bell} alt="bell-icon"/>
-                            </button>
-
+                        <Dropdown as={ButtonGroup} variant="user-account account-icon-container">
+                            <Button variant="user-account account-icon-container">
                             <div class="user-account account-icon-container">
-                            <img class="user-icon" src={user} />
+                                <img class="user-icon" src={user} />
 
-                            <div class="user-infor">
-                                <div class="user-name">Cinamon</div>
-                                <div class="user-role">Sinh viên</div>
+                                <div class="user-infor">
+                                    <div class="user-name">Cinamon</div>
+                                    <div class="user-role">Sinh viên</div>
+                                </div>
                             </div>
+                            </Button>
 
-                            <button class="btn btn-secondary vector-container">
-                                <img  class="vector-icon" src={vector}/>
-                            </button>
-                        </div>
+                            <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#">Cài đặt tài khoản</Dropdown.Item>
+                                <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
 
                         {/* </div> */}
 
