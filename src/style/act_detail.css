@@ -7,7 +7,6 @@
     flex-shrink: 0;
     padding: 8px;
     margin-bottom: 4%;
-    max-height: 10%;
 }   
 
 .actbutton{
@@ -61,4 +60,11 @@
 
 .actlayout{
     flex:1;
+}
+
+.actcontent {
+    border-radius: 0px 16px 16px 16px;
+    background: #3A65F6;
+    padding: 10px;
+    height: 500px;
 }

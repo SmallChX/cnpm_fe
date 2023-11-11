@@ -32,8 +32,7 @@ function ActivityDetailPage() {
     const renderButton = () => {
         if (role === 'sinhvien') {
             return (          
-                
-                    <div class="container-md">      
+                    <div class="container-md" >      
                             <div class ="toprow row">
                                 <div class ="col">
                                     <button class="btn btn-primary arrow-button-container">
@@ -72,8 +71,7 @@ function ActivityDetailPage() {
                                 </div>
                             </div>
                             <TabComponent />
-                    </div> 
-                   
+                    </div>            
                
             );
         } else if (role === 'admin') {
@@ -83,17 +81,17 @@ function ActivityDetailPage() {
     };
 
     return (
-        <div>
+        <>
             {/* <h1>Chi tiết hoạt động {id}</h1> */}
             {renderButton()}
             {/* <TabComponent /> */}
-        </div>
+        </>
     );
 }
 
 // Tab component
 const TabComponent = () => {
-    const [currentTab, setCurrentTab] = useState('activityContent');
+    const [currentTab, setCurrentTab] = useState('studentList');
 
     const renderTabContent = (tab) => {
         switch (tab) {
