@@ -1,16 +1,10 @@
-.actcontent {
-    border-radius: 0px 16px 16px 16px;
-    background: #3A65F6;
-    padding: 10px;
-    max-height: 85%;
-}
 
 .contentleft{
     border-radius: 16px;
     background: #FFF;
-    margin: 2% 2% 0 2%;
-    height: 98%;
-   
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .contentright{
@@ -29,7 +23,8 @@
     border: 0.5px solid rgba(58, 101, 246, 0.30);
     background: #FFF;
     align-items: center;
-    margin: 2% 2%;
+    margin: 6px 12px;
+    overflow: auto;
 }
 
 
@@ -57,7 +52,7 @@
 .actdetail-title{
     color: #3A65F6;
     font-weight: 600;
-    padding: 2% 2% 0 2%;
+    padding: 12px 12px 0 12px;
 }
 .subcontain-infor{
     display: flex;
