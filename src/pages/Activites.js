@@ -52,17 +52,17 @@ function ActivityListPage() {
                             </button>
 
                             <div class="user-account account-icon-container">
-                            <img class="user-icon" src={user} />
+                                <img class="user-icon" src={user} />
 
-                            <div class="user-infor">
-                                <div class="user-name">Cinamon</div>
-                                <div class="user-role">Sinh viên</div>
+                                <div class="user-infor">
+                                    <div class="user-name">Cinamon</div>
+                                    <div class="user-role">Sinh viên</div>
+                                </div>
+
+                                <button class="btn btn-secondary vector-container">
+                                    <img  class="vector-icon" src={vector}/>
+                                </button>
                             </div>
-
-                            <button class="btn btn-secondary vector-container">
-                                <img  class="vector-icon" src={vector}/>
-                            </button>
-                        </div>
 
                         {/* </div> */}
 
