@@ -9,7 +9,8 @@ import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';
 import user from '../image/user.png';
 import vector from '../image/vector.png';
-import chart from'../image/pie-chart-2.png';
+import { PieChartAcitivity } from '../components/PieChartActivity';
+import { LineChartActivity } from '../components/LineChartActivity';
 
 
 function SystemPage() {
@@ -55,7 +56,7 @@ function SystemPage() {
 
             <div class="row statistics-bar">
                 <div class="col-md-6">
-                {/* <img src={chart}/> */} graph
+                    <PieChartAcitivity />
                 </div>
 
                 <div class="col-md-4 statistics-infor">
@@ -72,7 +73,9 @@ function SystemPage() {
             </div>
 
             <div class="row statistics-bar">
-                <div class="col-md-6">graph</div>
+                <div class="col-md-6">
+                    <LineChartActivity />
+                </div>
 
                 <div class="col-md-4 statistics-infor">
                     <div class="statistics-title">

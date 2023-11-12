@@ -33,6 +33,7 @@ function ForumActivityTab() {
 
     return (
         <div class = "row actcontent">
+            <button>Tạo thảo luận mới</button>
       {thread.map((t) => (
         <div key={t.threadID} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>

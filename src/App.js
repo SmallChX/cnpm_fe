@@ -17,6 +17,7 @@ import Navbar from "./Navbar";
 import ActivityStatistics from "./pages/ActivityStatistics";
 import TrendStatistics from './pages/TrendStatistics';
 import AccountDecentralise from "./pages/AccountDecentralise";
+import ForgotPassword from "./components/ForgotPassword";
 function DefaultContainer() {
   return (
     <div class="container-md row">

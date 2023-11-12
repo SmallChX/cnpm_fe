@@ -33,6 +33,7 @@ function StudentAccountListTab() {
 
     return (
         <div class="row table-container tab-table-container ">
+                {showConfirmation && <DecentPopUp onConfirm={handleConfirm} />}
                 <div class="table-responsive activity-roll tab">
                     <table class="table tab-table">
                         <col class="column-mssv" />
@@ -60,7 +61,6 @@ function StudentAccountListTab() {
                                 <td>{account.accountActive}</td>
                                 <td>
                                     <button class="btn btn-success decent-buttons" onClick={() => setShowConfirmation(true)}>Phân quyền</button>
-                                    {showConfirmation && <DecentPopUp onConfirm={handleConfirm} />}
                                 </td>
                             </tr>
                             )

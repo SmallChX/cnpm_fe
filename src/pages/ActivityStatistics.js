@@ -12,6 +12,7 @@ import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';
 import user from '../image/user.png';
 import vector from '../image/vector.png';
+import { PieChartAcitivity } from '../components/PieChartActivity';
 
 function ActivityStatistics() {
     const [role, setRole] = useState('sinhvien');
@@ -70,7 +71,7 @@ function ActivityStatistics() {
 
             <div class="row statistics-bar statistics-bar-inside">
                 <div class="col-md-6">
-                {/* <img src={chart}/> */} graph
+                    <PieChartAcitivity />
                 </div>
 
                 <div class="col-md-4 statistics-infor">
