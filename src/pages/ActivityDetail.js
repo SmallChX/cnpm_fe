@@ -91,7 +91,7 @@ function ActivityDetailPage() {
 
 // Tab component
 const TabComponent = () => {
-    const [currentTab, setCurrentTab] = useState('studentList');
+    const [currentTab, setCurrentTab] = useState('activityContent');
 
     const renderTabContent = (tab) => {
         switch (tab) {
@@ -111,10 +111,27 @@ const TabComponent = () => {
     return (
         <div class="actlayout">
             <div class="row actbutton">
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động</button>
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên</button>
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động</button>
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('attendance')}>Điểm danh</button>
+                <button  
+                    type="button" 
+                    // class="detailbutton btn btn-outline-primary" 
+                    className={`detailbutton btn  ${currentTab === 'activityContent' ? 'active' : 'btn-outline-primary'}`}
+                    onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động
+                </button>
+                <button  
+                    type="button" 
+                    className={`detailbutton btn  ${currentTab === 'studentList' ? 'active' : 'btn-outline-primary'}`}
+                    onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên
+                </button>
+                <button  
+                    type="button" 
+                    className={`detailbutton btn ${currentTab === 'activityForum' ? 'active' : ' btn-outline-primary'}`}
+                    onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động
+                </button>
+                <button  
+                    type="button" 
+                    className={`detailbutton btn  ${currentTab === 'attendance' ? 'active' : 'btn-outline-primary'}`}
+                    onClick={() => setCurrentTab('attendance')}>Điểm danh
+                </button>
             </div>
             
             {renderTabContent(currentTab)}

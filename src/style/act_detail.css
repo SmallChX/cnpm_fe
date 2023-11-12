@@ -68,3 +68,8 @@
     padding: 10px;
     height: 500px;
 }
+
+.detailbutton.active {
+    background-color: #3A65F6;
+    color: #fff;
+}
