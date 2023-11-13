@@ -34,14 +34,38 @@
     margin-right: 30px;
     padding: 5px 10px;
 }
-.actresig{
+
+
+.actresig-sinhvien{
+    width: 135px;
     font-size: large;
     background: #3A65F6;
     color:#FFF;
     border-radius: 10px;
-    padding-inline: 50px;
     border: 0.5px solid rgba(0, 0, 0, 0.30);
 }
+
+.actresig-admin{
+    width: 135px;
+    font-size: large;
+    opacity: 0.8;
+    background: var(--d-9-d-9-d-9, #5ADA86);
+    color:#FFF;
+    border-radius: 10px;
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+}
+
+.actresig-tvp{
+    width: 135px;
+    font-size: large;
+    opacity: 0.8;
+    background: #FC3232;
+    color:#FFF;
+    border-radius: 10px;
+    border: 0.5px solid rgba(0, 0, 0, 0.30);
+    margin-left: 20px;
+}
+
 
 .detailbutton{
     border-radius: 10px 10px 0px 0px;
