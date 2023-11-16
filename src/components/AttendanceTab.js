@@ -17,15 +17,15 @@ const AttendanceTab = () => {
                         <div class="actdetail-title titlecolum">Thông tin sinh viên</div>
                         <div class="subcontain-infor">
                             <div class="subcontent-title"><h3>Mã số sinh viên</h3></div>
-                            <div class="subcontent-detail">000001</div>
+                            <div class="subcontent-detail attend">000001</div>
                         </div>
                         <div class="subcontain-infor">
                             <div class="subcontent-title"><h3>Họ và tên</h3></div>
-                            <div class="subcontent-detail">Nguyễn Văn A</div>
+                            <div class="subcontent-detail attend">Nguyễn Văn A</div>
                         </div>  
                         <div class="subcontain-infor">
                             <div class="subcontent-title"><h3>Khoa</h3></div>
-                            <div class="subcontent-detail">Khoa học và Kỹ thuật Máy tính</div>
+                            <div class="subcontent-detail attend">Khoa học và Kỹ thuật Máy tính</div>
                         </div>    
                     </div>
                 </div>

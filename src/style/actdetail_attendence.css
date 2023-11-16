@@ -36,7 +36,7 @@
     margin: 5px;   
     border-radius: 16px
 }
-.actdetail-title ,  .subcontent-detail{
+.actdetail-title.titlecolum ,  .subcontent-detail.attend{
     padding-left: 10px;
     padding-bottom: 10px;
 }
