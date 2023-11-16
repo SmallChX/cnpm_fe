@@ -271,3 +271,8 @@ footer {
         display: none;
     }
 }
+
+.rowbutdk{
+    display: flex;
+    flex-direction: row-reverse;
+}
