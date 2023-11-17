@@ -27,7 +27,7 @@ function UserHistoryPage() {
 
     return(
         <div>
-            <div class ="container-md row">
+            {/* <div class ="container-md row"> */}
                 <div class="col-10 content-column">
                     <div class ="toprow row">
                         {/* navigation buttons */}
@@ -67,10 +67,10 @@ function UserHistoryPage() {
                         </Dropdown>
                     </div>
                     {/* <TabComponent /> */}
-                </div>
-            </div>
+                
+            {/* </div> */}
 
-            <div class="justify-content-end">
+            <div class="row justify-content-end">
                 {/* filter bar
                 <div class="col justify-content-end">
                     
@@ -83,9 +83,10 @@ function UserHistoryPage() {
                 </div>
             </div> 
 
-            <div>
+            <div class="row">
                 
-            </div>     
+            </div>  
+            </div>   
         </div>
     );
 }
