@@ -36,8 +36,8 @@ function ActivityToVPListPage() {
 
     return (
         // <div class="body-container">
-            <div>  
-                <div class="col content-column">
+            <div class="activity-container">  
+                {/* <div class="col content-column"> */}
                     <div class ="row">
                         <div class ="col">
                             <button class="btn btn-primary arrow-button-container">
@@ -73,9 +73,13 @@ function ActivityToVPListPage() {
 
 
                     <div class ="row activity-state-title">
-                        <div>Chờ duyệt</div>
-                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
-                        </Link>
+                        <div >Chờ duyệt</div>
+                        <div>
+                            <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
+                            </Link>
+                            
+                        </div>
+                        
                     </div>
 
                     <div class="row activity-row">
@@ -212,7 +216,7 @@ function ActivityToVPListPage() {
                             </div>
                         ))}
                     </div>
-                </div>
+                {/* </div> */}
             </div> 
     );
 }

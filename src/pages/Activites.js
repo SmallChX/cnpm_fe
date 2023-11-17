@@ -83,7 +83,7 @@ function ActivityListPage() {
 
                     <div class ="row activity-state-title">
                         <div>Đang diễn ra</div>
-                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
+                        <Link  to="/see-all/current" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
                         </Link>
                     </div>
 
@@ -135,7 +135,7 @@ function ActivityListPage() {
 
                     <div class ="row activity-state-title">
                         <div>Sắp diễn ra</div>
-                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
+                        <Link to="/see-all/upcoming" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
                         </Link>
                     </div>
 

@@ -15,6 +15,10 @@ import bell from '../image/Bell_fill.png';
 import user from '../image/user.png';
 import vector from '../image/vector.png';
 
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
+
 function AccountDecentralise() {
     return (
         <div class="statistics-body activity-statistics">
@@ -35,18 +39,25 @@ function AccountDecentralise() {
                     <img class="bell-icon" src={bell} alt="bell-icon"/>
                 </button>
 
-                <div class="user-account account-icon-container">
-                    <img class="user-icon" src={user} />
+                    <Dropdown as={ButtonGroup} variant="user-account account-icon-container">
+                        <Button variant="user-account account-icon-container">
+                        <div class="user-account account-icon-container">
+                            <img class="user-icon" src={user} />
 
-                    <div class="user-infor">
-                        <div class="user-name">Cinamon</div>
-                        <div class="user-role">Sinh viên</div>
-                    </div>
+                            <div class="user-infor">
+                                <div class="user-name">Cinamon</div>
+                                <div class="user-role">Sinh viên</div>
+                            </div>
+                        </div>
+                        </Button>
 
-                    <button class="btn btn-secondary vector-container">
-                        <img  class="vector-icon" src={vector}/>
-                    </button>
-                </div>
+                        <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item href="#">Cài đặt tài khoản</Dropdown.Item>
+                            <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
             </div>
 
             <div class="row statistics-bar" id="decentralise-title-container-1">

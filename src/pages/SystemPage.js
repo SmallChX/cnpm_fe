@@ -76,7 +76,7 @@ function SystemPage() {
 
                 <div class="col-md-4 statistics-infor">
                     <div class="statistics-title">
-                        <Link class="statistics-title-link" to href="/">Xu hướng của năm 2022</Link>
+                        <Link class="statistics-title-link" to ="/trend-statistics">Xu hướng của năm 2022</Link>
                     </div>
                     <div class="statistics-result">
                         <p>10 hoạt động đã được tổ chức.</p>

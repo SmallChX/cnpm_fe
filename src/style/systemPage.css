@@ -120,6 +120,8 @@ table.fixed {
     margin: auto;
     column-width: 16%;
     border: 1px solid rgb(58, 101, 246);
+    position: relative;
+    border-collapse: collapse; 
 }
 
 tr {
@@ -135,11 +137,15 @@ th, td {
 
 th {
     color:rgb(58, 101, 246);
+    position: sticky;
+    border-bottom: 1px solid black;
+    top: 0;
 }
 
 td {
     color:rgb(108, 107, 107);
     font-size: 14px;
+    
 }
 
 .column-1 {
@@ -164,6 +170,10 @@ td {
 
 .column-6 {
     width: 27%;
+}
+
+.column-7 {
+    width: 18%;
 }
 
 
@@ -215,6 +225,7 @@ td {
 .search-bar-decentralise-container{
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
 }
 
 .search-bar-decentralise {
@@ -222,6 +233,7 @@ td {
     width: 70%;
     padding-left: 10px;
     background-color: rgb(248, 248, 248);
+    max-height: 35px;
 }
 
 
@@ -238,12 +250,6 @@ td {
     max-height: 500px;
 }
 
-/* .tab-table {
-    max-height: 500px;
-    overflow: scroll;
-    margin: 0;
-    table-layout: fixed;
-} */
 
 .decentralize-tab-button {
     margin-top: 5%;
@@ -256,5 +262,15 @@ td {
     margin-bottom: 1%;
     font-weight: bold;
 }
+
+/* .column-name {
+    width: 20%;
+}
+
+.column-role {
+    width: 20%;
+} */
+
+
 
 

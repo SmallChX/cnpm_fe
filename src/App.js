@@ -17,6 +17,10 @@ import Navbar from "./Navbar";
 import ActivityStatistics from "./pages/ActivityStatistics";
 import TrendStatistics from './pages/TrendStatistics';
 import AccountDecentralise from "./pages/AccountDecentralise";
+import SeeAllPage from "./pages/seeAll";
+import ActivityCensor from "./pages/ActivityCensor";
+
+import IncorrectPasswordPopup from "./components/IncorrectPasswordPopUp";
 function DefaultContainer() {
   return (
     <div class="container-md row">
@@ -48,6 +52,10 @@ function App() {
           <Route path="/activity-statistics" element={<ActivityStatistics/>}/>
           <Route path="/trend-statistics" element={<TrendStatistics/>}/>
           <Route path="/account-decentralise" element={<AccountDecentralise/>}/>
+          <Route path="/see-all/:mode" element={<SeeAllPage/>}/>
+          <Route path="/activity-censor" element={<ActivityCensor/>}/>
+
+          <Route path="/incorrect" element={<IncorrectPasswordPopup/>}/>
         </Route>
       </Routes>
     </Router>

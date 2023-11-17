@@ -2,6 +2,15 @@
     width: 100%;
 }
 
+.activity-container {
+    overflow-y: auto;
+    overflow-x: auto;
+    scroll-margin-right: -10%;
+    padding-left: 2%;
+    padding-right: 2%;
+
+}
+
 .title-column {
     background-color: rgb(58, 101, 246);
     border-top-right-radius: 25px;
@@ -100,13 +109,15 @@ footer {
 
 .account-icon-container {
     background-color: rgb(229, 235, 255);
-    border: none;
+    border-radius: 15px;
 }
 
 
 .bell-icon {
     width: 18px;
 }
+
+
 
 .user-account {
     display: flex;
@@ -126,6 +137,9 @@ footer {
 .user-infor {
     display: flex;
     flex-direction: column;
+
+    /* border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; */
 }
 
 .user-name {
@@ -192,6 +206,11 @@ footer {
     justify-content: space-between;
 }
 
+.see-all-col {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .see-all {
     font-size: 12px;
     right: 0;
@@ -209,6 +228,17 @@ footer {
     border-radius: 10px; 
 
     font-size: 13px;
+}
+
+.see-all-cell-container {
+    max-height: 68%;
+    margin-top: 3%;
+    overflow-y: auto;
+}
+
+.see-all-cell {
+    margin-top: 1%;
+    margin-bottom: 2%;
 }
 
 .activity-cell-title {
