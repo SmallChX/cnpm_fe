@@ -13,6 +13,8 @@ import ActivityToVPListPage from "./pages/Activities_ToVP";
 import ActivityDetailPage from "./pages/ActivityDetail";
 import NewActivity from "./pages/NewActivity";
 import Navbar from "./Navbar";
+import UserHistoryPage from "./pages/History_user";
+
 function DefaultContainer() {
   return (
     <div class="container-md row">
@@ -27,7 +29,6 @@ function DefaultContainer() {
 
 function App() {
 
-  
   return (
     <Router>
       <Routes>
@@ -40,10 +41,12 @@ function App() {
           <Route path="/activitiesToVP" element={<ActivityToVPListPage/>}/>
           <Route path="/activity/:id" element={<ActivityDetailPage/>} />
           <Route path="/create-activity" element={<NewActivity/>}/>
+          <Route path="/user-history" render={() => <UserHistoryPage />} />
         </Route>
       </Routes>
     </Router>
   );
+
 }
 
 export default App;
