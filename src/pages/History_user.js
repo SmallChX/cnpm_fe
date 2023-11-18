@@ -78,15 +78,4 @@ function UserHistoryPage() {
     );
 }
 
-// const TabComponent = () => {
-//     const [activeTab, setActiveTab] = useState('tab1');
-
-//     const renderTabContent = (tab) => {
-//         switch (tab)
-//         {
-//             case ''
-//         }
-//     };
-// }
-
 export default UserHistoryPage;

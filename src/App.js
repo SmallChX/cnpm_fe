@@ -42,7 +42,6 @@ function App() {
           <Route path="/activity/:id" element={<ActivityDetailPage/>} />
           <Route path="/create-activity" element={<NewActivity/>}/>
           <Route path="/user-history" element={<UserHistoryPage/>}/>
-          {/* <Route path="/user-history" render={() => <UserHistoryPage />} /> */}
         </Route>
       </Routes>
     </Router>
