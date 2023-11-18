@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { SearchBar } from '../components/SearchBar';
+import UserHistoryTab from '../components/UserHistoryTab';
 import { Link } from 'react-router-dom';
 import '../bootstrap.min.css';
 import '../style/style.css';
@@ -27,7 +28,7 @@ function UserHistoryPage() {
 
     return(
         <div>
-            {/* <div class ="container-md row"> */}
+            <div class ="container-md row">
                 <div class="col-10 content-column">
                     <div class ="toprow row">
                         {/* navigation buttons */}
@@ -67,39 +68,14 @@ function UserHistoryPage() {
                         </Dropdown>
                     </div>
                     {/* <TabComponent /> */}
-                
-            {/* </div> */}
-
-            <div class="row justify-content-end">
-                {/* filter bar
-                <div class="col justify-content-end">
-                    
-                </div> */}
-
-                {/* search bar */}
-                <div class="col justify-content-end">
                     <SearchBar setResults={setResults}/>
-                    {/* <SearchResultsList results={results}/> */}
-                </div>
-            </div> 
 
-            <div class="row">
-                
+                    <h2 class="history-title">Hoạt động của tôi</h2>
+                    <UserHistoryTab />
+                </div>
             </div>  
-            </div>   
         </div>
     );
 }
-
-// const TabComponent = () => {
-//     const [activeTab, setActiveTab] = useState('tab1');
-
-//     const renderTabContent = (tab) => {
-//         switch (tab)
-//         {
-//             case ''
-//         }
-//     };
-// }
 
 export default UserHistoryPage;
