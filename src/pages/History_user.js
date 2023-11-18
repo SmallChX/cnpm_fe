@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { SearchBar } from '../components/SearchBar';
+import UserHistoryTab from '../components/UserHistoryTab';
 import { Link } from 'react-router-dom';
 import '../bootstrap.min.css';
 import '../style/style.css';
@@ -67,25 +68,12 @@ function UserHistoryPage() {
                         </Dropdown>
                     </div>
                     {/* <TabComponent /> */}
-                </div>
-            </div>
-
-            <div class="justify-content-end">
-                {/* filter bar
-                <div class="col justify-content-end">
-                    
-                </div> */}
-
-                {/* search bar */}
-                <div class="col justify-content-end">
                     <SearchBar setResults={setResults}/>
-                    {/* <SearchResultsList results={results}/> */}
-                </div>
-            </div> 
 
-            <div>
-                
-            </div>     
+                    <h2 class="history-title">Hoạt động của tôi</h2>
+                    <UserHistoryTab />
+                </div>
+            </div>  
         </div>
     );
 }
