@@ -35,3 +35,29 @@
     padding: 20px;
     margin-bottom: 20px;
 }
+
+.outer-box-dark {
+    border-radius: 0 16px 16px 16px;
+    background-color: #3a65f6;
+    /* margin: 0 0 2% 0; */
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.history-tab-button {
+    fill: #FFF;
+    stroke-width: 2px;
+    stroke: #3A65F6;
+    border-radius: 10px 10px 0px 0px;
+    font-weight: 200;
+}
+
+.history-tab-button:active {
+    fill: #3A65F6;
+    stroke-width: 2px;
+    stroke: #fff;
+    border-radius: 10px 10px 0px 0px;
+    font-weight: 200;
+}

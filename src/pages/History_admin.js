@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { SearchBar } from '../components/SearchBar';
+import RegisterListTab from '../components/RegisterListTab';
+import OrganizeListTab from '../components/OrganizeListTab';
 import { Link } from 'react-router-dom';
 import '../bootstrap.min.css';
 import '../style/style.css';
@@ -21,6 +23,7 @@ import vector from '../image/vector.png';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Tab } from 'bootstrap';
 
 function AdminHistoryPage() {
     const [results, setResults] = useState([]);
@@ -67,42 +70,27 @@ function AdminHistoryPage() {
                         </Dropdown>
                     </div>
                     {/* <TabComponent /> */}
-                </div>
-            </div>
-
-            <div class="justify-content-end">
-                {/* filter bar
-                <div class="col justify-content-end">
-                    
-                </div> */}
-
-                {/* search bar */}
-                <div class="col justify-content-end">
                     <SearchBar setResults={setResults}/>
-                    {/* <SearchResultsList results={results}/> */}
-                </div>
-            </div> 
 
-            <div>
-                <TabComponent />
-            </div>     
+                    {/* <h2 class="history-title">Hoạt động của tôi</h2>
+                    <UserHistoryTab /> */}
+
+                    <TabComponent />
+                </div>
+            </div>  
         </div>
     );
 }
 
 const TabComponent = () => {
-    const [currentTab, setCurrentTab] = useState('studentList');
+    const [currentTab, setCurrentTab] = useState('register');
 
     const renderTabContent = (tab) => {
         switch (tab) {
-            case 'activityContent':
-                return <ActivityContentTab />;
-            case 'studentList':
-                return <StudentListTab />;
-            case 'activityForum':
-                return <ActivityForumTab />;
-            case 'attendance':
-                return <AttendanceTab />;
+            case 'register':
+                return <RegisterListTab />;
+            case 'organize':
+                return <OrganizeListTab />;
             default:
                 return null;
         }
@@ -110,18 +98,15 @@ const TabComponent = () => {
 
     return (
         <div class="actlayout">
-            <div class="row actbutton">
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động</button>
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên</button>
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động</button>
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('attendance')}>Điểm danh</button>
+            <div class="row history-tab-button">
+                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('register')}>Lịch sử đăng ký</button>
+                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('organize')}>Lịch sử tổ chức</button>
             </div>
             
             {renderTabContent(currentTab)}
             
-            
         </div>
     );
-};
+}; 
 
 export default AdminHistoryPage;

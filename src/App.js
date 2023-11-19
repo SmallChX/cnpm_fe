@@ -14,6 +14,7 @@ import ActivityDetailPage from "./pages/ActivityDetail";
 import NewActivity from "./pages/NewActivity";
 import Navbar from "./Navbar";
 import UserHistoryPage from "./pages/History_user";
+import AdminHistoryPage from "./pages/History_admin";
 
 function DefaultContainer() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path="/activity/:id" element={<ActivityDetailPage/>} />
           <Route path="/create-activity" element={<NewActivity/>}/>
           <Route path="/user-history" element={<UserHistoryPage/>}/>
+          <Route path="/admin-history" element={<AdminHistoryPage/>}/>
         </Route>
       </Routes>
     </Router>
