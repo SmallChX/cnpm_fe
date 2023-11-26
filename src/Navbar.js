@@ -31,7 +31,7 @@ function Navbar() {
 
                             <div class="item-line">
                                 <img class="item-logo" src={clock} alt="House-icon" />
-                                <Link to="" class="item-title">Lịch sử</Link>
+                                <Link to="/user-history" class="item-title">Lịch sử</Link>
                             </div>
 
                             <footer class="item-line">
