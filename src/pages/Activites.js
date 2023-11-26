@@ -22,6 +22,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 import ConfirmationWindow from '../components/ConfirmationWindow';
+import NewActivity from '../pages/NewActivity';
 
 function ActivityListPage() {
     const activities = [
@@ -34,7 +35,7 @@ function ActivityListPage() {
     const [showConfirmation, setShowConfirmation] = useState(false); // Thêm trạng thái để kiểm soát việc hiển thị cửa sổ xác nhận
 
     const handleDelete = () => {
-        setShowConfirmation(true); // Hiển thị cửa sổ xác nhận khi nhấn nút "Delete"
+        setShowConfirmation(false); // Hiển thị cửa sổ xác nhận khi nhấn nút "Delete"
     };
 
     return (
@@ -75,10 +76,12 @@ function ActivityListPage() {
                         
                     </div>
 
-                    <div class ="row justify-content-end">
-                        <Link to="/create-activity">
-                            <button class="btn btn-dark btn-sm create-activity-button ">Tạo hoạt động</button>
-                        </Link>
+                    <div class ="row justify-content-end rowbutdk">
+                        <div class="justify-content-end ">
+                        <button class="btn btn-dark btn-sm create-activity-button" onClick={() => setShowConfirmation(true)}>Tạo hoạt động</button>
+                        {showConfirmation && <NewActivity onConfirm={handleDelete} />}
+
+                        </div>
                     </div>
 
                     <div class ="row activity-state-title">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import '../style/forum.css'
 const Response = ({ username, responseTime, content }) => {
     return (
         <div style={{ backgroundColor: '#f5f5f5', padding: '10px', marginTop: '10px' }}>
@@ -32,31 +32,33 @@ function ForumActivityTab() {
       };
 
     return (
-        <div class = "row actcontent">
-            <button>Tạo thảo luận mới</button>
-      {thread.map((t) => (
-        <div key={t.threadID} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ marginRight: '10px' }}>
-              <img src={`avatar_${t.username}.png`} alt={`${t.username} avatar`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
-            </div>
-            <div style={{ fontWeight: t.role === 'host' ? 'bold' : 'normal' }}>
-              {t.username} {t.role === 'host' && <span style={{ color: 'red' }}>🔔</span>}
-            </div>
+        <div class = "row actcontent thislayout">
+          <button type="button" class="btn btn-light buttonresg">Tạo thảo luận</button>
+          <div class="forumlayout">
+            {thread.map((t) => (
+              <div key={t.threadID} class="topic">
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <div style={{ marginRight: '10px' }}>
+                    <img src={`avatar_${t.username}.png`} alt={`${t.username} avatar`} style={{ width: '30px', height: '30px', borderRadius: '50%' }} />
+                  </div>
+                  <div style={{ fontWeight: t.role === 'host' ? 'bold' : 'normal' }}>
+                    {t.username} {t.role === 'host' && <span style={{ color: 'red' }}>🔔</span>}
+                  </div>
+                </div>
+                <div style={{ marginTop: '5px', marginBottom: '10px', fontWeight: 'bold', color: t.role === 'host' ? 'red' : 'black' }}>{t.title}</div>
+                <div>{t.content}</div>
+                {t.role === 'attendance' ? (
+                  t.response ? (
+                      <Response username={t.response.username} responseTime={t.response.reponseTime} content={t.response.content}/>
+                  ) : ( <div style={{ marginTop: '10px' }}>
+                          <input type="text" value={responseInput} onChange={handleResponseChange} placeholder="Nhập câu trả lời..." />
+                          <button btn onClick={() => handleResponseSubmit(t.threadID)}>Trả lời</button>
+                      </div>)
+                  ) : null}
+              </div>
+            ))}
           </div>
-          <div style={{ marginTop: '5px', marginBottom: '10px', fontWeight: 'bold', color: t.role === 'host' ? 'red' : 'black' }}>{t.title}</div>
-          <div>{t.content}</div>
-          {t.role === 'attendance' ? (
-            t.response ? (
-                <Response username={t.response.username} responseTime={t.response.reponseTime} content={t.response.content}/>
-            ) : ( <div style={{ marginTop: '10px' }}>
-                    <input type="text" value={responseInput} onChange={handleResponseChange} placeholder="Nhập câu trả lời..." />
-                    <button onClick={() => handleResponseSubmit(t.threadID)}>Trả lời</button>
-                </div>)
-            ) : null}
         </div>
-      ))}
-    </div>
   );
 }
 
