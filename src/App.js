@@ -14,6 +14,9 @@ import ActivityDetailPage from "./pages/ActivityDetail";
 import NewActivity from "./pages/NewActivity";
 import SystemPage from "./pages/SystemPage";
 import Navbar from "./Navbar";
+import UserHistoryPage from "./pages/History_user";
+import AdminHistoryPage from "./pages/History_admin";
+
 import ActivityStatistics from "./pages/ActivityStatistics";
 import TrendStatistics from './pages/TrendStatistics';
 import AccountDecentralise from "./pages/AccountDecentralise";
@@ -32,7 +35,6 @@ function DefaultContainer() {
 
 function App() {
 
-  
   return (
     <Router>
       <Routes>
@@ -45,6 +47,8 @@ function App() {
           <Route path="/activitiesToVP" element={<ActivityToVPListPage/>}/>
           <Route path="/activity/:id" element={<ActivityDetailPage/>} />
           <Route path="/create-activity" element={<NewActivity/>}/>
+          <Route path="/user-history" element={<UserHistoryPage/>}/>
+          <Route path="/admin-history" element={<AdminHistoryPage/>}/>
           <Route path="/system-page" element={<SystemPage/>}/>
           <Route path="/activity-statistics" element={<ActivityStatistics/>}/>
           <Route path="/trend-statistics" element={<TrendStatistics/>}/>
@@ -53,6 +57,7 @@ function App() {
       </Routes>
     </Router>
   );
+
 }
 
 export default App;

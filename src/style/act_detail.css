@@ -1,4 +1,3 @@
-
 .acttitle{
     border-radius: 10px;
     background: #FFF;
@@ -91,9 +90,4 @@
     background: #3A65F6;
     padding: 10px;
     height: 500px;
-}
-
-.detailbutton.active {
-    background-color: #3A65F6;
-    color: #fff;
 }
