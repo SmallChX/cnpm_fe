@@ -15,7 +15,10 @@
     border-radius: 10px 10px 0px 0px;
 }
 
-
+.detailbutton.active {
+    background-color: #3A65F6;
+    color: #fff;
+}
 
 
 .colbreak{
