@@ -23,7 +23,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function ActivityDetailPage() {
     let { id } = useParams();
 
-    const [role, setRole] = useState('sinhvien');
+    const [role, setRole] = useState('admin');
 
     const [showConfirmation, setShowConfirmation] = useState(false);
 

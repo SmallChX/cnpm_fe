@@ -41,11 +41,12 @@ function HolderAccountListTab() {
                 {showConfirmation && <CancelPopup onConfirm={handleConfirmRegistration} />}
                 <div class="table-responsive activity-roll tab">
                     <table class="table tab-table">
-                        <col class="column-mssv" />
-                        <col class="column-name" />
-                        <col class="column-role" />
-                        <col class="column-state" />
-                        <col class="column-activity" />
+                    <col class="column-1" />
+                        <col class="column-7" />
+                        <col class="column-7" />
+                        <col class="column-7" />
+                        <col class="column-7" />
+                        <col class="column-7" />
 
                         <tr>
                             <th scope="col" class="id">MSSV</th>
@@ -65,6 +66,7 @@ function HolderAccountListTab() {
                                 <td>{holder.accountActive}</td>
                                 <td scope="col" >
                                     <button class="btn btn btn-warning decent-buttons" onClick={() => setShowConfirmation(true)}>Huỷ quyền</button>
+                                    {showConfirmation && <CancelPopup onConfirm={handleConfirmRegistration} />}
                                 </td>
                             </tr>
                             ))}
