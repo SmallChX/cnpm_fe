@@ -17,6 +17,10 @@ import Navbar from "./Navbar";
 import UserHistoryPage from "./pages/History_user";
 import AdminHistoryPage from "./pages/History_admin";
 
+import SeeAllPage from "./pages/seeAll";
+import ActivityCensor from "./pages/ActivityCensor";
+
+import IncorrectPasswordPopup from "./components/IncorrectPasswordPopUp";
 import ActivityStatistics from "./pages/ActivityStatistics";
 import TrendStatistics from './pages/TrendStatistics';
 import AccountDecentralise from "./pages/AccountDecentralise";
@@ -47,6 +51,10 @@ function App() {
           <Route path="/activitiesToVP" element={<ActivityToVPListPage/>}/>
           <Route path="/activity/:id" element={<ActivityDetailPage/>} />
           <Route path="/create-activity" element={<NewActivity/>}/>
+          <Route path="/see-all/:mode" element={<SeeAllPage/>}/>
+          <Route path="/activity-censor" element={<ActivityCensor/>}/>
+
+          <Route path="/incorrect" element={<IncorrectPasswordPopup/>}/>
           <Route path="/user-history" element={<UserHistoryPage/>}/>
           <Route path="/admin-history" element={<AdminHistoryPage/>}/>
           <Route path="/system-page" element={<SystemPage/>}/>

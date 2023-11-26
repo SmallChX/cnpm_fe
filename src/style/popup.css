@@ -4,7 +4,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    /* background: bisque; */
     background:rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
     z-index: 5;
@@ -21,6 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 285px;
 }
 
 
@@ -28,9 +28,11 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    
 }
+
 .buttonpopup{
-    margin-inline: 20%;
+    margin-inline: 10%;
     font-weight: bold;
     
 }
@@ -43,6 +45,29 @@
 .print-button-confirm {
     width: 80px;
     margin-left: 20px;
+    font-weight: bolder;
+}
+
+.danger-icon {
+    width: 70%;
+}
+
+.alert {
+     min-width: 310px;
+}
+
+
+.alert-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #C5221F;
     font-weight: bold;
 }
+
+.alert-container > p {
+    margin-bottom: 1%;
+}
+
+
 

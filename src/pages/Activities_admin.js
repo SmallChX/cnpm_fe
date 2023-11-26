@@ -36,8 +36,8 @@ function ActivityAdminListPage() {
 
     return (
         // <div class="body-container">
-            <div> 
-                <div class="col content-column">
+            <div class="activity-container"> 
+                {/* <div class="col content-column"> */}
                     <div class ="row">
                         <div class ="col">
                             <button class="btn btn-primary arrow-button-container">
@@ -129,7 +129,7 @@ function ActivityAdminListPage() {
 
                     <div class ="row activity-state-title">
                         <div>Đang diễn ra</div>
-                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
+                        <Link to="/see-all/current" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
                         </Link>
                     </div>
 
@@ -181,7 +181,7 @@ function ActivityAdminListPage() {
 
                     <div class ="row activity-state-title">
                         <div>Sắp diễn ra</div>
-                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
+                        <Link to="/see-all/upcoming" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
                         </Link>
                     </div>
 
@@ -217,7 +217,7 @@ function ActivityAdminListPage() {
                             </div>
                         ))}
                     </div>
-                </div>
+                {/* </div> */}
             </div> 
     );
 }
