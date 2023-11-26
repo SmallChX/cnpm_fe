@@ -82,12 +82,7 @@ h1{
 .contentright p{
     padding-inline: 10px;
 }
-.contentleft{
-    border-radius: 16px;
-    background: #FFF;
-    margin: 10px;
-    height: 95%;
-}
+
 
 .contentright{
     border-radius: 16px;

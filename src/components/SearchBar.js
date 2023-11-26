@@ -28,7 +28,7 @@ export const SearchBar = ({ setResults }) => {
     return (
         <div class="input-wrapper">
             <FaSearch id="search-icon" />
-            <input
+            <input class="historyinput"
                 placeholder="Tìm kiếm" 
                 type="text" value={input}
                 onChange={(e) => handlleChange(e.target.value)}

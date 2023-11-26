@@ -4,7 +4,7 @@
 }
 
 .forumlayout{
-    height: 420px;
+    height: 430px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

@@ -14,7 +14,7 @@
     /* padding: 8px; */
 }
 
-input {
+.historyinput {
     background-color: transparent;
     border: none;
     outline: none;
