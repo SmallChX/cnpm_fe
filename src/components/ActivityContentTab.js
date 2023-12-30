@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import star from '../image/magic-star.png';
 import '../style/activitycontent.css'
@@ -11,12 +11,38 @@ import gearshop from '../image/gearshape.png'
 
 function ActivityContentTab() {
     let { id } = useParams();
+    const [activityData, setActivityData] = useState({
+        basicInfo: {},
+        description: '',
+        criteria: [],
+        contactInfo: {}
+      });
+      
+    useEffect(() => {
+        const fetchData = async () => {
+        try {
+            const response = await fetch('/test/act.json', {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                },
+              });
+            const data = await response.json();
+            console.log('Data:', data);
+            setActivityData(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+        };
 
-    const [activityName, setActivityName] = useState('Hoạt động 1');
-    const [activityValue, setActivityValue] = useState('Số ngày CTXH');
-    const [activityTime, setActivityTime] = useState('9:00 AM 20/10/2023');
-    const [activityPlace, setActivityPlace] = useState('BK.B6');
-    const [activityDetail, setActivityDetail] = useState('Dọn dẹp vệ sinh phòng kho');
+        fetchData();
+    }, []);
+    const {
+        basicInfo,
+        description,
+        criteria,
+        contactInfo
+      } = activityData || {};
 
     return (
         <div class="row actcontent">
@@ -30,7 +56,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Tạo bởi</h3></div>
-                            <div class="subcontent-detail">Admin</div>
+                            <div class="subcontent-detail">{basicInfo.createdBy}</div>
                         </div>
                     </div>
 
@@ -40,7 +66,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Quyền lợi</h3></div>
-                            <div class="subcontent-detail">0,5 ngày CTXH, 1 ĐRL</div>
+                            <div class="subcontent-detail">{basicInfo.privileges}</div>
                         </div>
                     </div>
 
@@ -122,31 +148,7 @@ function ActivityContentTab() {
                 </div>
             </div>
         </div>
-        // <div>
-        //     <h2 class="hehee">{activityName}</h2>
-        //     <div>
-        //         <b>- Quyền lợi: </b>
-        //         {activityValue}
-        //     </div>
-        //     <div>
-        //         <b>- Thời gian: </b>
-        //         {activityTime}
-        //     </div>
-        //     <div>
-        //         <b>- Địa điểm: </b>
-        //         {activityPlace}
-        //     </div>
-        //     <div>
-        //         <b>- Nội dung công việc: </b>
-        //         {activityDetail}
-        //     </div>
-        //     <div>
-        //         <b>- Yêu cầu: </b>Sinh viên nghiêm túc, có mặt đúng giờ
-        //     </div>
-        //     <div>
-        //         <b>- Lưu ý: </b> Nếu sinh viên đăng ký không thể tham gia, phải tìm người thay thế. Nếu không sẽ vào danh sách đen của khoa.
-        //     </div>
-        // </div>
+      
     );
 }
 
