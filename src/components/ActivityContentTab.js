@@ -21,14 +21,14 @@ function ActivityContentTab() {
     useEffect(() => {
         const fetchData = async () => {
         try {
-            const response = await fetch('/test/act.json', {
+            const response = fetch('../../test/act.json', {
                 headers: {
                   'Content-Type': 'application/json',
                   'Accept': 'application/json',
                 },
               });
             const data = await response.json();
-            console.log('Data:', data);
+            console.log('Response Text:', data);
             setActivityData(data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -46,7 +46,7 @@ function ActivityContentTab() {
 
     return (
         <div class="row actcontent">
-            <div class="columcontent col-7">
+            <div class="columcontent col-md-7 col-12">
                 <div class="contentleft ">
                     <div class="actdetail-title">Thông tin cơ bản </div>
                     
@@ -76,7 +76,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Địa điểm</h3></div>
-                            <div class="subcontent-detail">Trường Đại học Bách khoa, cơ sở Dĩ An</div>
+                            <div class="subcontent-detail font-size-sm">Trường Đại học Bách khoa, cơ sở Dĩ An</div>
                         </div>
                     </div>
 
@@ -125,7 +125,7 @@ function ActivityContentTab() {
                 </div>
             </div>
 
-            <div class ="columcontent col-5">
+            <div class ="columcontent col-md-5 col-12">
                 <div class="contentright">
                     <div class="actdetail-title">Mô tả hoạt động </div>
                     <p>Đây là một tả hoạt động không dài không ngắn nhưng mà rất iu</p>

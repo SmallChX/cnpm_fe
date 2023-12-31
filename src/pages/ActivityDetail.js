@@ -49,7 +49,7 @@ function ActivityDetailPage() {
 
     const renderButton = () => {        
         return(
-            <div class="container-md" >      
+            <>      
                     <div class ="toprow row">
                         <div class ="col">
                             <button class="btn btn-primary arrow-button-container">
@@ -82,16 +82,16 @@ function ActivityDetailPage() {
                         </Dropdown> 
                     </div>
                     <div class="row acttitle">
-                        <div class="r2c1 col">
-                            <h1>Tên hoạt động ở đây nè!!!</h1>
+                        <div class="r2c1  col-sm col-12">
+                            <h1 class="font-size-sm">Tên hoạt động ở đây nè!!!</h1>
                         </div>
-                        <div class="r2c2">
+                        <div class="r2c2 ">
                             <div class="actnumber">4/8</div>
                             <SelectButton />
                         </div>
                     </div>
                     <TabComponent />
-            </div>     
+            </>     
         );       
     };
 
@@ -119,18 +119,18 @@ function ActivityDetailPage() {
                     <button  
                         type="button" 
                         // class="detailbutton btn btn-outline-primary" 
-                        className={`detailbutton btn  ${currentTab === 'activityContent' ? 'active' : 'btn-outline-primary'}`}
-                        onClick={() => setCurrentTab('activityContent')}>Nội dung hoạt động
+                        className={`detailbutton btn font-size-sm ${currentTab === 'activityContent' ? 'active' : 'btn-outline-primary'}`}
+                        onClick={() => setCurrentTab('activityContent')}>Thông tin
                     </button>
                     <button  
                         type="button" 
-                        className={`detailbutton btn  ${currentTab === 'studentList' ? 'active' : 'btn-outline-primary'}`}
-                        onClick={() => setCurrentTab('studentList')}>Danh sách sinh viên
+                        className={`detailbutton btn font-size-sm ${currentTab === 'studentList' ? 'active' : 'btn-outline-primary'}`}
+                        onClick={() => setCurrentTab('studentList')}>Danh sách
                     </button>
                     <button  
                         type="button" 
-                        className={`detailbutton btn ${currentTab === 'activityForum' ? 'active' : ' btn-outline-primary'}`}
-                        onClick={() => setCurrentTab('activityForum')}>Thông báo hoạt động
+                        className={`detailbutton btn font-size-sm ${currentTab === 'activityForum' ? 'active' : ' btn-outline-primary'}`}
+                        onClick={() => setCurrentTab('activityForum')}>Thông báo
                     </button>
                     {role==='admin' &&(
                     <button  
