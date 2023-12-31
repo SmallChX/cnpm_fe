@@ -3,7 +3,7 @@ import '../bootstrap.min.css';
 import '../style/style.css';
 import '../style/systemPage.css';
 import '../style/act_detail.css';
-import DecentPopUp from './DecentConfirm';
+import DecentPopUp from './AccountManager/DecentConfirm';
 
 function StudentAccountListTab() {
     const studentAccountList = [

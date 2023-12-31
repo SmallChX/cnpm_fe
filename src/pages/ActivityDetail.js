@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import '../style/act_detail.css'
 import '../style/style.css'
 import '../bootstrap.min.css'
-import RegisterActivityConfirmationPopup from '../components/RegisterConfirmation';
-import ActivityContentTab from '../components/ActivityContentTab';
-import StudentListTab from '../components/StudentListTab';
-import ActivityForumTab from '../components/ActivityForumTab';
-import AttendanceTab from '../components/AttendanceTab';
+import RegisterActivityConfirmationPopup from '../components/Activity/RegisterConfirmation';
+import ActivityContentTab from '../components/Activity/ActivityContentTab';
+import StudentListTab from '../components/Activity/StudentListTab';
+import ActivityForumTab from '../components/Activity/ActivityForumTab';
+import AttendanceTab from '../components/Activity/AttendanceTab';
 import leftArrow from '../image/left-arrow.png';
 import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';

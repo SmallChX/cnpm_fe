@@ -1,6 +1,6 @@
 import React from 'react';
-import '../style/systemPage.css';
-import '../style/studentlisttab.css';
+import '../../style/systemPage.css';
+import '../../style/studentlisttab.css';
 function StudentListTab() {
     // Giả sử bạn có một mảng chứa thông tin sinh viên
     const students = [

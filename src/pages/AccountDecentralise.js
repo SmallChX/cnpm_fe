@@ -8,7 +8,7 @@ import '../style/systemPage.css';
 
 import PrintConfirmationPopup from '../components/PrintConfirmationPopup';
 import StudentAccountListTab from '../components/StudentAccountListTab';
-import HolderAccountListTab from '../components/HolderAccountListTab';
+import HolderAccountListTab from '../components/AccountManager/HolderAccountListTab';
 import leftArrow from '../image/left-arrow.png';
 import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';

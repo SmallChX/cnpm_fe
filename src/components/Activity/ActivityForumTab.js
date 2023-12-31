@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../style/forum.css'
+import '../../style/forum.css'
 const Response = ({ username, responseTime, content }) => {
     return (
         <div style={{ backgroundColor: '#f5f5f5', padding: '10px', marginTop: '10px' }}>

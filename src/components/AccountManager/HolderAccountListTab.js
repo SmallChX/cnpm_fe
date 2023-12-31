@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import '../bootstrap.min.css';
-import '../style/style.css';
-import '../style/systemPage.css';
+import '../../bootstrap.min.css';
+import '../../style/style.css';
+import '../../style/systemPage.css';
 
-import CancelPopup from '../components/CancelConfirm';
+import CancelPopup from './CancelConfirm';
 
 function HolderAccountListTab() {
 

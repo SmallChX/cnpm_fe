@@ -1,6 +1,6 @@
 import React from 'react';
-import '../style/actdetail_attendence.css'
-import '../style/activitycontent.css'
+import '../../style/actdetail_attendence.css'
+import '../../style/activitycontent.css'
 
 const AttendanceTab = () => {
     // Your attendance tab content

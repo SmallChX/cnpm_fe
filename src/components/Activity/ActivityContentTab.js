@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import star from '../image/magic-star.png';
-import '../style/activitycontent.css'
-import userperson from '../image/profile-2user.png'
-import location from '../image/location.png'
-import clock from '../image/clock.png'
-import person from '../image/person.png'
-import gearshop from '../image/gearshape.png'
-import { data } from './PieChartActivity';
+import star from '../../image/magic-star.png';
+import '../../style/activitycontent.css'
+import userperson from '../../image/profile-2user.png'
+import location from '../../image/location.png'
+import clock from '../../image/clock.png'
+import person from '../../image/person.png'
+import gearshop from '../../image/gearshape.png'
+import { data } from '../PieChartActivity';
 
 
 function ActivityContentTab() {
@@ -42,7 +42,7 @@ function ActivityContentTab() {
 
                     <div class="actdetail-subcontent ">
                         <div class="subcontain-image col-1">
-                            <img class="subcontain-icon" src={userperson} />
+                            <img class="subcontain-icon" src={person} />
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Tạo bởi</h3></div>
@@ -102,7 +102,7 @@ function ActivityContentTab() {
 
                     <div class="actdetail-subcontent ">
                         <div class="subcontain-image col-1">
-                            <img class="subcontain-icon" src={userperson} />
+                            <img class="subcontain-icon" src={person} />
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Đối tượng tham gia</h3></div>
