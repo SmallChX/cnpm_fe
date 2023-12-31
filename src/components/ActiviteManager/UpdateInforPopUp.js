@@ -1,15 +1,15 @@
 // Trong component NewActivity.js
 import React, { useState, useEffect } from 'react';
-import '../style/activitycontent.css'
-import '../style/act_detail.css'
-import '../style/newactive.css'
-import '../style/popup.css'
-import userperson from '../image/profile-2user.png'
-import location from '../image/location.png'
-import clock from '../image/clock.png'
-import person from '../image/person.png'
-import gearshop from '../image/gearshape.png'
-import star from '../image/magic-star.png';
+import '../../style/activitycontent.css'
+import '../../style/act_detail.css'
+import '../../style/newactive.css'
+import '../../style/popup.css'
+import userperson from '../../image/profile-2user.png'
+import location from '../../image/location.png'
+import clock from '../../image/clock.png'
+import person from '../../image/person.png'
+import gearshop from '../../image/gearshape.png'
+import star from '../../image/magic-star.png';
 function NewActivity({ onConfirm }) {
 
 
@@ -38,9 +38,9 @@ function NewActivity({ onConfirm }) {
     return (
         <div class="overplay">
             <div class=" actcontent newact ">
-                <h1 class="newacttitle"> Tạo hoạt động</h1>
+                <h1 class="newacttitle"> Cập nhật hoạt động</h1>
                 <div class="newactscroll">
-                    <form onSubmit={handleSubmit}>     
+                    <form onSubmit={handleSubmit}>
                         <div class="contentleft newact">
                             <div class="actdetail-title">Thông tin cơ bản </div>
                             <div class="actdetail-subcontent ">
@@ -120,22 +120,24 @@ function NewActivity({ onConfirm }) {
                                 </div>
                             </div>       
                         </div>
-                                
+
                         <div class="contentleft newact">
                             <div class="actdetail-title">Mô tả hoạt động </div>
                             <textarea rows="3" ></textarea>
                         </div>
+
                         <div class="contentleft newact">
                             <div class="actdetail-title">Tiêu chí hợp lệ </div>
                             <textarea rows="3" ></textarea>
                         </div>
+
                         <div class="contentleft newact" >
                             <div class="actdetail-title">Thông tin liên hệ</div>
                             <textarea rows="3" ></textarea>
                         </div>
                         
                         <div class="butdiv">
-                        <button type="button" class="actresig-sinhvien btn" onClick={onConfirm}>Tạo</button>
+                        <button type="button" class="actresig-sinhvien btn" onClick={onConfirm}>Cập nhật</button>
                         <button type="button" class="actresig-tvp btn" onClick={onConfirm}>Hủy</button>
                         </div>
                     </form>

@@ -4,11 +4,14 @@ import { useParams } from 'react-router-dom';
 import '../style/act_detail.css'
 import '../style/style.css'
 import '../bootstrap.min.css'
-import RegisterActivityConfirmationPopup from '../components/Activity/RegisterConfirmation';
-import ActivityContentTab from '../components/Activity/ActivityContentTab';
-import StudentListTab from '../components/Activity/StudentListTab';
-import ActivityForumTab from '../components/Activity/ActivityForumTab';
-import AttendanceTab from '../components/Activity/AttendanceTab';
+import ApproveActivePopUp from '../components/ActiviteManager/ApproveActive'
+import DeleteActivePopup from '../components/ActiviteManager/DeleteActivePopUp';
+import UpdateInforPopUp from '../components/ActiviteManager/UpdateInforPopUp';
+import RegisterActivityConfirmationPopup from '../components/ActivityDetail/RegisterConfirmation';
+import ActivityContentTab from '../components/ActivityDetail/ActivityContentTab';
+import StudentListTab from '../components/ActivityDetail/StudentListTab';
+import ActivityForumTab from '../components/ActivityDetail/ActivityForumTab';
+import AttendanceTab from '../components/ActivityDetail/AttendanceTab';
 import leftArrow from '../image/left-arrow.png';
 import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';
@@ -23,9 +26,11 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function ActivityDetailPage() {
     let { id } = useParams();
 
-    const [role, setRole] = useState('sinhvien');
-
+    const [role, setRole] = useState('admin');
+    const [showApproveActive, setShowApproveActive] = useState(false);
+    const [showDeleteActive, setShowDeleteActive] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [showUpdateActive, setShowUpdateActive] = useState(false);
 
     const handleConfirmRegistration = () => {
         // Xử lý đăng ký hoạt động ở đây
@@ -33,6 +38,9 @@ function ActivityDetailPage() {
         setShowConfirmation(false);
         // Add your registration logic here
     };
+    const handleUpdateActive = () => {
+        setShowUpdateActive(false);
+    }
 
     const getUserRoleName = (role) => {
         switch (role) {
@@ -159,17 +167,17 @@ function ActivityDetailPage() {
         }else if (role === 'admin') {
             return(
                 <>
-                    <button type="button" class="actresig-admin btn" onClick={() => setShowConfirmation(true)}>Cập nhật</button>
-                    {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />}
+                    <button type="button" class="actresig-admin btn" onClick={() => setShowUpdateActive(true)}>Cập nhật</button>
+                    {showUpdateActive && <UpdateInforPopUp onConfirm={handleUpdateActive} />}
                 </>
             );
         }else{
             return (
                 <>
-                <button type="button" class="actresig-admin btn" onClick={() => setShowConfirmation(true)}>Duyệt</button>
-                {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />}
-                <button type="button" class="actresig-tvp btn" onClick={() => setShowConfirmation(true)}>Xóa</button>
-                    {showConfirmation && <RegisterActivityConfirmationPopup onConfirm={handleConfirmRegistration} />}
+                    <button type="button" class="actresig-admin btn" onClick={() => showApproveActive(true)}>Duyệt</button>
+                    {showApproveActive && <ApproveActivePopUp onConfirm={ () => setShowApproveActive(true)} />}
+                    <button type="button" class="actresig-tvp btn" onClick={() => setShowDeleteActive(true)}>Xóa</button>
+                    {showDeleteActive && <DeleteActivePopup onConfirm={ () => setShowDeleteActive(false)} />}
                 </>
             );
         } 
