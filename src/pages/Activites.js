@@ -1,181 +1,305 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
-import '../bootstrap.min.css';
-import '../style/style.css';
-import logo from '../image/logoBK.png';
-import house from '../image/house.png';
-import person from '../image/person.png';
-import gear from '../image/gearshape.png';
-import clock from '../image/clock.arrow.png';
-import star from '../image/magic-star.png';
-import location from '../image/location.png';
-import time from '../image/clock.png';
-import profile from '../image/profile-2user.png';
-import leftArrow from '../image/left-arrow.png';
-import rightArrow from '../image/right-arrow.png';
-import bell from '../image/Bell_fill.png';
-import user from '../image/user.png';
-import vector from '../image/vector.png';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../bootstrap.min.css";
+import "../style/style.css";
+import logo from "../image/logoBK.png";
+import house from "../image/house.png";
+import person from "../image/person.png";
+import gear from "../image/gearshape.png";
+import clock from "../image/clock.arrow.png";
+import star from "../image/magic-star.png";
+import location from "../image/location.png";
+import time from "../image/clock.png";
+import profile from "../image/profile-2user.png";
+import leftArrow from "../image/left-arrow.png";
+import rightArrow from "../image/right-arrow.png";
+import bell from "../image/Bell_fill.png";
+import user from "../image/user.png";
+import vector from "../image/vector.png";
 
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Dropdown from 'react-bootstrap/Dropdown';
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Dropdown from "react-bootstrap/Dropdown";
 
-import ConfirmationWindow from '../components/ConfirmationWindow';
-import NewActivity from '../pages/NewActivity';
+import ConfirmationWindow from "../components/ConfirmationWindow";
+import NewActivity from "../pages/NewActivity";
 
 function ActivityListPage() {
-    const activities = [
-        { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        // Thêm các hoạt động khác vào đây
-    ];
+  const activities = [
+    {
+      id: 1,
+      name: "Trực phát thiết bị đồ án đa ngành",
+      value: "1",
+      time: "08/10/2023",
+      place: "Trường Đại học Bách khoa CS1",
+      quantity: "2",
+      currentQuantity: "0",
+    },
+    {
+      id: 1,
+      name: "Trực phát thiết bị đồ án đa ngành",
+      value: "1",
+      time: "08/10/2023",
+      place: "Trường Đại học Bách khoa CS1",
+      quantity: "2",
+      currentQuantity: "0",
+    },
+    {
+      id: 1,
+      name: "Trực phát thiết bị đồ án đa ngành",
+      value: "1",
+      time: "08/10/2023",
+      place: "Trường Đại học Bách khoa CS1",
+      quantity: "2",
+      currentQuantity: "0",
+    },
+    // Thêm các hoạt động khác vào đây
+  ];
 
-    const [showConfirmation, setShowConfirmation] = useState(false); // Thêm trạng thái để kiểm soát việc hiển thị cửa sổ xác nhận
+  const [showConfirmation, setShowConfirmation] = useState(false); // Thêm trạng thái để kiểm soát việc hiển thị cửa sổ xác nhận
 
-    const handleDelete = () => {
-        setShowConfirmation(false); // Hiển thị cửa sổ xác nhận khi nhấn nút "Delete"
-    };
+  const handleDelete = () => {
+    setShowConfirmation(false); // Hiển thị cửa sổ xác nhận khi nhấn nút "Delete"
+  };
 
-    return (
-                <div>
-                    <div class ="row">
-                        <div class ="col">
-                            <button class="btn btn-primary arrow-button-container">
-                                <img class="arrow-icon" src={leftArrow} />
-                            </button>
-                            <button  class="btn btn-primary arrow-button-container">
-                                <img class="arrow-icon" src={rightArrow} />
-                            </button>
-                        </div>
+  //   const [showMenu, setShowMenu] = useState(false);
 
-                        {/* <div class="col-3 notification-container"> */}
-                        <Dropdown as={ButtonGroup} variant="user-account account-icon-container">
-                            <Button variant="user-account account-icon-container">
-                            <div class="user-account account-icon-container">
-                                <img class="user-icon" src={user} />
+  //   const toggleMenu = () => {
+  //     console.log("DropdownMenu, before toggle: ", showMenu);
+  //     setShowMenu(true);
+  //     console.log("DropdownMenu, before toggle: ", showMenu);
+  //   };
 
-                                <div class="user-infor">
-                                    <div class="user-name">Cinamon</div>
-                                    <div class="user-role">Sinh viên</div>
-                                </div>
-                            </div>
-                            </Button>
+  return (
+    <div>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary arrow-button-container">
+            <img class="arrow-icon" src={leftArrow} />
+          </button>
+          <button class="btn btn-primary arrow-button-container">
+            <img class="arrow-icon" src={rightArrow} />
+          </button>
+        </div>
+        {/* <div class="col-3 notification-container"> */}
+        {/* <DropdownButton
+          variant="user-account account-icon-container"
+          style={{ marginRight: "15px", borderRadius: "15px" }}
+        >
+          <div>
+            <img class="bell-icon" src={bell} alt="bell-icon" />
+          </div>
+        </DropdownButton> */}
+        <Dropdown>
+          <Dropdown.Toggle
+            as={Button}
+            variant="user-account account-icon-container"
+            style={{
+              marginRight: "15px",
+              borderRadius: "15px",
+              backgroundColor: "transparent",
+            }}
+          >
+            <img
+              className="bell-icon"
+              src={bell}
+              alt="bell-icon"
+              style={{ width: "20px", height: "auto" }}
+            />
+          </Dropdown.Toggle>
 
-                            <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
+          <Dropdown.Menu style={{ width: "400px" }}>
+            {" "}
+            {/* Đặt chiều rộng tối đa cho cả menu */}
+            <Dropdown.Item
+              href="#/action-2"
+              style={{ whiteSpace: "normal", wordWrap: "break-word" }}
+            >
+              [8/10/2022] Thông báo: Bạn đã bị chủ hoạt động Trần Minh Thuận
+              loại khỏi "Trực phát thiết bị đồ án đa ngành" (Mã HĐ: 001).
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#/action-1"
+              style={{ whiteSpace: "normal", wordWrap: "break-word" }}
+            >
+              [7/10/2022] Thông báo: Bạn đã đăng ký thành công hoạt động "Trực
+              phát thiết bị đồ án đa ngành" (Mã HĐ: 001, Host: Trần Minh Thuận).
+            </Dropdown.Item>
+            {/* Thêm các mục menu khác nếu cần */}
+          </Dropdown.Menu>
+        </Dropdown>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#">Cài đặt tài khoản</Dropdown.Item>
-                                <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+        <Dropdown
+          as={ButtonGroup}
+          variant="btn btn-secondary arrow-button-container account-icon-container"
+        >
+          <Button
+            variant="user-account account-icon-container"
+            style={{
+              borderTopLeftRadius: "15px",
+              borderBottomLeftRadius: "15px",
+            }}
+          >
+            <div class="user-account account-icon-container">
+              <img class="user-icon" src={user} />
+              <div class="user-infor">
+                <div class="user-name">Cinamon</div>
+                <div class="user-role">Sinh viên</div>
+              </div>
+            </div>
+          </Button>
 
-                        {/* </div> */}
+          <Dropdown.Toggle
+            split
+            variant="user-account account-icon-container"
+            id="drop-split-basic"
+            style={{
+              borderTopRightRadius: "15px",
+              borderBottomRightRadius: "15px",
+            }}
+          />
 
-                        
-                    </div>
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/user-info">
+              Thông tin tài khoản
+            </Dropdown.Item>
+            {/* <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item> */}
+          </Dropdown.Menu>
+        </Dropdown>
+        {/* </div> */}
+      </div>
 
-                    <div class ="row justify-content-end rowbutdk">
-                        <div class="justify-content-end ">
-                        <button class="btn btn-dark btn-sm create-activity-button" onClick={() => setShowConfirmation(true)}>Tạo hoạt động</button>
-                        {showConfirmation && <NewActivity onConfirm={handleDelete} />}
+      <div class="row justify-content-end rowbutdk">
+        <div class="justify-content-end ">
+          <button
+            class="btn btn-dark btn-sm create-activity-button"
+            onClick={() => setShowConfirmation(true)}
+          >
+            Tạo hoạt động
+          </button>
+          {showConfirmation && <NewActivity onConfirm={handleDelete} />}
+        </div>
+      </div>
 
-                        </div>
-                    </div>
+      <div class="row activity-state-title">
+        <div>Đang diễn ra</div>
+        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">
+          Xem tất cả
+        </Link>
+      </div>
 
-                    <div class ="row activity-state-title">
-                        <div>Đang diễn ra</div>
-                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
-                        </Link>
-                    </div>
+      <div class="row activity-row">
+        {activities.map((activity) => (
+          <div class="col-xxl-3 shadow-sm activity-cell">
+            <div class="activity-cell-title">
+              <div class="activity-name">{activity.name}</div>
+              <div class="current-quantity">
+                {activity.currentQuantity}/{activity.quantity}
+              </div>
+            </div>
 
-                    <div class="row activity-row">
-                        {activities.map(activity => (
-                            <div class="col-xxl-3 shadow-sm activity-cell">
-                                <div class="activity-cell-title">
-                                    <div class="activity-name">{activity.name}</div>
-                                    <div class="current-quantity">{activity.currentQuantity}/{activity.quantity}</div>
-                                </div>
-                                
-                                <div>
-                                    <img class="activity-detail-icon" src={star} alt="Star icon" />
-                                    <p> {activity.value} ngày CTXH </p>
-                                </div>
-                                
-                                <div>
-                                    <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {activity.place} </p>
-                                </div>
+            <div>
+              <img class="activity-detail-icon" src={star} alt="Star icon" />
+              <p> {activity.value} ngày CTXH </p>
+            </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                                    <p> {activity.time}</p>
-                                </div>
+            <div>
+              <img
+                class="activity-detail-icon"
+                src={location}
+                alt="Location icon"
+              />
+              <p> {activity.place} </p>
+            </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                                    <p> {activity.quantity} Sinh viên </p>
-                                </div>
+            <div>
+              <img class="activity-detail-icon" src={time} alt="Clock icon" />
+              <p> {activity.time}</p>
+            </div>
 
-                                <Link to={`/activity/${activity.id}`} class="btn btn-primary btn-sm detail-button">Tham gia</Link>
-                            </div>
-                        ))}
+            <div>
+              <img
+                class="activity-detail-icon"
+                src={profile}
+                alt="Profile icon"
+              />
+              <p> {activity.quantity} Sinh viên </p>
+            </div>
 
-                        {/* Hiển thị cửa sổ xác nhận nếu showConfirmation là true */}
-                        {showConfirmation && (
-                            <ConfirmationWindow
-                                onConfirm={() => {
-                                    // Xử lý khi người dùng xác nhận xóa
-                                    setShowConfirmation(false); // Ẩn cửa sổ xác nhận
-                                }}
-                                onDeny={() => setShowConfirmation(false)} // Xử lý khi người dùng từ chối
-                            />
-                        )}
+            <Link
+              to={`/activity/${activity.id}`}
+              class="btn btn-primary btn-sm detail-button"
+            >
+              Tham gia
+            </Link>
+          </div>
+        ))}
 
+        {/* Hiển thị cửa sổ xác nhận nếu showConfirmation là true */}
+        {showConfirmation && (
+          <ConfirmationWindow
+            onConfirm={() => {
+              // Xử lý khi người dùng xác nhận xóa
+              setShowConfirmation(false); // Ẩn cửa sổ xác nhận
+            }}
+            onDeny={() => setShowConfirmation(false)} // Xử lý khi người dùng từ chối
+          />
+        )}
+      </div>
 
-                    </div>
+      <div class="row activity-state-title">
+        <div>Sắp diễn ra</div>
+        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">
+          Xem tất cả
+        </Link>
+      </div>
 
-                    <div class ="row activity-state-title">
-                        <div>Sắp diễn ra</div>
-                        <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
-                        </Link>
-                    </div>
+      <div class="row activity-row">
+        {activities.map((activity) => (
+          <div class="col-xxl-3 shadow-sm activity-cell">
+            <div class="activity-cell-title">
+              <div class="activity-name">{activity.name}</div>
+              <div class="current-quantity">
+                {activity.currentQuantity}/{activity.quantity}
+              </div>
+            </div>
 
-                    <div class="row activity-row">
-                        {activities.map(activity => (
-                            <div class="col-xxl-3 shadow-sm activity-cell">
-                                <div class="activity-cell-title">
-                                    <div class="activity-name">{activity.name}</div>
-                                    <div class="current-quantity">{activity.currentQuantity}/{activity.quantity}</div>
-                                </div>
-                                
-                                <div>
-                                    <img class="activity-detail-icon" src={star} alt="Star icon" />
-                                    <p> {activity.value} ngày CTXH </p>
-                                </div>
-                                
-                                <div>
-                                    <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {activity.place} </p>
-                                </div>
+            <div>
+              <img class="activity-detail-icon" src={star} alt="Star icon" />
+              <p> {activity.value} ngày CTXH </p>
+            </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                                    <p> {activity.time}</p>
-                                </div>
+            <div>
+              <img
+                class="activity-detail-icon"
+                src={location}
+                alt="Location icon"
+              />
+              <p> {activity.place} </p>
+            </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                                    <p> {activity.quantity} Sinh viên </p>
-                                </div>
+            <div>
+              <img class="activity-detail-icon" src={time} alt="Clock icon" />
+              <p> {activity.time}</p>
+            </div>
 
-                                <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-    );
+            <div>
+              <img
+                class="activity-detail-icon"
+                src={profile}
+                alt="Profile icon"
+              />
+              <p> {activity.quantity} Sinh viên </p>
+            </div>
+
+            <button class="btn btn-primary btn-sm detail-button">
+              Chi tiết
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default ActivityListPage;
