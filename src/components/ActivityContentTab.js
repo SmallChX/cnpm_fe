@@ -42,7 +42,7 @@ function ActivityContentTab() {
 
                     <div class="actdetail-subcontent ">
                         <div class="subcontain-image col-1">
-                            <img class="subcontain-icon" src={person} />
+                            <img class="subcontain-icon" src={userperson} />
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Tạo bởi</h3></div>
@@ -102,7 +102,7 @@ function ActivityContentTab() {
 
                     <div class="actdetail-subcontent ">
                         <div class="subcontain-image col-1">
-                            <img class="subcontain-icon" src={person} />
+                            <img class="subcontain-icon" src={userperson} />
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Đối tượng tham gia</h3></div>

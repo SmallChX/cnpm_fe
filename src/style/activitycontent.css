@@ -1,12 +1,11 @@
-
-.contentleft{
+.contentleft {
     border-radius: 16px;
     background: #FFF;
     display: flex;
     flex-direction: column;
 }
 
-.contentright{
+.contentright {
     border-radius: 16px;
     background: #FFF;
     margin-left: 10px;
@@ -14,7 +13,7 @@
     overflow: hidden;
 }
 
-.actdetail-subcontent{
+.actdetail-subcontent {
     display: flex;
     flex-direction: row;
     height: 50px;
@@ -28,7 +27,7 @@
 }
 
 
-.subcontain-image{
+.subcontain-image {
     border-radius: 10px 0px 0px 10px;
     background: #E5EBFF;
     height: 100%;
@@ -36,25 +35,29 @@
     align-items: center;
     justify-content: space-around;
 }
-.subcontain-icon{
-    width: 22px;
+
+.subcontain-icon {
+    width: 20px;
     height: 20px;
 }
 
-.subcontent-title{
+.subcontent-title {
     font-size: 14px;
     font-weight: 200;
 }
-.subcontent-detail{
+
+.subcontent-detail {
     font-size: 16px;
     font-weight: 400;
 }
-.actdetail-title{
+
+.actdetail-title {
     color: #3A65F6;
     font-weight: 600;
     padding: 12px 12px 0 12px;
 }
-.subcontain-infor{
+
+.subcontain-infor {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -63,11 +66,12 @@
 
 }
 
-h3{
+h3 {
     font-size: 0.75rem;
     margin-bottom: 0;
 }
-h1{
+
+h1 {
     color: #000;
     font-size: 36px;
     font-weight: 500;
@@ -82,18 +86,24 @@ h1{
     padding: 5px;
 }
 
-.contentright p{
+.contentright p {
     padding-inline: 10px;
 }
 
 @media (max-width: 576px) {
-    .contentright{
+    .contentright {
         margin-left: 0px;
     }
-    .subcontent-detail{
+
+    .subcontent-detail {
         font-size: 14px;
     }
-    .subcontent-title{
+
+    .subcontent-title {
         font-weight: 500;
     }
-  }
+
+    .actdetail-title {
+        font-size: 20px;
+    }
+}
