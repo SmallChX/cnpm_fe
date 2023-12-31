@@ -19,27 +19,6 @@ function ActivityContentTab() {
         contactInfo: {}
     });
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch('/act.json', {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                     'Accept': 'application/json',
-    //                 },
-    //             });
-    //             const res = await response.json();
-    //             console.log('Data:', res);
-    //             setActivityData(res);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     };
-
-    //     fetchData();
-    //     console.log('activityData:', activityData);
-    // }, []);
-
     useEffect(() => {
         fetch('/act.json')
             .then((response) => response.json())
@@ -67,7 +46,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Tạo bởi</h3></div>
-                            <div class="subcontent-detail">{data.basicInfo}</div>
+                            <div class="subcontent-detail">{activityData.basicInfo.createdBy}</div>
                         </div>
                     </div>
 
@@ -77,7 +56,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Quyền lợi</h3></div>
-                            <div class="subcontent-detail">{basicInfo?.privileges}</div>
+                            <div class="subcontent-detail">{activityData.basicInfo.privileges}</div>
                         </div>
                     </div>
 
@@ -87,7 +66,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Địa điểm</h3></div>
-                            <div class="subcontent-detail font-size-sm">Trường Đại học Bách khoa, cơ sở Dĩ An</div>
+                            <div class="subcontent-detail font-size-sm">{activityData.basicInfo.location}</div>
                         </div>
                     </div>
 
@@ -97,7 +76,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Thời gian diễn ra</h3></div>
-                            <div class="subcontent-detail">10:00 - 28/10/2023 đến 12:00 - 28/10/2023</div>
+                            <div class="subcontent-detail">{activityData.basicInfo.time}</div>
                         </div>
                     </div>
 
@@ -107,7 +86,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Số lượng sinh viên</h3></div>
-                            <div class="subcontent-detail">8</div>
+                            <div class="subcontent-detail">{activityData.basicInfo.member}</div>
                         </div>
                     </div>
 
@@ -117,7 +96,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Chế độ hoạt động</h3></div>
-                            <div class="subcontent-detail">Công khai</div>
+                            <div class="subcontent-detail">{activityData.basicInfo.operationMode}</div>
                         </div>
                     </div>
 
@@ -127,7 +106,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Đối tượng tham gia</h3></div>
-                            <div class="subcontent-detail">Toàn bộ sinh viên trường Đại học Bách khoa - ĐHQG-HCM</div>
+                            <div class="subcontent-detail">{activityData.basicInfo.studentType}</div>
                         </div>
                     </div>
 
@@ -144,9 +123,13 @@ function ActivityContentTab() {
                 <div class="contentright">
                     <div class="actdetail-title">Tiêu chí hợp lệ </div>
                     <ul>
-                        <li>Là sinh viên nam</li>
-                        <li>Có sức khỏe</li>
-                        <li>Có phương tiện di chuyển</li>
+                        {activityData.criteria && activityData.criteria.length > 0 ? (
+                            activityData.criteria.map((criterion, index) => (
+                                <li key={index}>{criterion}</li>
+                            ))
+                        ) : (
+                            <li>No criteria available</li>
+                        )}
                     </ul>
                 </div>
                 <div class="contentright">
