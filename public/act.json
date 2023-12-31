@@ -1,4 +1,6 @@
-{
+[
+  {
+    "id": "1",
     "basicInfo": {
       "createdBy": "Admin",
       "privileges": "0.5 ngày CTXH, 1 ĐRL",
@@ -9,11 +11,16 @@
       "participationTarget": "Toàn bộ sinh viên trường Đại học Bách khoa - ĐHQG-HCM"
     },
     "description": "Đây là một tả hoạt động không dài không ngắn nhưng mà rất iu",
-    "criteria": ["Là sinh viên nam", "Có sức khỏe", "Có phương tiện di chuyển"],
+    "criteria": [
+      "Là sinh viên nam",
+      "Có sức khỏe",
+      "Có phương tiện di chuyển"
+    ],
     "contactInfo": {
       "website": "https://www.facebook.com/BKCSE.Multimedia",
       "phone": "+84 1234 5678 99 (Admin)",
       "officeAddress": "Văn phòng Đoàn khoa KH&KTMT, BK.B6-602"
     }
   }
+]
   

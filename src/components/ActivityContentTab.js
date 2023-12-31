@@ -7,6 +7,7 @@ import location from '../image/location.png'
 import clock from '../image/clock.png'
 import person from '../image/person.png'
 import gearshop from '../image/gearshape.png'
+import { data } from './PieChartActivity';
 
 
 function ActivityContentTab() {
@@ -16,47 +17,57 @@ function ActivityContentTab() {
         description: '',
         criteria: [],
         contactInfo: {}
-      });
-      
-    useEffect(() => {
-        const fetchData = async () => {
-        try {
-            const response = fetch('../../test/act.json', {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json',
-                },
-              });
-            const data = await response.json();
-            console.log('Response Text:', data);
-            setActivityData(data);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        };
+    });
 
-        fetchData();
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await fetch('/act.json', {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Accept': 'application/json',
+    //                 },
+    //             });
+    //             const res = await response.json();
+    //             console.log('Data:', res);
+    //             setActivityData(res);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+
+    //     fetchData();
+    //     console.log('activityData:', activityData);
+    // }, []);
+
+    useEffect(() => {
+        fetch('/act.json')
+            .then((response) => response.json())
+            .then((data) => setActivityData(data))
+            .catch((error) => console.error('Error fetching data:', error));
     }, []);
+
     const {
         basicInfo,
         description,
         criteria,
         contactInfo
-      } = activityData || {};
+    } = activityData || {};
+    // console.log('basicInfo:', basicInfo);
 
     return (
         <div class="row actcontent">
             <div class="columcontent col-md-7 col-12">
                 <div class="contentleft ">
                     <div class="actdetail-title">Thông tin cơ bản </div>
-                    
+
                     <div class="actdetail-subcontent ">
                         <div class="subcontain-image col-1">
                             <img class="subcontain-icon" src={person} />
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Tạo bởi</h3></div>
-                            <div class="subcontent-detail">{basicInfo.createdBy}</div>
+                            <div class="subcontent-detail">{data.basicInfo}</div>
                         </div>
                     </div>
 
@@ -66,7 +77,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Quyền lợi</h3></div>
-                            <div class="subcontent-detail">{basicInfo.privileges}</div>
+                            <div class="subcontent-detail">{basicInfo?.privileges}</div>
                         </div>
                     </div>
 
@@ -120,15 +131,15 @@ function ActivityContentTab() {
                         </div>
                     </div>
 
-                    
-        
+
+
                 </div>
             </div>
 
             <div class ="columcontent col-md-5 col-12">
                 <div class="contentright">
                     <div class="actdetail-title">Mô tả hoạt động </div>
-                    <p>Đây là một tả hoạt động không dài không ngắn nhưng mà rất iu</p>
+                    <p>{activityData.description}</p>
                 </div>
                 <div class="contentright">
                     <div class="actdetail-title">Tiêu chí hợp lệ </div>
@@ -141,14 +152,14 @@ function ActivityContentTab() {
                 <div class="contentright">
                     <div class="actdetail-title">Thông tin liên hệ</div>
                     <p>
-                    https://www.facebook.com/BKCSE.Multimedia <br></br>
-                    +84 1234 5678 99 (Admin)<br>
-                    </br>Văn phòng Đoàn khoa KH&KTMT, BK.B6-602
+                        https://www.facebook.com/BKCSE.Multimedia <br></br>
+                        +84 1234 5678 99 (Admin)<br>
+                        </br>Văn phòng Đoàn khoa KH&KTMT, BK.B6-602
                     </p>
                 </div>
             </div>
         </div>
-      
+
     );
 }
 
