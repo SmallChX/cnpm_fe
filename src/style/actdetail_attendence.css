@@ -97,3 +97,10 @@
     flex-direction: column;
     padding: 5px;
 }
+
+@media (max-width: 768px) {
+    .contentright{
+        margin-left: 0px;
+        overflow-y: scroll;
+    }
+  }
