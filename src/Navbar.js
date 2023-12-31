@@ -5,7 +5,6 @@ import person from './image/person.png';
 import gear from './image/gearshape.png';
 import clock from './image/clock.arrow.png';
 import { Link } from "react-router-dom";
-import './style/sidebar.css';
 
 
 function Navbar() {
@@ -50,7 +49,7 @@ function Navbar() {
 
             <div class="item-line">
                 <img class="item-logo" src={clock} alt="House-icon" />
-                <Link to="" class="item-title">Lịch sử</Link>
+                <Link to="/user-history" class="item-title">Lịch sử</Link>
             </div>
 
             <footer class="item-line">
