@@ -1,0 +1,24 @@
+
+  {
+    "basicInfo": {
+      "createdBy": "Đỗ Tiến dễ thương",
+      "privileges": "0.5 ngày CTXH, 1 ĐRL",
+      "location": "Trường Đại học Bách khoa, cơ sở Dĩ An",
+      "time": "12:00 - 28/10/2023 đến 12:00 - 29/10/2023",
+      "member": 8,
+      "operationMode": "Duyệt",
+      "studentType": "Toàn bộ sinh viên trường Đại học Bách khoa - ĐHQG-HCM"
+    },
+    "description": "Đây là một tả hoạt động không dài không ngắn nhưng mà rất iu",
+    "criteria": [
+      "Là sinh viên nam",
+      "Có sức khỏe tốt",
+      "Có phương tiện di chuyển",
+      "Điện thoại có 4G"
+    ],
+    "contactInfo": {
+      "website": "https://www.facebook.com/BKCSE.Multimedia",
+      "phone": "+84 1234 5678 99 (Admin)",
+      "officeAddress": "Văn phòng Đoàn khoa KH&KTMT, BK.B6-602"
+    }
+  }

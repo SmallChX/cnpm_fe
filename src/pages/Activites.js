@@ -17,21 +17,25 @@ import bell from '../image/Bell_fill.png';
 import user from '../image/user.png';
 import vector from '../image/vector.png';
 
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import ConfirmationWindow from '../components/ConfirmationWindow';
+import NewActivity from '../pages/NewActivity';
 
 function ActivityListPage() {
     const activities = [
         { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
+        { id: 2, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
+        { id: 3, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
         // Thêm các hoạt động khác vào đây
     ];
 
     const [showConfirmation, setShowConfirmation] = useState(false); // Thêm trạng thái để kiểm soát việc hiển thị cửa sổ xác nhận
 
     const handleDelete = () => {
-        setShowConfirmation(true); // Hiển thị cửa sổ xác nhận khi nhấn nút "Delete"
+        setShowConfirmation(false); // Hiển thị cửa sổ xác nhận khi nhấn nút "Delete"
     };
 
     return (
@@ -47,32 +51,37 @@ function ActivityListPage() {
                         </div>
 
                         {/* <div class="col-3 notification-container"> */}
-                            <button class="btn btn-secondary arrow-button-container account-icon-container">
-                                <img class="bell-icon" src={bell} alt="bell-icon"/>
-                            </button>
-
+                        <Dropdown as={ButtonGroup} variant="user-account account-icon-container">
+                            <Button variant="user-account account-icon-container">
                             <div class="user-account account-icon-container">
-                            <img class="user-icon" src={user} />
+                                <img class="user-icon" src={user} />
 
-                            <div class="user-infor">
-                                <div class="user-name">Cinamon</div>
-                                <div class="user-role">Sinh viên</div>
+                                <div class="user-infor">
+                                    <div class="user-name">Cinamon</div>
+                                    <div class="user-role">Sinh viên</div>
+                                </div>
                             </div>
+                            </Button>
 
-                            <button class="btn btn-secondary vector-container">
-                                <img  class="vector-icon" src={vector}/>
-                            </button>
-                        </div>
+                            <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#">Cài đặt tài khoản</Dropdown.Item>
+                                <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
 
                         {/* </div> */}
 
                         
                     </div>
 
-                    <div class ="row justify-content-end">
-                        <Link to="/create-activity">
-                            <button class="btn btn-dark btn-sm create-activity-button ">Tạo hoạt động</button>
-                        </Link>
+                    <div class ="row justify-content-end rowbutdk">
+                        <div class="justify-content-end ">
+                        <button class="btn btn-dark btn-sm create-activity-button" onClick={() => setShowConfirmation(true)}>Tạo hoạt động</button>
+                        {showConfirmation && <NewActivity onConfirm={handleDelete} />}
+
+                        </div>
                     </div>
 
                     <div class ="row activity-state-title">

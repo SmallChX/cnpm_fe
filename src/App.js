@@ -12,9 +12,14 @@ import ActivityAdminListPage from "./pages/Activities_admin";
 import ActivityToVPListPage from "./pages/Activities_ToVP";
 import ActivityDetailPage from "./pages/ActivityDetail";
 import NewActivity from "./pages/NewActivity";
+import SystemPage from "./pages/SystemPage";
 import Navbar from "./Navbar";
 import UserHistoryPage from "./pages/History_user";
 import AdminHistoryPage from "./pages/History_admin";
+import ActivityStatistics from "./pages/ActivityStatistics";
+import TrendStatistics from './pages/TrendStatistics';
+import AccountDecentralise from "./pages/AccountDecentralise";
+import ForgotPassword from "./components/ForgotPassword";
 
 function DefaultContainer() {
   return (
@@ -44,6 +49,10 @@ function App() {
           <Route path="/create-activity" element={<NewActivity/>}/>
           <Route path="/user-history" element={<UserHistoryPage/>}/>
           <Route path="/admin-history" element={<AdminHistoryPage/>}/>
+          <Route path="/system-page" element={<SystemPage/>}/>
+          <Route path="/activity-statistics" element={<ActivityStatistics/>}/>
+          <Route path="/trend-statistics" element={<TrendStatistics/>}/>
+          <Route path="/account-decentralise" element={<AccountDecentralise/>}/>
         </Route>
       </Routes>
     </Router>
