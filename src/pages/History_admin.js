@@ -27,7 +27,32 @@ import { Tab } from 'bootstrap';
 
 function AdminHistoryPage() {
     const [results, setResults] = useState([]);
-
+    const TabComponent = () => {
+        const [currentTab, setCurrentTab] = useState('register');
+    
+        const renderTabContent = (tab) => {
+            switch (tab) {
+                case 'register':
+                    return <RegisterListTab results={results}/>;
+                case 'organize':
+                    return <OrganizeListTab results={results}/>;
+                default:
+                    return null;
+            }
+        };
+    
+        return (
+            <div class="actlayout">
+                <div class="row history-tab-button">
+                    <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('register')}>Lịch sử đăng ký</button>
+                    <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('organize')}>Lịch sử tổ chức</button>
+                </div>
+                
+                {renderTabContent(currentTab)}
+                
+            </div>
+        );
+    };
     return(
         <div>
             <div class ="row">
@@ -64,7 +89,7 @@ function AdminHistoryPage() {
                             <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#">Cài đặt tài khoản</Dropdown.Item>
+                            <Dropdown.Item href="/user-info">Cài đặt tài khoản</Dropdown.Item>
                                 <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -82,31 +107,31 @@ function AdminHistoryPage() {
     );
 }
 
-const TabComponent = () => {
-    const [currentTab, setCurrentTab] = useState('register');
+// const TabComponent = () => {
+//     const [currentTab, setCurrentTab] = useState('register');
 
-    const renderTabContent = (tab) => {
-        switch (tab) {
-            case 'register':
-                return <RegisterListTab />;
-            case 'organize':
-                return <OrganizeListTab />;
-            default:
-                return null;
-        }
-    };
+//     const renderTabContent = (tab) => {
+//         switch (tab) {
+//             case 'register':
+//                 return <RegisterListTab results={results}/>;
+//             case 'organize':
+//                 return <OrganizeListTab results={results}/>;
+//             default:
+//                 return null;
+//         }
+//     };
 
-    return (
-        <div class="actlayout">
-            <div class="row history-tab-button">
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('register')}>Lịch sử đăng ký</button>
-                <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('organize')}>Lịch sử tổ chức</button>
-            </div>
+//     return (
+//         <div class="actlayout">
+//             <div class="row history-tab-button">
+//                 <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('register')}>Lịch sử đăng ký</button>
+//                 <button  type="button" class="detailbutton btn btn-outline-primary" onClick={() => setCurrentTab('organize')}>Lịch sử tổ chức</button>
+//             </div>
             
-            {renderTabContent(currentTab)}
+//             {renderTabContent(currentTab)}
             
-        </div>
-    );
-}; 
+//         </div>
+//     );
+// }; 
 
 export default AdminHistoryPage;
