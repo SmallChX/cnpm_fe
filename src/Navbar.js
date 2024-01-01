@@ -34,7 +34,7 @@ function Navbar() {
 
             <div class="item-line">
                 <img class="item-logo" src={house} alt="House-icon" />
-                <Link to="/" class="item-title">Trang chủ</Link>
+                <Link to="/homepage" class="item-title">Trang chủ</Link>
             </div>
 
             <div class="item-line">
