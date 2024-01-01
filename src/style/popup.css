@@ -4,18 +4,22 @@
     bottom: 0;
     left: 0;
     right: 0;
-    /* background: bisque; */
     background:rgba(0, 0, 0, 0.7);
     transition: opacity 500ms;
     z-index: 5;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 .popup {
     margin: 350px auto;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
-    max-width: 350px;
-    width: 30%;
+    min-width: 370px;
+    max-width: 400px;
+    width: 40%;
     position: relative;
     transition: all 3s ease-in-out;
     display: flex;

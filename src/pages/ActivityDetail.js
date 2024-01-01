@@ -26,7 +26,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function ActivityDetailPage() {
     let { id } = useParams();
 
-    const [role, setRole] = useState('admin');
+    const [role, setRole] = useState('tovanphong');
     const [showApproveActive, setShowApproveActive] = useState(false);
     const [showDeleteActive, setShowDeleteActive] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
@@ -42,6 +42,14 @@ function ActivityDetailPage() {
         setShowUpdateActive(false);
     }
 
+    const handleDeleteActive = () => {
+        setShowDeleteActive(false);
+    }
+
+
+    const handleApproveActive = () => {
+        setShowApproveActive(false);
+    }
     const getUserRoleName = (role) => {
         switch (role) {
           case 'admin':
@@ -174,10 +182,10 @@ function ActivityDetailPage() {
         }else{
             return (
                 <>
-                    <button type="button" class="actresig-admin btn" onClick={() => showApproveActive(true)}>Duyệt</button>
-                    {showApproveActive && <ApproveActivePopUp onConfirm={ () => setShowApproveActive(true)} />}
+                    <button type="button" class="actresig-admin btn" onClick={() => setShowApproveActive(true)}>Duyệt</button>
+                    {showApproveActive && <ApproveActivePopUp onConfirm={ handleApproveActive} />}
                     <button type="button" class="actresig-tvp btn" onClick={() => setShowDeleteActive(true)}>Xóa</button>
-                    {showDeleteActive && <DeleteActivePopup onConfirm={ () => setShowDeleteActive(false)} />}
+                    {showDeleteActive && <DeleteActivePopup onConfirm={ handleDeleteActive}/>}
                 </>
             );
         } 
