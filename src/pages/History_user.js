@@ -28,7 +28,7 @@ function UserHistoryPage() {
 
     return(
         <div>
-            <div class ="container-md row">
+            <div class ="row">
                 {/* <div class="col-10 content-column"> */}
                     {/* <div class ="toprow row"> */}
                         {/* navigation buttons */}
@@ -62,7 +62,7 @@ function UserHistoryPage() {
                             <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="#">Cài đặt tài khoản</Dropdown.Item>
+                            <Dropdown.Item href="/user-info">Cài đặt tài khoản</Dropdown.Item>
                                 <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
@@ -74,7 +74,7 @@ function UserHistoryPage() {
                         <div>Hoạt động của tôi</div>
                     </div>
                     
-                    <UserHistoryTab />
+                    <UserHistoryTab results={results}/>
                 </div>
             // </div>
         // </div>
