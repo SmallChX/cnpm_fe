@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Login from './pages/Login'
+import HomePage from "./pages/HomePage";
 import UserInfo from "./pages/UserInfo";
 import ActivityListPage from "./pages/Activites";
 import ActivityAdminListPage from "./pages/Activities_admin";
@@ -42,6 +43,7 @@ function App() {
         <Route path="/" element={<DefaultContainer />} >
           {/* Các Route con sẽ được render ở đây */}
           <Route path="/user-info" element={<UserInfo/>}/>
+          <Route path="/homepage" element={<HomePage/>}/>
           <Route path="/activities" element={<ActivityListPage/>}/>
           <Route path="/activitiesAdmin" element={<ActivityAdminListPage/>}/>
           <Route path="/activitiesToVP" element={<ActivityToVPListPage/>}/>
