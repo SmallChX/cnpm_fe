@@ -45,7 +45,7 @@ function Navbar() {
                     <span>Hệ thống</span>
                 </NavLink>
 
-                <NavLink className="nav-link" to="/user-history">
+                <NavLink className="nav-link" to="/history">
                     <FaHistory size={20} />
                     <span>Lịch sử</span>
                 </NavLink>
