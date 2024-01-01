@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Link } from 'react-router-dom';
@@ -16,16 +16,17 @@ import { PieChartAcitivity } from '../components/PieChartActivity';
 
 function ActivityStatistics() {
     const [role, setRole] = useState('sinhvien');
-    const activityList = [
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' },
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' },
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' },
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' },
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' },
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' },
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' },
-        { activityNumber: '0000001', activityName: 'Trực phát thiết bị đồ án', activityTime: '27/10/2023', studentAmount: 10, holder: 'ABC', state: 'Đã kết thúc' }
-    ];
+   
+    const [activityList, setActivityList] = useState([]);
+
+    useEffect(() => {
+        fetch('./studentList.json')
+            .then((response) => response.json())
+            .then((data) => {
+                setActivityList(data);
+            })
+            .catch((error) => console.error('Error fetching data:', error));
+    });
 
     const [showConfirmation, setShowConfirmation] = useState(false);
 
