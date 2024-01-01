@@ -25,7 +25,7 @@ import ConfirmationWindow from '../components/ConfirmationWindow';
 import NewActivity from '../pages/NewActivity';
 
 function ActivityListPage() {
-    const [data, setData] = useState({
+    const [dataget, setDataget] = useState({
         id: '',
         basicInfo: {}
     });
@@ -35,7 +35,7 @@ function ActivityListPage() {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Fetched data:', data);
-                setData(data);
+                setDataget(data[0]);
             })
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
@@ -102,31 +102,31 @@ function ActivityListPage() {
                         {/* {Object.values(activityData.basicInfo).map(activity => ( */}
                             <div class="col-xxl-3 shadow-sm activity-cell">
                                 <div class="activity-cell-title">
-                                    <div class="activity-name">{data.basicInfo.createdBy}</div>
-                                    <div class="current-quantity">{data.basicInfo.currentNumber}/{data.basicInfo.number}</div>
+                                    <div class="activity-name">{dataget.basicInfo.createdBy}</div>
+                                    <div class="current-quantity">{dataget.basicInfo.currentNumber}/{dataget.basicInfo.number}</div>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={star} alt="Star icon" />
-                                    <p> {data.basicInfo.value} ngày CTXH </p>
+                                    <p> {dataget.basicInfo.value} ngày CTXH </p>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {data.basicInfo.place} </p>
+                                    <p> {dataget.basicInfo.place} </p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                                    <p> {data.basicInfo.time}</p>
+                                    <p> {dataget.basicInfo.time}</p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                                    <p> {data.basicInfo.quantity} Sinh viên </p>
+                                    <p> {dataget.basicInfo.quantity} Sinh viên </p>
                                 </div>
 
-                                <Link to={`/activity/${data.id}`} class="btn btn-primary btn-sm detail-button">Tham gia</Link>
+                                <Link to={`/activity/${dataget.id}`} class="btn btn-primary btn-sm detail-button">Tham gia</Link>
                             </div>
                         {/* ))} */}
 
@@ -154,28 +154,28 @@ function ActivityListPage() {
                         {/* {activities.map(activity => ( */}
                             <div class="col-xxl-3 shadow-sm activity-cell">
                                 <div class="activity-cell-title">
-                                    <div class="activity-name">{data.basicInfo.createdBy}</div>
-                                    <div class="current-quantity">{data.basicInfo.currentNumber}/{data.basicInfo.number}</div>
+                                    <div class="activity-name">{dataget.basicInfo.createdBy}</div>
+                                    <div class="current-quantity">{dataget.basicInfo.currentNumber}/{dataget.basicInfo.number}</div>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={star} alt="Star icon" />
-                                    <p> {data.basicInfo.value} ngày CTXH </p>
+                                    <p> {dataget.basicInfo.value} ngày CTXH </p>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {data.basicInfo.place} </p>
+                                    <p> {dataget.basicInfo.place} </p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                                    <p> {data.basicInfo.time}</p>
+                                    <p> {dataget.basicInfo.time}</p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                                    <p> {data.basicInfo.quantity} Sinh viên </p>
+                                    <p> {dataget.basicInfo.quantity} Sinh viên </p>
                                 </div>
 
                                 <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
