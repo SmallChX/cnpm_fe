@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import '../../bootstrap.min.css';
 import '../../style/style.css';
@@ -17,24 +17,21 @@ function HolderAccountListTab() {
         // Add your registration logic here
     };
 
-    const holderAccountList = [
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {holderID: '0000001', fullName: 'ABC EGF', role: 'Người tổ chức', accountState: 'Đang tham gia', accountActive: '10 phút trước'}
-        
-    ];
+    const [holderAccountList, setHolderAccountList] = useState([]);
+
+    useEffect(() => {
+        fetch('../account.json')
+            .then((response) => response.json())
+            .then((data) => {
+                const holder = data.filter(account => account.role === 'Người tổ chức');
+                if (holder){
+                    setHolderAccountList(holder);
+                }
+            })
+            .catch((error) => console.error('Error fetching data:', error));
+    });
+
+    
 
     return (
         <div class="row table-container  tab-table-container">
@@ -58,7 +55,7 @@ function HolderAccountListTab() {
 
                         {holderAccountList.map((holder, index) => (
                             <tr>
-                                <td>{holder.holderID}</td>
+                                <td>{holder.ID}</td>
                                 <td>{holder.fullName}</td>
                                 <td>{holder.role}</td>
                                 <td>{holder.accountState}</td>

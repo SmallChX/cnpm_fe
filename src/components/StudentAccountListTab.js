@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../bootstrap.min.css';
 import '../style/style.css';
 import '../style/systemPage.css';
@@ -6,20 +6,18 @@ import '../style/act_detail.css';
 import DecentPopUp from './AccountManager/DecentConfirm';
 
 function StudentAccountListTab() {
-    const studentAccountList = [
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'},
-        {studentID: '0000001', fullName: 'ABC EGF', role: 'Sinh viên', accountState: 'Đang tham gia', accountActive: '10 phút trước'}
-    ];
+
+    const [studentAccountList, setStudentAccountList] = useState([]);
+
+    useEffect(() => {
+        fetch('./account.json')
+            .then((response) => response.json())
+            .then((data) => {
+                const student = data.filter(account => account.role === 'Sinh viên');
+                setStudentAccountList(student);
+            })
+            .catch((error) => console.error('Error fetching data:', error));
+    });
 
     const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -54,7 +52,7 @@ function StudentAccountListTab() {
 
                         {studentAccountList.map((account, index) => (
                             <tr>
-                                <td >{account.studentID}</td>
+                                <td >{account.ID}</td>
                                 <td>{account.fullName}</td>
                                 <td>{account.role}</td>
                                 <td>{account.accountState}</td>
