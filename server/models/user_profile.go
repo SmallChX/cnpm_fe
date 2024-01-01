@@ -10,7 +10,7 @@ type UserInfo struct {
 	StudentID   string
 	Mail        string
 	Sex         bool
-
+	BirthDay	string
 	// About activity
 
 }

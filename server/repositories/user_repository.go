@@ -35,9 +35,9 @@ func (r *Repository) UpdateUser(userID uint, updatedUser models.UserInfo) error 
     }
 
     // Cập nhật thông tin người dùng	
-    existingUser.Username = updatedUser.Username
-    existingUser.Email = updatedUser.Email
-    existingUser.FullName = updatedUser.FullName
+    existingUser.PhoneNumber = updatedUser.PhoneNumber
+    existingUser.BirthDay = updatedUser.BirthDay
+    existingUser.Sex = updatedUser.Sex
 
     // Lưu thay đổi vào cơ sở dữ liệu
     if err := database.GetDB().Save(&existingUser).Error; err != nil {
