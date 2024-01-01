@@ -7,6 +7,7 @@
       "location": "Trường Đại học Bách khoa, cơ sở Dĩ An",
       "time": "12:00 - 28/10/2023 đến 12:00 - 29/10/2023",
       "member": 8,
+      "currentMember": "2",
       "operationMode": "Duyệt",
       "studentType": "Toàn bộ sinh viên trường Đại học Bách khoa - ĐHQG-HCM"
     },
@@ -31,6 +32,7 @@
       "location": "Trường Đại học ABC, cơ sở XYZ",
       "time": "14:00 - 30/10/2023 đến 14:00 - 31/10/2023",
       "member": 10,
+      "currentMember": "2",
       "operationMode": "Tổ chức",
       "studentType": "Toàn bộ sinh viên trường Đại học ABC"
     },
@@ -54,6 +56,7 @@
       "location": "Trường Đại học XYZ, cơ sở MNO",
       "time": "10:00 - 25/11/2023 đến 10:00 - 26/11/2023",
       "member": 6,
+      "currentMember": "2",
       "operationMode": "Duyệt",
       "studentType": "Toàn bộ sinh viên trường Đại học XYZ"
     },
@@ -77,6 +80,7 @@
       "location": "Trường Đại học DEF, cơ sở PQR",
       "time": "16:00 - 15/12/2023 đến 16:00 - 16/12/2023",
       "member": 12,
+      "currentMember": "2",
       "operationMode": "Tổ chức",
       "studentType": "Toàn bộ sinh viên trường Đại học DEF"
     },
@@ -100,6 +104,31 @@
       "location": "Trường Đại học GHI, cơ sở STU",
       "time": "11:30 - 20/01/2024 đến 11:30 - 21/01/2024",
       "member": 15,
+      "currentMember": "2",
+      "operationMode": "Duyệt",
+      "studentType": "Toàn bộ sinh viên trường Đại học GHI"
+    },
+    "description": "Mô tả về hoạt động thứ năm",
+    "criteria": [
+      "Là sinh viên nữ",
+      "Yêu thích giao lưu, kết bạn",
+      "Nhiệt huyết, thích thú với công việc tình nguyện"
+    ],
+    "contactInfo": {
+      "website": "https://www.facebook.com/GHISocialConnect",
+      "phone": "+84 9876 5432 13 (Coordinator)",
+      "officeAddress": "Văn phòng Đoàn khoa GHI, F.R"
+    }
+  },
+  {
+    "id": "6",
+    "basicInfo": {
+      "createdBy": "Lê Thị Linh",
+      "privileges": "0.8 ngày CTXH, 1.2 ĐRL",
+      "location": "Trường Đại học GHI, cơ sở STU",
+      "time": "11:30 - 20/01/2024 đến 11:30 - 21/01/2024",
+      "member": 15,
+      "currentMember": "2",
       "operationMode": "Duyệt",
       "studentType": "Toàn bộ sinh viên trường Đại học GHI"
     },

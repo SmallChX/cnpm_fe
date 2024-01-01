@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { Link, useParams } from 'react-router-dom';
 import '../bootstrap.min.css';
 import '../style/style.css';
 import logo from '../image/logoBK.png';
@@ -25,12 +25,20 @@ import ConfirmationWindow from '../components/ConfirmationWindow';
 import NewActivity from '../pages/NewActivity';
 
 function ActivityListPage() {
-    const activities = [
-        { id: 1, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        { id: 2, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        { id: 3, name: 'Trực phát thiết bị đồ án đa ngành', value: '1', time: '08/10/2023', place: 'Trường Đại học Bách khoa CS1', quantity:'2', currentQuantity: '0' },
-        // Thêm các hoạt động khác vào đây
-    ];
+    const [data, setData] = useState({
+        id: '',
+        basicInfo: {}
+    });
+
+    useEffect(() => {
+        fetch('/act.json')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Fetched data:', data);
+                setData(data);
+            })
+            .catch((error) => console.error('Error fetching data:', error));
+    }, []);
 
     const [showConfirmation, setShowConfirmation] = useState(false); // Thêm trạng thái để kiểm soát việc hiển thị cửa sổ xác nhận
 
@@ -91,36 +99,36 @@ function ActivityListPage() {
                     </div>
 
                     <div class="row activity-row">
-                        {activities.map(activity => (
+                        {/* {Object.values(activityData.basicInfo).map(activity => ( */}
                             <div class="col-xxl-3 shadow-sm activity-cell">
                                 <div class="activity-cell-title">
-                                    <div class="activity-name">{activity.name}</div>
-                                    <div class="current-quantity">{activity.currentQuantity}/{activity.quantity}</div>
+                                    <div class="activity-name">{data.basicInfo.createdBy}</div>
+                                    <div class="current-quantity">{data.basicInfo.currentNumber}/{data.basicInfo.number}</div>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={star} alt="Star icon" />
-                                    <p> {activity.value} ngày CTXH </p>
+                                    <p> {data.basicInfo.value} ngày CTXH </p>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {activity.place} </p>
+                                    <p> {data.basicInfo.place} </p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                                    <p> {activity.time}</p>
+                                    <p> {data.basicInfo.time}</p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                                    <p> {activity.quantity} Sinh viên </p>
+                                    <p> {data.basicInfo.quantity} Sinh viên </p>
                                 </div>
 
-                                <Link to={`/activity/${activity.id}`} class="btn btn-primary btn-sm detail-button">Tham gia</Link>
+                                <Link to={`/activity/${data.id}`} class="btn btn-primary btn-sm detail-button">Tham gia</Link>
                             </div>
-                        ))}
+                        {/* ))} */}
 
                         {/* Hiển thị cửa sổ xác nhận nếu showConfirmation là true */}
                         {showConfirmation && (
@@ -143,36 +151,36 @@ function ActivityListPage() {
                     </div>
 
                     <div class="row activity-row">
-                        {activities.map(activity => (
+                        {/* {activities.map(activity => ( */}
                             <div class="col-xxl-3 shadow-sm activity-cell">
                                 <div class="activity-cell-title">
-                                    <div class="activity-name">{activity.name}</div>
-                                    <div class="current-quantity">{activity.currentQuantity}/{activity.quantity}</div>
+                                    <div class="activity-name">{data.basicInfo.createdBy}</div>
+                                    <div class="current-quantity">{data.basicInfo.currentNumber}/{data.basicInfo.number}</div>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={star} alt="Star icon" />
-                                    <p> {activity.value} ngày CTXH </p>
+                                    <p> {data.basicInfo.value} ngày CTXH </p>
                                 </div>
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {activity.place} </p>
+                                    <p> {data.basicInfo.place} </p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                                    <p> {activity.time}</p>
+                                    <p> {data.basicInfo.time}</p>
                                 </div>
 
                                 <div>
                                     <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                                    <p> {activity.quantity} Sinh viên </p>
+                                    <p> {data.basicInfo.quantity} Sinh viên </p>
                                 </div>
 
                                 <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
                             </div>
-                        ))}
+                        {/* ))} */}
                     </div>
                 </div>
     );
