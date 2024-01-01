@@ -4,61 +4,60 @@ import house from './image/house.png';
 import person from './image/person.png';
 import gear from './image/gearshape.png';
 import clock from './image/clock.arrow.png';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import {
+	FaAngleRight,
+	FaAngleLeft, 
+	FaChartBar, 
+	FaThLarge, 
+	FaShoppingCart, 
+	FaCog,
+	FaBars,
+    FaHome,
+    FaUserFriends,
+    FaSlidersH,
+    FaHistory,
+    FaSignOutAlt
+} from 'react-icons/fa';
 
 
 function Navbar() {
-    const [isMobile, setIsMobile] = useState(false);
-
-    const handleToggle = () => {
-        setIsMobile(!isMobile);
-    };
-
     return (
-        <nav class="col-2 title-column nav">
-            <div class="logo-line">
-                <img class="logo-BK" src={logo} alt="logoBK" />
-                <div class="web-name">HUHU</div>
+        <div className="col-2 title-column nav">
+            <NavLink className="item-line" to="/">
+                <img className="logo-BK" src={logo} alt="logoBK" />
+                <div className="web-name">HUHU</div>
+            </NavLink>
+
+            <div className="links nav-top">
+                <NavLink className="nav-link" to="/homepage">
+                    <FaHome size={20} />
+                    <span>Trang chủ</span>
+                </NavLink>
+
+                <NavLink className="nav-link" to="/activities">
+                    <FaUserFriends size={20} />
+                    <span>Hoạt động</span>
+                </NavLink>
+
+                <NavLink className="nav-link" to="/system-page">
+                    <FaSlidersH size={20} />
+                    <span>Hệ thống</span>
+                </NavLink>
+
+                <NavLink className="nav-link" to="/user-history">
+                    <FaHistory size={20} />
+                    <span>Lịch sử</span>
+                </NavLink>
             </div>
 
-            {/* <ul className="{isMobile ? 'nav-links-mobile' : 'nav-links'}">
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/services">Services</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-
-            <button className="burger-menu" onClick={handleToggle}>
-                {isMobile ? 'Close' : 'Menu'}
-            </button> */}
-
-            <div class="item-line">
-                <img class="item-logo" src={house} alt="House-icon" />
-                <Link to="/homepage" class="item-title">Trang chủ</Link>
+            <div className="links nav-bottom">
+                <NavLink className="nav-link" to="/">
+                    <FaSignOutAlt size={20} />
+                    <span>Đăng xuất</span>
+                </NavLink>
             </div>
-
-            <div class="item-line">
-                <img class="item-logo" src={person} alt="House-icon" />
-                <Link to="/activities" class="item-title">Hoạt động</Link>
-            </div>
-
-            <div class="item-line">
-                <img class="item-logo" src={gear} alt="House-icon" />
-                <Link to="/system-page" class="item-title">Hệ thống</Link>
-            </div>
-
-            <div class="item-line">
-                <img class="item-logo" src={clock} alt="House-icon" />
-                <Link to="/user-history" class="item-title">Lịch sử</Link>
-            </div>
-
-            <footer class="item-line">
-                <img class="item-logo" src={clock} />
-                <Link class="item-title">
-                    Đăng xuất
-                </Link>
-            </footer>
-        </nav>
+        </div>
     )
 }
 
