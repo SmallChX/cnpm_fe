@@ -58,7 +58,7 @@ function ActivityToVPListPage() {
 
                             <div class="user-infor">
                                 <div class="user-name">Cinamon</div>
-                                <div class="user-role">Tổ VP</div>
+                                <div class="user-role">Tổ văn phòng</div>
                             </div>
 
                             <button class="btn btn-secondary vector-container">

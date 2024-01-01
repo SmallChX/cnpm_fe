@@ -27,7 +27,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import ConfirmationWindow from '../components/ConfirmationWindow';
 import NewActivity from './NewActivity';
 
-function HomePage() {
+function VPHomePage() {
     return (
         <div>
             <div class="row">
@@ -50,14 +50,14 @@ function HomePage() {
                             <img class="user-icon" src={user} />
                             <div class="user-infor">                                    
                                 <div class="user-name">Cinamon</div>
-                                <div class="user-role">Sinh viên</div>
+                                <div class="user-role">Tổ văn phòng</div>
                             </div>
                         </div>
                     </Button>
 
                     <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
                     <Dropdown.Menu>
-                        <Dropdown.Item href="/user-info">Cài đặt tài khoản</Dropdown.Item>
+                    <Dropdown.Item href="/user-info">Cài đặt tài khoản</Dropdown.Item>
                         <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
@@ -77,4 +77,4 @@ function HomePage() {
         </div>
     );
 }
-export default HomePage;
+export default VPHomePage;

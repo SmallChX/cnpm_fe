@@ -2,11 +2,11 @@ import React from 'react';
 import '../style/systemPage.css';
 import '../style/UserHistory.css';
 
-function OrganizeListTab() {
+function OrganizeListTab({ results }) {
     // Giả sử bạn có một mảng chứa thông tin sinh viên
     const organizers = [
         { id: 1, name: 'Trực phát thiết bị...', time: '10:28:00 - 7 Th11 2023', oname: 'TrucThanhnef', quantity: '5/250', status: 'Sắp diễn ra' },
-        { id: 1, name: 'Trực phát thiết bị...', time: '10:28:00 - 7 Th11 2023', oname: 'DoTiennef', quantity: '8/10', status: 'Đang diễn ra' },
+        { id: 1, name: 'Tham gia trồng cây...', time: '10:28:00 - 7 Th11 2023', oname: 'DoTiennef', quantity: '8/10', status: 'Đang diễn ra' },
         { id: 1, name: 'Trực phát thiết bị...', time: '10:28:00 - 7 Th11 2023', oname: 'ThuyTiennef', quantity: '10/10', status: 'Đã kết thúc' },
         { id: 1, name: 'Trực phát thiết bị...', time: '10:28:00 - 7 Th11 2023', oname: 'MinhThuannef', quantity: '10/10', status: 'Đã kết thúc' },
         { id: 1, name: 'Trực phát thiết bị...', time: '10:28:00 - 7 Th11 2023', oname: 'BaoNgocnef', quantity: '10/10', status: 'Đã kết thúc' },
@@ -18,7 +18,10 @@ function OrganizeListTab() {
         { id: 1, name: 'Trực phát thiết bị...', time: '10:28:00 - 7 Th11 2023', oname: 'BaoNgocnef', quantity: '10/10', status: 'Đã hủy' },
         { id: 1, name: 'Trực phát thiết bị...', time: '10:28:00 - 7 Th11 2023', oname: 'NhatHanef', quantity: '10/10', status: 'Đã hủy' }
     ];
-
+    const filteredActivities = results.length > 0 ? organizers.filter((organizer) => {
+        // Lặp qua từng giá trị trong results để kiểm tra
+        return organizer.name.toLowerCase().includes(results);
+    }) : organizers;
     return (
         <div class="row outer-box-dark">
             <div class="content-table"> 
@@ -35,7 +38,7 @@ function OrganizeListTab() {
                     </thead>  
 
                     <tbody>
-                        {organizers.map((organizer, index) => (
+                        {filteredActivities.map((organizer, index) => (
                         <tr>
                             <td>{organizer.id}</td>
                             <td>{organizer.name}</td>

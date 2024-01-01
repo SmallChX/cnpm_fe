@@ -27,7 +27,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import ConfirmationWindow from '../components/ConfirmationWindow';
 import NewActivity from './NewActivity';
 
-function HomePage() {
+function AdminHomePage() {
     return (
         <div>
             <div class="row">
@@ -50,7 +50,7 @@ function HomePage() {
                             <img class="user-icon" src={user} />
                             <div class="user-infor">                                    
                                 <div class="user-name">Cinamon</div>
-                                <div class="user-role">Sinh viên</div>
+                                <div class="user-role">Admin</div>
                             </div>
                         </div>
                     </Button>
@@ -77,4 +77,4 @@ function HomePage() {
         </div>
     );
 }
-export default HomePage;
+export default AdminHomePage;

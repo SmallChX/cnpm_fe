@@ -7,6 +7,8 @@ import {
 
 import Login from './pages/Login'
 import HomePage from "./pages/HomePage";
+import VPHomePage from "./pages/HomePage_ToVP";
+import AdminHomePage from "./pages/HomePage_admin";
 import UserInfo from "./pages/UserInfo";
 import ActivityListPage from "./pages/Activites";
 import ActivityAdminListPage from "./pages/Activities_admin";
@@ -44,13 +46,15 @@ function App() {
           {/* Các Route con sẽ được render ở đây */}
           <Route path="/user-info" element={<UserInfo/>}/>
           <Route path="/homepage" element={<HomePage/>}/>
+          <Route path="/homepageAdmin" element={<AdminHomePage/>}/>
+          <Route path="/homepageToVP" element={<VPHomePage/>}/>
           <Route path="/activities" element={<ActivityListPage/>}/>
           <Route path="/activitiesAdmin" element={<ActivityAdminListPage/>}/>
           <Route path="/activitiesToVP" element={<ActivityToVPListPage/>}/>
           <Route path="/activity/:id" element={<ActivityDetailPage/>} />
           <Route path="/create-activity" element={<NewActivity/>}/>
-          <Route path="/user-history" element={<UserHistoryPage/>}/>
-          <Route path="/admin-history" element={<AdminHistoryPage/>}/>
+          <Route path="/history" element={<UserHistoryPage/>}/>
+          <Route path="/historyAdmin" element={<AdminHistoryPage/>}/>
           <Route path="/system-page" element={<SystemPage/>}/>
           <Route path="/activity-statistics" element={<ActivityStatistics/>}/>
           <Route path="/trend-statistics" element={<TrendStatistics/>}/>
