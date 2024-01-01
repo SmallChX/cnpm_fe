@@ -7,6 +7,7 @@ import (
 
 type Acitity struct {
 	ID uint
+	Type string // Loạt hoạt động: Tình nguyện, hỗ trợ công tác khoa, dọn dẹp vệ sinh phòng máy,...
 	MaxDay int `` // Ngày công tác xã hội tối đa
 	MaxPoint int `` // Điểm rèn luyện tối đa
 	Location string 
@@ -17,6 +18,7 @@ type Acitity struct {
 	EndDay time.Time
 
 	IsInspect bool
+	NeedMan bool // Hoạt động yêu cầu giới tính nam
 	MaxStudentsRegist int
 	ParticiPant string // Đối tượng tham gia
 
@@ -26,6 +28,5 @@ type Acitity struct {
 	ManagerID uint
 	ContactInfo string
 	// Người tham dự - Many to many
-	Stundents UserInfo[] `gorm:"many2many:user_activities`
 
 }
