@@ -13,6 +13,7 @@ import { data } from '../PieChartActivity';
 function ActivityContentTab() {
     let { id } = useParams();
     const [activityData, setActivityData] = useState({
+        id: '',
         basicInfo: {},
         description: '',
         criteria: [],
@@ -22,9 +23,16 @@ function ActivityContentTab() {
     useEffect(() => {
         fetch('/act.json')
             .then((response) => response.json())
-            .then((data) => setActivityData(data))
+            .then((data) => {
+                const selectedActivity = data.find((activity) => activity.id === id);
+                if (selectedActivity) {
+                    setActivityData(selectedActivity);
+                } else {
+                    console.error(`Activity with ID ${id} not found.`);
+                }
+            })
             .catch((error) => console.error('Error fetching data:', error));
-    }, []);
+    }, [id]);
 
     const {
         basicInfo,
