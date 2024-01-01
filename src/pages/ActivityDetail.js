@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import '../style/act_detail.css'
@@ -25,6 +25,25 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 function ActivityDetailPage() {
     let { id } = useParams();
+
+    const [activityData, setActivityData] = useState({
+        id: '',
+        basicInfo: {}
+    });
+
+    useEffect(() => {
+        fetch('/act.json')
+            .then((response) => response.json())
+            .then((data) => {
+                const selectedActivity = data.find((activity) => activity.id === id);
+                if (selectedActivity) {
+                    setActivityData(selectedActivity);
+                } else {
+                    console.error(`Activity with ID ${id} not found.`);
+                }
+            })
+            .catch((error) => console.error('Error fetching data:', error));
+    }, [id]);
 
     const [role, setRole] = useState('tovanphong');
     const [showApproveActive, setShowApproveActive] = useState(false);
@@ -99,10 +118,10 @@ function ActivityDetailPage() {
                     </div>
                     <div class="row acttitle">
                         <div class="r2c1  col-sm col-12">
-                            <h1 class="font-size-sm">Tên hoạt động ở đây nè!!!</h1>
+                            <h1 class="font-size-sm">{activityData.basicInfo.name}</h1>
                         </div>
                         <div class="r2c2 ">
-                            <div class="actnumber">4/8</div>
+                            <div class="actnumber">{activityData.basicInfo.currentMember}/{activityData.basicInfo.member}</div>
                             <SelectButton />
                         </div>
                     </div>

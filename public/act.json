@@ -2,6 +2,7 @@
   {
     "id": "1",
     "basicInfo": {
+      "name": "Ăn bánh uống sữa đậu nành",
       "createdBy": "Đỗ Tiến dễ thương",
       "privileges": "0.5 ngày CTXH, 1 ĐRL",
       "location": "Trường Đại học Bách khoa, cơ sở Dĩ An",
@@ -27,6 +28,7 @@
   {
     "id": "2",
     "basicInfo": {
+      "name": "Chơi đùa cùng DSA",
       "createdBy": "Nguyễn Văn Minh",
       "privileges": "1 ngày CTXH, 2 ĐRL",
       "location": "Trường Đại học ABC, cơ sở XYZ",
@@ -51,6 +53,7 @@
   {
     "id": "3",
     "basicInfo": {
+      "name": "Cuộc hẹn bên tách trà",
       "createdBy": "Nguyễn Thị Hương",
       "privileges": "0.5 ngày CTXH, 1 ĐRL",
       "location": "Trường Đại học XYZ, cơ sở MNO",
@@ -75,6 +78,7 @@
   {
     "id": "4",
     "basicInfo": {
+      "name": "Hành trình hai vạn dặm chạy đồ án",
       "createdBy": "Trần Đình Phúc",
       "privileges": "0.7 ngày CTXH, 1.5 ĐRL",
       "location": "Trường Đại học DEF, cơ sở PQR",
@@ -99,6 +103,7 @@
   {
     "id": "5",
     "basicInfo": {
+      "name": "Tắm mèo nửa tiếng, sấy lông mèo một tiếng rưỡi",
       "createdBy": "Lê Thị Linh",
       "privileges": "0.8 ngày CTXH, 1.2 ĐRL",
       "location": "Trường Đại học GHI, cơ sở STU",
@@ -123,6 +128,7 @@
   {
     "id": "6",
     "basicInfo": {
+      "name": "Tháng 5 có Sakamoto Days",
       "createdBy": "Lê Thị Linh",
       "privileges": "0.8 ngày CTXH, 1.2 ĐRL",
       "location": "Trường Đại học GHI, cơ sở STU",
