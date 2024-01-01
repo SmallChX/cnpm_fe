@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+
 import '../bootstrap.min.css';
 import '../style/style.css';
 import logo from '../image/logoBK.png';
@@ -25,20 +26,18 @@ import ConfirmationWindow from '../components/ConfirmationWindow';
 import NewActivity from '../pages/NewActivity';
 
 function ActivityListPage() {
-    const [dataget, setDataget] = useState({
-        id: '',
-        basicInfo: {},
-        description: '',
-        criteria: [],
-        contactInfo: {}
-    });
+    const [dataget, setDataget] = useState([]);
+    const [curItems, setCurItems] = useState(3);
+    const [curExpand, setCurExpand] = useState(false);
+    const [upItems, setUpItems] = useState(3);
+    const [upExpand, setUpExpand] = useState(false);
 
     useEffect(() => {
         fetch('/act.json')
             .then((response) => response.json())
             .then((data) => {
                 console.log('Fetched data:', data);
-                setDataget(Object.keys(data));
+                setDataget(data);
             })
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
@@ -47,6 +46,26 @@ function ActivityListPage() {
 
     const handleDelete = () => {
         setShowConfirmation(false); // Hiển thị cửa sổ xác nhận khi nhấn nút "Delete"
+    };
+
+    const showMoreCurrent = () => {
+        setCurItems((prevValue) => prevValue + dataget.length);
+        setCurExpand(!curExpand);
+    };
+
+    const showLessCurrent = () => {
+        setUpItems(3);
+        setUpExpand(!curExpand);
+    };
+
+    const showMoreUpcoming = () => {
+        setUpItems((prevValue) => prevValue + dataget.length);
+        setUpExpand(!upExpand);
+    };
+
+    const showLessUpcoming = () => {
+        setUpItems(3);
+        setUpExpand(!upExpand);
     };
 
     return (
@@ -97,48 +116,56 @@ function ActivityListPage() {
 
             <div class="row activity-state-title">
                 <div>Đang diễn ra</div>
-                <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
-                </Link>
+                {curExpand ? (
+                    <button
+                        className="btn btn-sm btn-outline-dark ml-auto"
+                        onClick={showLessCurrent}
+                    >
+                        Thu gọn
+                    </button>
+                ) : (
+                    <button
+                        className="btn btn-sm btn-outline-dark ml-auto"
+                        onClick={showMoreCurrent}
+                    >
+                        Xem tất cả
+                    </button>
+                )}
             </div>
 
-            {/* {dataget.map((value, index) => ( */}
             <div className="row activity-row">
-                {/* {Object.values(dataget).map((activity) => ( */}
-                <div className="col-xxl-3 shadow-sm activity-cell" key={index}>
-                    {/* {Object.values(dataget.basicInfo).map((value, index) => ( */}
-                        {/* <div key={index}> */}
-                            <div className="activity-cell-title">
-                                <div className="activity-name">{value.name}</div>
-                                <div className="current-quantity">{value.currentMember}/{value.member}</div>
-                            </div>
+                {dataget.slice(0, curItems).map(activity => (
+                    <div className="col-xxl-3 shadow-sm activity-cell" key={activity.id}>
+                        <div className="activity-cell-title">
+                            <div className="activity-name">{activity.basicInfo.name}</div>
+                            <div className="current-quantity">{activity.basicInfo.currentMember}/{activity.basicInfo.member}</div>
+                        </div>
 
-                            <div>
-                                <img className="activity-detail-icon" src={star} alt="Star icon" />
-                                <p>{value.privileges} ngày CTXH</p>
-                            </div>
+                        <div>
+                            <img className="activity-detail-icon" src={star} alt="Star icon" />
+                            <p>{activity.basicInfo.privileges} ngày CTXH</p>
+                        </div>
 
-                            <div>
-                                <img className="activity-detail-icon" src={location} alt="Location icon" />
-                                <p>{value.location}</p>
-                            </div>
+                        <div>
+                            <img className="activity-detail-icon" src={location} alt="Location icon" />
+                            <p>{activity.basicInfo.location}</p>
+                        </div>
 
-                            <div>
-                                <img className="activity-detail-icon" src={time} alt="Clock icon" />
-                                <p>{value.time}</p>
-                            </div>
+                        <div>
+                            <img className="activity-detail-icon" src={time} alt="Clock icon" />
+                            <p>{activity.basicInfo.time}</p>
+                        </div>
 
-                            <div>
-                                <img className="activity-detail-icon" src={profile} alt="Profile icon" />
-                                <p>{value.quantity} Sinh viên</p>
-                            </div>
+                        <div>
+                            <img className="activity-detail-icon" src={profile} alt="Profile icon" />
+                            <p>{activity.basicInfo.quantity} Sinh viên</p>
+                        </div>
 
-                            <Link to={`/activity/${parseInt(dataget.id)}`} className="btn btn-primary btn-sm detail-button">
-                                Tham gia
-                            </Link>
-                        {/* </div> */}
-                    {/* ))} */}
-                </div>
-                {/* ))} */}
+                        <Link to={`/activity/${parseInt(activity.id)}`} className="btn btn-primary btn-sm detail-button">
+                            Tham gia
+                        </Link>
+                    </div>
+                ))}
                 {/* Hiển thị cửa sổ xác nhận nếu showConfirmation là true */}
                 {showConfirmation && (
                     <ConfirmationWindow
@@ -150,52 +177,58 @@ function ActivityListPage() {
                     />
                 )}
             </div>
-            {/* ))} */}
 
 
             <div class="row activity-state-title">
                 <div>Sắp diễn ra</div>
-                <Link class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover see-all">Xem tất cả
-                </Link>
+                {upExpand ? (
+                    <button
+                        className="btn btn-sm btn-outline-dark ml-auto"
+                        onClick={showLessUpcoming}
+                    >
+                        Thu gọn
+                    </button>
+                ) : (
+                    <button
+                        className="btn btn-sm btn-outline-dark ml-auto"
+                        onClick={showMoreUpcoming}
+                    >
+                        Xem tất cả
+                    </button>
+                )}
             </div>
 
             <div class="row activity-row">
-                {dataget.basicInfo && dataget.basicInfo.length > 0 ? (
-                    
-                        Object.values(dataget.basicInfo).slice(0, 3).map((activity, index) => (
-                            <div class="col-xxl-3 shadow-sm activity-cell" key={index}>
-                                <div class="activity-cell-title">
-                                    <div class="activity-name">{activity.name}</div>
-                                    <div class="current-quantity">{activity.currentMember}/{activity.member}</div>
-                                </div>
+                {dataget.slice(0, upItems).map(activity => (
+                    <div class="col-xxl-3 shadow-sm activity-cell" key={activity.id}>
+                        <div class="activity-cell-title">
+                            <div class="activity-name">{activity.basicInfo.name}</div>
+                            <div class="current-quantity">{activity.basicInfo.currentMember}/{activity.basicInfo.member}</div>
+                        </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={star} alt="Star icon" />
-                                    <p> {activity.privileges} ngày CTXH </p>
-                                </div>
+                        <div>
+                            <img class="activity-detail-icon" src={star} alt="Star icon" />
+                            <p> {activity.basicInfo.privileges} ngày CTXH </p>
+                        </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {activity.location} </p>
-                                </div>
+                        <div>
+                            <img class="activity-detail-icon" src={location} alt="Location icon" />
+                            <p> {activity.basicInfo.location} </p>
+                        </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                                    <p> {activity.time}</p>
-                                </div>
+                        <div>
+                            <img class="activity-detail-icon" src={time} alt="Clock icon" />
+                            <p> {activity.basicInfo.time}</p>
+                        </div>
 
-                                <div>
-                                    <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                                    <p> {activity.quantity} Sinh viên </p>
-                                </div>
+                        <div>
+                            <img class="activity-detail-icon" src={profile} alt="Profile icon" />
+                            <p> {activity.basicInfo.quantity} Sinh viên </p>
+                        </div>
 
-                                <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
-                            </div>
-                        ))
-                    
-                ) : (
-                    <div>N/A</div>
-                )}
+                        <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
+                    </div>
+                ))}
             </div>
         </div>
     );

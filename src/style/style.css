@@ -205,7 +205,7 @@ footer {
 .activity-cell {
     display: flex;
     flex-direction: column;
-
+    /* flex: 1; */
     margin: auto;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -220,13 +220,19 @@ footer {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    
+    justify-content: space-between;
 }
 
 .activity-name {
     font-size: 13px;
     font-weight: bold;
     margin-right: 5px;
+    max-width: 200px; /* Đặt độ dài tối đa mong muốn */
+    overflow: hidden;
+    /* text-overflow: clip; */
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    display: inline-block;
 }
 
 .current-quantity {
@@ -242,7 +248,7 @@ footer {
     padding: 1px;
 
     align-content: center;
-    line-height: 10px;
+    line-height: 15px;
 }
 
 .activity-detail-icon {
@@ -421,4 +427,10 @@ nav{
     .nav-link span {
         display: none;
     }
+}
+
+
+.expanded {
+    max-height: none !important;
+    overflow: visible !important;
 }
