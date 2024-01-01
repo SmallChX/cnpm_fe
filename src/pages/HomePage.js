@@ -57,7 +57,7 @@ function HomePage() {
 
                     <Dropdown.Toggle split variant="user-account account-icon-container" id="drop-split-basic" />
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#">Cài đặt tài khoản</Dropdown.Item>
+                        <Dropdown.Item href="/user-info">Cài đặt tài khoản</Dropdown.Item>
                         <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
