@@ -54,8 +54,8 @@ function ActivityListPage() {
     };
 
     const showLessCurrent = () => {
-        setUpItems(3);
-        setUpExpand(!curExpand);
+        setCurItems(3);
+        setCurExpand(!curExpand);
     };
 
     const showMoreUpcoming = () => {
