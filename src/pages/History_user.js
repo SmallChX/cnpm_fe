@@ -29,8 +29,8 @@ function UserHistoryPage() {
     return(
         <div>
             <div class ="container-md row">
-                <div class="col-10 content-column">
-                    <div class ="toprow row">
+                {/* <div class="col-10 content-column"> */}
+                    {/* <div class ="toprow row"> */}
                         {/* navigation buttons */}
                         <div class ="col">
                             <button class="btn btn-primary arrow-button-container">
@@ -67,14 +67,17 @@ function UserHistoryPage() {
                             </Dropdown.Menu>
                         </Dropdown>
                     </div>
+                <div class="container-md col-10"></div>
                     {/* <TabComponent /> */}
                     <SearchBar setResults={setResults}/>
-
-                    <h2 class="history-title">Hoạt động của tôi</h2>
+                    <div class ="row activity-state-title">
+                        <div>Hoạt động của tôi</div>
+                    </div>
+                    
                     <UserHistoryTab />
                 </div>
-            </div>  
-        </div>
+            // </div>
+        // </div>
     );
 }
 
