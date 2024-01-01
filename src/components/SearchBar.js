@@ -6,18 +6,7 @@ export const SearchBar = ({ setResults }) => {
     const [input, setInput] = useState("");
 
     const fetchData = (value) => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then((response) => response.json())
-            .then((json) => {
-                const results = json.filter((user) => {
-                    return (
-                        value &&
-                        user && 
-                        user.name.toLowerCase().includes(value)
-                    );
-                });
-                setResults(results);
-            });
+        setResults(value); 
     }
 
     const handlleChange = (value) => {
@@ -29,7 +18,7 @@ export const SearchBar = ({ setResults }) => {
         <div class="input-wrapper">
             <FaSearch id="search-icon" />
             <input
-                placeholder="Tìm kiếm" 
+                placeholder="Tìm kiếm hoạt động" 
                 type="text" value={input}
                 onChange={(e) => handlleChange(e.target.value)}
             />
