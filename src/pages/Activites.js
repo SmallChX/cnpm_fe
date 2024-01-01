@@ -158,7 +158,7 @@ function ActivityListPage() {
 
                         <div>
                             <img className="activity-detail-icon" src={profile} alt="Profile icon" />
-                            <p>{activity.basicInfo.quantity} Sinh viên</p>
+                            <p>{activity.basicInfo.member} Sinh viên</p>
                         </div>
 
                         <Link to={`/activity/${parseInt(activity.id)}`} className="btn btn-primary btn-sm detail-button">
@@ -223,7 +223,7 @@ function ActivityListPage() {
 
                         <div>
                             <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                            <p> {activity.basicInfo.quantity} Sinh viên </p>
+                            <p> {activity.basicInfo.member} Sinh viên </p>
                         </div>
 
                         <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>
