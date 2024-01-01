@@ -275,6 +275,7 @@ footer {
     .web-name {
         display: none;
     }
+
 }
 
 .rowbutdk{
@@ -365,7 +366,7 @@ nav{
 	margin-bottom: 5px;
 }
 
-.nav-link:hover, .nav-link.active{
+.nav-link:hover{
 	background-color:#fff;
 	color: rgb(58,101,246);
     text-decoration: none;
@@ -380,9 +381,11 @@ nav{
 
 .nav-top{
 	margin-top: 3rem;
+    margin-bottom: 15rem;
 }
 .nav-bottom{
-	margin-top: 20rem;
+	/* margin-top: 20rem; */
+    /* margin-bottom: 20rem; */
 }
 
 @media only screen and (max-width: 768px){
@@ -390,6 +393,14 @@ nav{
 		width: 40%;
 		padding: 10px;
 	}
+
+    .nav-link span {
+        display: none;
+    }
+
+    .web-name {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 450px){
@@ -406,4 +417,8 @@ nav{
 	.nav-btn{
 		display: none;
 	}
+
+    .nav-link span {
+        display: none;
+    }
 }
