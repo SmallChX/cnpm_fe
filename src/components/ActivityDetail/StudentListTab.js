@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import '../../style/systemPage.css';
 import '../../style/studentlisttab.css';
+
 function StudentListTab() {
-    // Giả sử bạn có một mảng chứa thông tin sinh viên
-    const students = [
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Chủ hoạt động', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Chủ hoạt động', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' },
-        { id: 1, name: 'Nguyen Van A', mssv: '123456', vaitro: 'Cộng tác viên', hoatdong: '10 phút trước' }
-        // ...Thêm thông tin sinh viên khác tại đây
-    ];
+    let { id } = useParams();
+    const [studentsData, setStudentsData] = useState({
+        id: '',
+        students: []
+    });
+
+    useEffect(() => {
+        fetch('/stu.json')
+            .then((response) => response.json())
+            .then((data) => {
+                const selectedStudents = data.find((record) => record.id === parseInt(id));
+                if (selectedStudents) {
+                    setStudentsData(selectedStudents);
+                } else {
+                    console.error(`Record with ID ${id} not found.`);
+                }
+            })
+            .catch((error) => console.error('Error fetching data:', error));
+    }, [id]);
 
     return (
-        <div class="row actcontent">
-            <div class="containtable"> 
-                <table class="table studentlist">
+        <div className="row actcontent">
+            <div className="containtable"> 
+                <table className="table studentlist">
                     <thead>
-                        <tr class="titlerow">
+                        <tr className="titlerow">
                             <th scope="col-1" className="sticky-header">STT</th>
                             <th scope="col-3" className="sticky-header">Họ và tên</th>
                             <th scope="col-2" className="sticky-header">MSSV</th>
@@ -32,19 +37,17 @@ function StudentListTab() {
                             <th scope="col-3" className="sticky-header">Hoạt động</th>
                         </tr>
                     </thead>  
-
                     <tbody>
-                        {students.map((student, index) => (
-                        <tr>
-                            <td>{student.id}</td>
-                            <td>{student.name}</td>
-                            <td>{student.mssv}</td>
-                            <td>{student.vaitro}</td>
-                            <td>{student.hoatdong}</td>
-                        </tr>
+                        {studentsData.students.map((student, index) => (
+                            <tr key={index}>
+                                <td>{student.stuID}</td>
+                                <td>{student.name}</td>
+                                <td>{student.mssv}</td>
+                                <td>{student.vaitro}</td>
+                                <td>{student.hoatdong}</td>
+                            </tr>
                         ))}
                     </tbody> 
-                
                 </table>  
             </div>     
         </div>
