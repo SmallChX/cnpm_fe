@@ -113,7 +113,7 @@ function ActivityListPage() {
                                 
                                 <div>
                                     <img class="activity-detail-icon" src={location} alt="Location icon" />
-                                    <p> {dataget.basicInfo.place} </p>
+                                    <p> {dataget.basicInfo.location} </p>
                                 </div>
 
                                 <div>
