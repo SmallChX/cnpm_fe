@@ -30,9 +30,9 @@ function AdminHistoryPage() {
 
     return(
         <div>
-            <div class ="container-md row">
-                <div class="col-10 content-column">
-                    <div class ="toprow row">
+            <div class ="row">
+                {/* <div class="col-10 content-column">
+                    <div class ="toprow row"> */}
                         {/* navigation buttons */}
                         <div class ="col">
                             <button class="btn btn-primary arrow-button-container">
@@ -56,7 +56,7 @@ function AdminHistoryPage() {
 
                                 <div class="user-infor">
                                     <div class="user-name">Cinamon</div>
-                                    <div class="user-role">Sinh viên</div>
+                                    <div class="user-role">Admin</div>
                                 </div>
                             </div>
                             </Button>
@@ -76,8 +76,8 @@ function AdminHistoryPage() {
                     <UserHistoryTab /> */}
 
                     <TabComponent />
-                </div>
-            </div>  
+                {/* </div>
+            </div>   */}
         </div>
     );
 }
