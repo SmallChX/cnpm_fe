@@ -30,32 +30,70 @@ function ActivityDetailPage() {
         id: '',
         basicInfo: {}
     });
-
+    const [studentsData, setStudentsData] = useState([]);
+    
+    const [role, setRole] = useState('');
     useEffect(() => {
-        fetch('/act.json')
-            .then((response) => response.json())
-            .then((data) => {
-                const selectedActivity = data.find((activity) => activity.id === id);
-                if (selectedActivity) {
-                    setActivityData(selectedActivity);
-                } else {
-                    console.error(`Activity with ID ${id} not found.`);
-                }
+        fetch('/api/get-role', {
+            method: 'GET',
+          })
+            .then(response => response.json())
+            .then(data => {
+              // Lưu trữ giá trị role vào state
+              setRole(data.role);
             })
-            .catch((error) => console.error('Error fetching data:', error));
-    }, [id]);
+            .catch(error => console.error('Error fetching role:', error));
+            fetch(`/api/activity/${id}`, { // Đảm bảo đường dẫn này phù hợp với cấu hình API của bạn
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Cập nhật trạng thái với dữ liệu nhận được
+                setActivityData(data);
+            })
+            .catch(error => console.error('Error fetching activity data:', error));
+            fetch(`/api/attendance/${id}`, {
+                method: 'GET',
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                        setStudentsData(data.user_list);
+                })
+                .catch((error) => console.error('Error fetching data:', error));
+        }, [id]);
 
-    const [role, setRole] = useState('tovanphong');
     const [showApproveActive, setShowApproveActive] = useState(false);
     const [showDeleteActive, setShowDeleteActive] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [showUpdateActive, setShowUpdateActive] = useState(false);
-
+        
     const handleConfirmRegistration = () => {
-        // Xử lý đăng ký hoạt động ở đây
-        // Sau khi đăng ký, có thể cập nhật trạng thái hoặc thực hiện các hành động cần thiết
-        setShowConfirmation(false);
-        // Add your registration logic here
+        // Gửi yêu cầu đăng ký tới server
+        fetch(`/api/register-activity`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Thêm headers nếu cần, ví dụ: Authorization: Bearer <token>
+            },
+            body: JSON.stringify({ activity_id: id }) // 'id' từ useParams
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            console.log("Registration Successful", data);
+            // Cập nhật UI hoặc thông báo cho người dùng
+            // ...
+        })
+        .catch(error => {
+            console.error("Registration failed", error);
+            // Xử lý lỗi
+        });
+    
+        setShowConfirmation(false); // Đóng popup sau khi gửi yêu cầu
     };
     const handleUpdateActive = () => {
         setShowUpdateActive(false);
@@ -73,9 +111,9 @@ function ActivityDetailPage() {
         switch (role) {
           case 'admin':
             return 'Admin';
-          case 'sinhvien':
+          case 'student':
             return 'Sinh viên';
-          case 'tovanphong':
+          case 'manager':
             return 'Tổ văn phòng';
           default:
             return 'Khách';
@@ -118,10 +156,10 @@ function ActivityDetailPage() {
                     </div>
                     <div class="row acttitle">
                         <div class="r2c1  col-sm col-12">
-                            <h1 class="font-size-sm">{activityData.basicInfo.name}</h1>
+                            <h1 class="font-size-sm">{activityData.name}</h1>
                         </div>
                         <div class="r2c2 ">
-                            <div class="actnumber">{activityData.basicInfo.currentMember}/{activityData.basicInfo.member}</div>
+                            <div class="actnumber">{activityData.curentNumber}/{activityData.numberOfPeople}</div>
                             <SelectButton />
                         </div>
                     </div>
@@ -138,7 +176,7 @@ function ActivityDetailPage() {
                 case 'activityContent':
                     return <ActivityContentTab />;
                 case 'studentList':
-                    return <StudentListTab />;
+                    return <StudentListTab dataFromParent={studentsData}/>;
                 case 'activityForum':
                     return <ActivityForumTab />;
                 case 'attendance':
@@ -167,7 +205,7 @@ function ActivityDetailPage() {
                         className={`detailbutton btn font-size-sm ${currentTab === 'activityForum' ? 'active' : ' btn-outline-primary'}`}
                         onClick={() => setCurrentTab('activityForum')}>Thông báo
                     </button>
-                    {role==='admin' &&(
+                    {role==='manager' &&(
                     <button  
                         type="button" 
                         className={`detailbutton btn  ${currentTab === 'attendance' ? 'active' : 'btn-outline-primary'}`}
@@ -184,7 +222,7 @@ function ActivityDetailPage() {
     };
 
     const SelectButton = () => {
-        if (role === 'sinhvien') {
+        if (role === 'student') {
             return(
                 <>
                     <button type="button" class="actresig-sinhvien btn" onClick={() => setShowConfirmation(true)}>Tham gia</button>

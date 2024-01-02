@@ -1,13 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../bootstrap.min.css'
 import '../style/login.css';
 import ForgotPassword from '../components/ForgotPassword';
+import { useNavigate } from 'react-router-dom';
 
 import gmail from '../image/gmail-logo.jpg';
 
 function Login() {
-    const [showForgotPassword, setShowForgotPassword] = useState(false);
+    const navigate = useNavigate();
 
+    const [showForgotPassword, setShowForgotPassword] = useState(false);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    useEffect(() => {
+        fetch('api/check-auth', {
+            method: 'GET',
+        })
+        .then(response => {
+            if (response.ok) {
+                // Nếu authtoken hợp lệ, chuyển hướng đến trang /
+                navigate('/homepage');
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi khi kiểm tra authtoken:', error);
+        });
+    }, []);
+
+    const handleLogin = () => {
+        fetch('api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username,
+            password,
+          }),
+        })
+          .then(response => {
+            if (response.ok) {
+              // Nếu response có trạng thái 200 OK, chuyển hướng đến trang /
+               navigate('/homepage'); // Thay đổi đường dẫn nếu cần
+            } else {
+              console.error('Kiểm tra lại tên đăng nhập hoặc mật khẩu');
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('Lỗi khi thực hiện đăng nhập:', error);
+          });
+    };
     const handleForgotPassword = () => {
         setShowForgotPassword(true);
     };
@@ -24,9 +71,9 @@ function Login() {
             </div>
 
             <div>
-                <input class="form-control-lg" type="text" placeholder="Tên đăng nhập" required />
-                <input class="form-control-lg" type="password" placeholder="Mật khẩu" required />
-                <button type="button" class="btn btn-dark">Đăng nhập</button>
+                 <input class="form-control-lg" type="text" placeholder="Tên đăng nhập" value={username} onChange={(e) => setUsername(e.target.value)}  required />
+                <input class="form-control-lg" type="password" placeholder="Mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)}  required />
+                <button type="button" class="btn btn-dark" onClick={handleLogin}>Đăng nhập</button>
             </div>
 
             <div class="forgot-password">

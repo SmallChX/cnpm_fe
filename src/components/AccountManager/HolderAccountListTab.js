@@ -20,13 +20,13 @@ function HolderAccountListTab() {
     const [holderAccountList, setHolderAccountList] = useState([]);
 
     useEffect(() => {
-        fetch('../account.json')
+        fetch('/api/account')
             .then((response) => response.json())
             .then((data) => {
-                const holder = data.filter(account => account.role === 'Người tổ chức');
-                if (holder){
-                    setHolderAccountList(holder);
-                }
+                // const holder = data.filter(account => account.role === 'manager');
+                // if (holder){
+                    setHolderAccountList(data.users);
+                // }
             })
             .catch((error) => console.error('Error fetching data:', error));
     });

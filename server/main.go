@@ -1,8 +1,10 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"cnpm/database"
+	"cnpm/routes"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -11,6 +13,6 @@ func main() {
 	database.Migrate()
 
 	r := gin.Default()
-
+	routes.AuthenticationRoute(r)
 	r.Run(":8080")
 }	

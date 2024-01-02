@@ -10,10 +10,10 @@ function StudentAccountListTab() {
     const [studentAccountList, setStudentAccountList] = useState([]);
 
     useEffect(() => {
-        fetch('./account.json')
+        fetch('/api/account')
             .then((response) => response.json())
             .then((data) => {
-                const student = data.filter(account => account.role === 'Sinh viên');
+                const student = data.filter(account => account.usersAccount.Role === 'student');
                 setStudentAccountList(student);
             })
             .catch((error) => console.error('Error fetching data:', error));
@@ -52,7 +52,7 @@ function StudentAccountListTab() {
 
                         {studentAccountList.map((account, index) => (
                             <tr>
-                                <td >{account.ID}</td>
+                                <td >{account.StudentID}</td>
                                 <td>{account.fullName}</td>
                                 <td>{account.role}</td>
                                 <td>{account.accountState}</td>

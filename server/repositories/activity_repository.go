@@ -5,11 +5,11 @@ import (
 )
 
 // GetFirst3ActivitiesWithStatus là hàm để lấy 3 hoạt động theo trạng thái
-func (r *Repository) GetFirst3ActivitiesWithStatus(status string) ([]models.Activity, error) {
+func (r *Repository) GetActivitiesWithStatus(status string) ([]models.Activity, error) {
 	// Thực hiện truy vấn hoặc lấy dữ liệu từ cơ sở dữ liệu bằng cách sử dụng r.db
 	// Thay thế dòng này bằng logic thực tế của ứng dụng của bạn
 	var activities []models.Activity
-	if err := r.db.Table("activities").Where("status = ?", status).Limit(3).Find(&activities).Error; err != nil {
+	if err := r.db.Table("activities").Where("status = ?", status).Find(&activities).Error; err != nil {
 		return nil, err
 	}
 
@@ -45,6 +45,14 @@ func (r *Repository) CreateActivity(activity *models.Activity, createdByUserID u
 	}
 
 	activity.ManagerID = createdByUserID
+	// Lấy thông tin người dùng dựa trên createdByID
+    user, err := r.GetUserByID(createdByUserID)
+    if err != nil {
+        return err
+    }
+
+    // Thêm tên người tạo vào activity
+    activity.ManagerName = user.Name // Giả sử tên trường là 'Name' trong models.UserInfo
 
 	// Tạo hoạt động và quan hệ với người tạo
 	if err := r.db.Create(activity).Error; err != nil {

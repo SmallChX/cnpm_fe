@@ -32,14 +32,39 @@ function ActivityListPage() {
     const [upItems, setUpItems] = useState(3);
     const [upExpand, setUpExpand] = useState(false);
 
+    
+  const [role, setRole] = useState('');
+
+    const [activities, setActivities] = useState({
+        Old: [],
+        Ongoing: [],
+        Upcoming: []
+    });
+
     useEffect(() => {
-        fetch('/act.json')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Fetched data:', data);
-                setDataget(data);
+        fetch('/api/get-role', {
+            method: 'GET',
+          })
+            .then(response => response.json())
+            .then(data => {
+              // Lưu trữ giá trị role vào state
+              setRole(data.role);
             })
-            .catch((error) => console.error('Error fetching data:', error));
+            .catch(error => console.error('Error fetching role:', error));
+        
+        // Gọi API để lấy dữ liệu hoạt động
+        fetch('/api/get-activities', { // Thay đổi đường dẫn này với endpoint của server Gin
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Cập nhật trạng thái với dữ liệu nhận được
+            setActivities({
+                Ongoing: data.Ongoing,
+                Upcoming: data.Upcoming
+            });
+        })
+        .catch(error => console.error('Error fetching activities:', error));
     }, []);
 
     const [showConfirmation, setShowConfirmation] = useState(false); // Thêm trạng thái để kiểm soát việc hiển thị cửa sổ xác nhận
@@ -108,7 +133,11 @@ function ActivityListPage() {
 
             <div class="row justify-content-end rowbutdk">
                 <div class="justify-content-end ">
-                    <button class="btn btn-dark btn-sm create-activity-button" onClick={() => setShowConfirmation(true)}>Tạo hoạt động</button>
+                {role === 'manager' && (
+                    <button class="btn btn-dark btn-sm create-activity-button" onClick={() => setShowConfirmation(true)}>
+                    Tạo hoạt động
+                    </button>
+                )}
                     {showConfirmation && <NewActivity onConfirm={handleDelete} />}
 
                 </div>
@@ -134,31 +163,31 @@ function ActivityListPage() {
             </div>
 
             <div className="row activity-row">
-                {dataget.slice(0, curItems).map(activity => (
+                {activities.Ongoing.slice(0, curItems).map(activity => (
                     <div className="col-xxl-3 shadow-sm activity-cell" key={activity.id}>
                         <div className="activity-cell-title">
-                            <div className="activity-name">{activity.basicInfo.name}</div>
-                            <div className="current-quantity">{activity.basicInfo.currentMember}/{activity.basicInfo.member}</div>
+                            <div className="activity-name">{activity.name}</div>
+                            <div className="current-quantity">{activity.currentMember}/{activity.numberOfPeople}</div>
                         </div>
 
                         <div>
                             <img className="activity-detail-icon" src={star} alt="Star icon" />
-                            <p>{activity.basicInfo.privileges} ngày CTXH</p>
+                            <p>{activity.benefit}</p>
                         </div>
 
                         <div>
                             <img className="activity-detail-icon" src={location} alt="Location icon" />
-                            <p>{activity.basicInfo.location}</p>
+                            <p>{activity.location}</p>
                         </div>
 
                         <div>
                             <img className="activity-detail-icon" src={time} alt="Clock icon" />
-                            <p>{activity.basicInfo.time}</p>
+                            <p>{activity.time} - {activity.day}</p>
                         </div>
 
                         <div>
                             <img className="activity-detail-icon" src={profile} alt="Profile icon" />
-                            <p>{activity.basicInfo.member} Sinh viên</p>
+                            <p>{activity.numberOfPeople} Sinh viên</p>
                         </div>
 
                         <Link to={`/activity/${parseInt(activity.id)}`} className="btn btn-primary btn-sm detail-button">
@@ -199,31 +228,31 @@ function ActivityListPage() {
             </div>
 
             <div class="row activity-row">
-                {dataget.slice(0, upItems).map(activity => (
+                {activities.Upcoming.slice(0, upItems).map(activity => (
                     <div class="col-xxl-3 shadow-sm activity-cell" key={activity.id}>
                         <div class="activity-cell-title">
-                            <div class="activity-name">{activity.basicInfo.name}</div>
-                            <div class="current-quantity">{activity.basicInfo.currentMember}/{activity.basicInfo.member}</div>
+                            <div class="activity-name">{activity.name}</div>
+                            <div class="current-quantity">{activity.currentMember}/{activity.numberOfPeople}</div>
                         </div>
 
                         <div>
                             <img class="activity-detail-icon" src={star} alt="Star icon" />
-                            <p> {activity.basicInfo.privileges} ngày CTXH </p>
+                            <p> {activity.benefit}</p>
                         </div>
 
                         <div>
                             <img class="activity-detail-icon" src={location} alt="Location icon" />
-                            <p> {activity.basicInfo.location} </p>
+                            <p> {activity.location} </p>
                         </div>
 
                         <div>
                             <img class="activity-detail-icon" src={time} alt="Clock icon" />
-                            <p> {activity.basicInfo.time}</p>
+                            <p> {activity.time} - {activity.day}</p>
                         </div>
 
                         <div>
                             <img class="activity-detail-icon" src={profile} alt="Profile icon" />
-                            <p> {activity.basicInfo.member} Sinh viên </p>
+                            <p> {activity.numberOfPeople} Sinh viên </p>
                         </div>
 
                         <button class="btn btn-primary btn-sm detail-button">Chi tiết</button>

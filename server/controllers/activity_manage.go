@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"cnpm/models"
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -29,6 +30,7 @@ func CreateActivity(c *gin.Context) {
 	var activity models.Activity
 	if err := c.BindJSON(&activity); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Dữ liệu không hợp lệ"})
+		fmt.Print("lỗi 1")
 		return
 	}
 
@@ -36,6 +38,7 @@ func CreateActivity(c *gin.Context) {
 	createdByID, err := token.ExtractTokenID(c)
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Không có quyền truy cập"})
+		fmt.Print("lỗi 2")
 		return
 	}
 
@@ -43,6 +46,7 @@ func CreateActivity(c *gin.Context) {
 	err = repo.CreateActivity(&activity, createdByID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Lỗi khi tạo hoạt động"})
+		fmt.Print("lỗi 3")
 		return
 	}
 
@@ -75,5 +79,3 @@ func DeleteActivity(c *gin.Context) {
 	// Trả về thông báo thành công
 	c.JSON(http.StatusOK, gin.H{"message": "Hoạt động đã được xóa thành công"})
 }
-
-

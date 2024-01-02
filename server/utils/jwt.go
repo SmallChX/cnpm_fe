@@ -138,3 +138,31 @@ func ExtractTokenRole(c *gin.Context) (string, error) {
 	// Trả về Role từ claims
 	return claims.Role, nil
 }
+
+// CheckAuthToken kiểm tra xem authtoken đã tồn tại hay không trong request
+func CheckAuthToken(c *gin.Context) bool {
+    // Trích xuất token từ cookie
+    tokenCookie, err := c.Request.Cookie(cookieName)
+    if err != nil {
+        // Token không tồn tại
+        return false
+    }
+
+    // Parse token với claims của UserClaims
+    token, err := jwt.ParseWithClaims(tokenCookie.Value, &UserClaims{}, func(token *jwt.Token) (interface{}, error) {
+        return []byte("your-secret-key"), nil
+    })
+
+    if err != nil {
+        // Lỗi khi parse token
+        return false
+    }
+
+    if _, ok := token.Claims.(*UserClaims); ok && token.Valid {
+        // Token hợp lệ và đã tồn tại
+        return true
+    }
+
+    // Token không hợp lệ hoặc đã hết hạn
+    return false
+}

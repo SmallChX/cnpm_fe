@@ -16,8 +16,16 @@ func (r *Repository) GetUserByID(userID uint) (*models.UserInfo, error) {
 }
 
 // GetAllUsers trả về danh sách tất cả người dùng
-func (r *Repository) GetAllUsers() ([]models.UserInfo, error) {
+func (r *Repository) GetAllUsersInfo() ([]models.UserInfo, error) {
     var users []models.UserInfo
+    if err := database.GetDB().Find(&users).Error; err != nil {
+        return nil, err
+    }
+
+    return users, nil
+}
+func (r *Repository) GetAllUsers() ([]models.UserAccount, error) {
+    var users []models.UserAccount
     if err := database.GetDB().Find(&users).Error; err != nil {
         return nil, err
     }

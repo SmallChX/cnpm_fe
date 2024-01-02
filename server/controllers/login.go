@@ -3,6 +3,8 @@ package controllers
 import (
 	"cnpm/database"
 	"cnpm/models"
+	"cnpm/utils"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
@@ -15,7 +17,7 @@ type UserLogin struct {
 	Password string
 }
 
-func loginHandler(c *gin.Context) {
+func LoginHandler(c *gin.Context) {
 	var userLogin UserLogin
 	if err := c.BindJSON(&userLogin); err != nil {
 		c.JSON(400, gin.H{"message": "Dữ liệu không hợp lệ"})
@@ -28,18 +30,18 @@ func loginHandler(c *gin.Context) {
 	database.GetDB().Where("username = ?", userLogin.Username).First(&user)
 
 	// Kiểm tra mật khẩu
-	err := bcrypt.CompareHashAndPassword([]byte(userLogin.Password), []byte(user.Password))
-	if err != nil {
+	if userLogin.Password != user.Password {
 		c.JSON(401, gin.H{"message": "Sai tên đăng nhập hoặc mật khẩu"})
 		return
 	}
 
+	utils.CreateToken(c, user.ID, user.Role)
 	// Đăng nhập thành công
 	c.JSON(200, gin.H{"message": "Đăng nhập thành công"})
 }
 
-func registerHandler(c *gin.Context) {
-	var user UserLogin
+func RegisterHandler(c *gin.Context) {
+	var user models.UserAccount
 	if err := c.BindJSON(&user); err != nil {
 		c.JSON(400, gin.H{"message": "Dữ liệu không hợp lệ"})
 		return
@@ -58,4 +60,30 @@ func registerHandler(c *gin.Context) {
 	database.GetDB().Create(&user)
 
 	c.JSON(200, gin.H{"message": "Đăng ký thành công"})
+}
+
+func Logout(c *gin.Context) {
+	// Xóa cookie chứa token
+	c.SetCookie("authToken", "", -1, "/api", "", true, true)
+
+	c.JSON(http.StatusOK, gin.H{"message": "logout successful"})
+}
+
+// HandleGetRole là hàm xử lý cho route "/api/get-role"
+func HandleGetRole(c *gin.Context) {
+    // Kiểm tra authtoken
+    if !utils.CheckAuthToken(c) {
+        c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
+        return
+    }
+
+    // Trích xuất role từ authtoken
+    role, err := utils.ExtractTokenRole(c)
+    if err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
+        return
+    }
+
+    // Gửi role về frontend
+    c.JSON(http.StatusOK, gin.H{"role": role})
 }

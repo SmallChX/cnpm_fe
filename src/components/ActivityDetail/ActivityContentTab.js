@@ -21,17 +21,15 @@ function ActivityContentTab() {
     });
 
     useEffect(() => {
-        fetch('/act.json')
-            .then((response) => response.json())
-            .then((data) => {
-                const selectedActivity = data.find((activity) => activity.id === id);
-                if (selectedActivity) {
-                    setActivityData(selectedActivity);
-                } else {
-                    console.error(`Activity with ID ${id} not found.`);
-                }
-            })
-            .catch((error) => console.error('Error fetching data:', error));
+        fetch(`/api/activity/${id}`, { // Đảm bảo đường dẫn này phù hợp với cấu hình API của bạn
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Cập nhật trạng thái với dữ liệu nhận được
+            setActivityData(data);
+        })
+        .catch(error => console.error('Error fetching activity data:', error));
     }, [id]);
 
     const {
@@ -54,7 +52,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Tạo bởi</h3></div>
-                            <div class="subcontent-detail">{activityData.basicInfo.createdBy}</div>
+                            <div class="subcontent-detail">{activityData.managerName}</div>
                         </div>
                     </div>
 
@@ -64,7 +62,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Quyền lợi</h3></div>
-                            <div class="subcontent-detail">{activityData.basicInfo.privileges}</div>
+                            <div class="subcontent-detail">{activityData.benefit}</div>
                         </div>
                     </div>
 
@@ -74,7 +72,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Địa điểm</h3></div>
-                            <div class="subcontent-detail font-size-sm">{activityData.basicInfo.location}</div>
+                            <div class="subcontent-detail font-size-sm">{activityData.location}</div>
                         </div>
                     </div>
 
@@ -84,7 +82,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Thời gian diễn ra</h3></div>
-                            <div class="subcontent-detail">{activityData.basicInfo.time}</div>
+                            <div class="subcontent-detail">{activityData.time} - {activityData.day}</div>
                         </div>
                     </div>
 
@@ -94,7 +92,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Số lượng sinh viên</h3></div>
-                            <div class="subcontent-detail">{activityData.basicInfo.member}</div>
+                            <div class="subcontent-detail">{activityData.currentMember}</div>
                         </div>
                     </div>
 
@@ -104,7 +102,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Chế độ hoạt động</h3></div>
-                            <div class="subcontent-detail">{activityData.basicInfo.operationMode}</div>
+                            <div class="subcontent-detail">{activityData.mode}</div>
                         </div>
                     </div>
 
@@ -114,7 +112,7 @@ function ActivityContentTab() {
                         </div>
                         <div class="subcontain-infor col-11">
                             <div class="subcontent-title"><h3>Đối tượng tham gia</h3></div>
-                            <div class="subcontent-detail">{activityData.basicInfo.studentType}</div>
+                            <div class="subcontent-detail">{activityData.target}</div>
                         </div>
                     </div>
 
@@ -129,16 +127,8 @@ function ActivityContentTab() {
                     <p>{activityData.description}</p>
                 </div>
                 <div class="contentright">
-                    <div class="actdetail-title">Tiêu chí hợp lệ </div>
-                    <ul>
-                        {activityData.criteria && activityData.criteria.length > 0 ? (
-                            activityData.criteria.map((criterion, index) => (
-                                <li key={index}>{criterion}</li>
-                            ))
-                        ) : (
-                            <li>No criteria available</li>
-                        )}
-                    </ul>
+                    <div class="actdetail-title">Tiêu chí hợp lệ: </div>
+                    <p>{activityData.criteria}</p>
                 </div>
                 <div class="contentright">
                     <div class="actdetail-title">Thông tin liên hệ</div>

@@ -11,7 +11,55 @@ import person from '../image/person.png'
 import gearshop from '../image/gearshape.png'
 import star from '../image/magic-star.png';
 function NewActivity({ onConfirm }) {
+    const [activityData, setActivityData] = useState({
+        name: '',
+        benefit: '',
+        location: '',
+        time: '',
+        day: '',
+        numberOfPeople: 0,
+        mode: 'auto',
+        target: '',
+        description: '',
+        criteria: '',
+        contact: '',
+    });
 
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setActivityData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const updatedActivityData = {
+            ...activityData,
+            numberOfPeople: parseInt(activityData.numberOfPeople) || 0, // Sử dụng 0 làm giá trị mặc định nếu không thể chuyển đổi
+        };
+        try {
+            const response = await fetch('/api/regist-activity', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedActivityData),
+            });
+
+            if (response.ok) {
+                // Xử lý khi đăng ký hoạt động thành công
+                console.log('Hoạt động đã được đăng ký thành công');
+                onConfirm(); // Đóng cửa sổ hoặc thực hiện hành động cần thiết
+            } else {
+                console.error('Đăng ký hoạt động thất bại');
+            }
+        } catch (error) {
+            console.error('Lỗi khi gửi yêu cầu đăng ký hoạt động:', error);
+        }
+    };
 
     useEffect(() => {
         const unloadListener = (event) => {
@@ -23,11 +71,6 @@ function NewActivity({ onConfirm }) {
             window.removeEventListener('beforeunload', unloadListener);
         };
     }, []);
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Xử lý dữ liệu hoạt động mới ở đây
-    };
 
     const handleConfirmLeave = () => {
         const isConfirmed = window.confirm(
@@ -49,7 +92,9 @@ function NewActivity({ onConfirm }) {
                                 </div>
                                 <div class="subcontain-infor col-11">
                                     <div class="subcontent-title"><h3>Tên Hoạt động</h3></div>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" name="name"
+                                        value={activityData.name}
+                                        onChange={handleChange} class="form-control" />
                                 </div>
                             </div>
 
@@ -59,7 +104,9 @@ function NewActivity({ onConfirm }) {
                                 </div>
                                 <div class="subcontain-infor col-11">
                                     <div class="subcontent-title"><h3>Quyền lợi</h3></div>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" name="benefits"
+                                        value={activityData.benefits}
+                                        onChange={handleChange} class="form-control" />
                                 </div>
                             </div>
 
@@ -69,7 +116,9 @@ function NewActivity({ onConfirm }) {
                                 </div>
                                 <div class="subcontain-infor col-11">
                                     <div class="subcontent-title"><h3>Địa điểm</h3></div>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" name="location"
+                                        value={activityData.location}
+                                        onChange={handleChange} class="form-control" />
                                 </div>
                             </div>
 
@@ -80,8 +129,12 @@ function NewActivity({ onConfirm }) {
                                 <div class="subcontain-infor col-11">
                                     <div class="subcontent-title"><h3>Thời gian diễn ra</h3></div>
                                     <div class="timenewact">
-                                        <input type="time"  class="form-control"/>
-                                        <input type="date" class="form-control" placeholder="2000-11-20"  />
+                                        <input type="time" name="time"
+                                        value={activityData.time}
+                                        onChange={handleChange} class="form-control"/>
+                                        <input type="date" name="day"
+                                        value={activityData.day}
+                                        onChange={handleChange} class="form-control" placeholder="2000-11-20"  />
                                     </div>
                                     
                                 </div>
@@ -93,7 +146,10 @@ function NewActivity({ onConfirm }) {
                                 </div>
                                 <div class="subcontain-infor col-11">
                                     <div class="subcontent-title"><h3>Số lượng sinh viên</h3></div>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" name="numberOfPeople"
+                                        value={activityData.numberOfPeople}
+                                        onChange={handleChange}
+                                        class="form-control" />
                                 </div>
                             </div>
 
@@ -103,9 +159,11 @@ function NewActivity({ onConfirm }) {
                                 </div>
                                 <div class="subcontain-infor col-11">
                                     <div class="subcontent-title"><h3>Chế độ hoạt động</h3></div>
-                                    <select >
-                                        <option >Tự động duyệt</option>
-                                        <option>Phê duyệt</option>
+                                    <select name="mode"
+                                        value={activityData.mode}
+                                        onChange={handleChange}>
+                                        <option value="Tự động duyệt">Tự động duyệt</option>
+                                        <option value="Phê duyệt">Phê duyệt</option>
                                     </select>
                                 </div>
                             </div>
@@ -116,26 +174,34 @@ function NewActivity({ onConfirm }) {
                                 </div>
                                 <div class="subcontain-infor col-11">
                                     <div class="subcontent-title"><h3>Đối tượng tham gia</h3></div>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" name="target"
+                                        value={activityData.target}
+                                        onChange={handleChange} class="form-control" />
                                 </div>
                             </div>       
                         </div>
                                 
                         <div class="contentleft newact">
                             <div class="actdetail-title">Mô tả hoạt động </div>
-                            <textarea rows="3" ></textarea>
+                            <textarea rows="3" name="description"
+                                        value={activityData.description}
+                                        onChange={handleChange}></textarea>
                         </div>
                         <div class="contentleft newact">
                             <div class="actdetail-title">Tiêu chí hợp lệ </div>
-                            <textarea rows="3" ></textarea>
+                            <textarea rows="3" name="criteria"
+                                        value={activityData.criteria}
+                                        onChange={handleChange}></textarea>
                         </div>
                         <div class="contentleft newact" >
-                            <div class="actdetail-title">Thông tin liên hệ</div>
+                            <div class="actdetail-title" name="contact"
+                                        value={activityData.contact}
+                                        onChange={handleChange}>Thông tin liên hệ</div>
                             <textarea rows="3" ></textarea>
                         </div>
                         
                         <div class="butdiv">
-                        <button type="button" class="actresig-sinhvien btn" onClick={onConfirm}>Tạo</button>
+                        <button type="submit" class="actresig-sinhvien btn">Tạo</button>
                         <button type="button" class="actresig-tvp btn" onClick={onConfirm}>Hủy</button>
                         </div>
                     </form>

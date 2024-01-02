@@ -3,27 +3,11 @@ import { useParams } from 'react-router-dom';
 import '../../style/systemPage.css';
 import '../../style/studentlisttab.css';
 
-function StudentListTab() {
+function StudentListTab(props) {
     let { id } = useParams();
-    const [studentsData, setStudentsData] = useState({
-        id: '',
-        students: []
-    });
+    const [studentsData, setStudentsData] = useState(props.dataFromParent);
 
-    useEffect(() => {
-        fetch('/stu.json')
-            .then((response) => response.json())
-            .then((data) => {
-                const selectedStudents = data.find((record) => record.id === parseInt(id));
-                if (selectedStudents) {
-                    setStudentsData(selectedStudents);
-                } else {
-                    console.error(`Record with ID ${id} not found.`);
-                }
-            })
-            .catch((error) => console.error('Error fetching data:', error));
-    }, [id]);
-
+    
     return (
         <div className="row actcontent">
             <div className="containtable"> 
@@ -38,13 +22,13 @@ function StudentListTab() {
                         </tr>
                     </thead>  
                     <tbody>
-                        {studentsData.students.map((student, index) => (
+                        {studentsData.map((student, index) => (
                             <tr key={index}>
-                                <td>{student.stuID}</td>
-                                <td>{student.name}</td>
-                                <td>{student.mssv}</td>
-                                <td>{student.vaitro}</td>
-                                <td>{student.hoatdong}</td>
+                                <td>{student.ID}</td>
+                                <td>{student.Name}</td>
+                                <td>{student.StudentID}</td>
+                                <td>Sinh viên</td>
+                                <td>Đang hoạt động</td>
                             </tr>
                         ))}
                     </tbody> 

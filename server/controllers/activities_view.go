@@ -14,7 +14,7 @@ import (
 
 // getActivitiesForStatus là một hàm giả định để lấy 3 hoạt động theo trạng thái
 func getActivitiesForStatus(repo *repositories.Repository, status string) ([]models.Activity, error) {
-	activities, err := repo.GetFirst3ActivitiesWithStatus(status)
+	activities, err := repo.GetActivitiesWithStatus(status)
 	if err != nil {
 		fmt.Printf("Lỗi khi lấy hoạt động cho trạng thái %s: %v\n", status, err)
 		return nil, err
@@ -23,23 +23,21 @@ func getActivitiesForStatus(repo *repositories.Repository, status string) ([]mod
 	return activities, nil
 }
 
-func GetFirst3ActivitiesWithStatus(c *gin.Context) {
+func GetActivitiesWithStatus(c *gin.Context) {
 	db := database.GetDB()
 	repo := repositories.NewRepository(db)
 
 	// Gửi yêu cầu và nhận hoạt động cho mỗi trạng thái
-	activities1, err1 := getActivitiesForStatus(repo, "Đã diễn ra")
 	activities2, err2 := getActivitiesForStatus(repo, "Đang diễn ra")
 	activities3, err3 := getActivitiesForStatus(repo, "Sắp diễn ra")
 
-	if err1 != nil || err2 != nil || err3 != nil {
+	if err2 != nil || err3 != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Lỗi khi lấy hoạt động"})
 		return
 	}
 
 	// Gửi danh sách hoạt động cho frontend
 	response := map[string]interface{}{
-		"Old":      activities1,
 		"Ongoing":  activities2,
 		"Upcoming": activities3,
 	}

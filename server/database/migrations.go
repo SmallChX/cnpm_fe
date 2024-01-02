@@ -10,4 +10,5 @@ func Migrate() {
 	db.AutoMigrate(&models.UserAccount{})
 	db.AutoMigrate(&models.Activity{})
 	db.AutoMigrate(&models.UserInfo{})
+	db.AutoMigrate(&models.Attendance{})
 }
