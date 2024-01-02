@@ -4,6 +4,7 @@ import { SearchBar } from '../components/SearchBar';
 import UserHistoryTab from '../components/UserHistoryTab';
 import '../bootstrap.min.css';
 import '../style/style.css';
+import '../style/homepage.css';
 import logo from '../image/logoBK.png';
 import house from '../image/house.png';
 import person from '../image/person.png';
@@ -18,6 +19,10 @@ import rightArrow from '../image/right-arrow.png';
 import bell from '../image/Bell_fill.png';
 import user from '../image/user.png';
 import checkicon from '../image/let-check.png';
+import xtn from '../image/xtn.jpg';
+import bk from '../image/bk.jpg';
+import jf from '../image/jf.jpg';
+import mhx from '../image/mhx.jpg';
 
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -60,9 +65,18 @@ function HomePage() {
                         <Dropdown.Item href="/user-info">Cài đặt tài khoản</Dropdown.Item>
                         <Dropdown.Item href="#">Chỉnh sửa thông tin</Dropdown.Item>
                     </Dropdown.Menu>
-                </Dropdown>
-                <div class="container-md">
-                    <div class ="row pg-welcome">
+                </Dropdown> 
+            </div>
+            
+            <div class="slider">
+                <div class="slide"></div>
+                <div class="slide"></div>
+                <div class="slide"></div>
+                <div class="slide"></div>
+                <div class="slide"></div>
+            </div>
+
+            <div class ="row pg-welcome">
                         <div>Chào mừng bạn quay lại với HUHU,</div>
                     </div>
                     <div class = "row">
@@ -71,9 +85,13 @@ function HomePage() {
                             Cùng kiểm tra hoạt động hôm nay nhé!
                         </div>
                     </div>
-                    
-                </div>
-            </div>
+            
+
+                       
+                
+
+                
+            
         </div>
     );
 }
